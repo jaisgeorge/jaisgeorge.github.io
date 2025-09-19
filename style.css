@@ -116,11 +116,12 @@ footer p {
 }
 /* YouTube Video Container */
 .video-container {
-  width: 90vw;     
   margin: 30px auto;
   aspect-ratio: 16 / 9;
-  max-height: 675px; /* 1200px / 16 * 9 */
+  width: min(90vw, 1200px);
+  height: auto;
 }
+
 
 .video-container iframe {
   width: 100%;
@@ -129,3 +130,4 @@ footer p {
   border-radius: 8px;
   display: block;
 }
+
