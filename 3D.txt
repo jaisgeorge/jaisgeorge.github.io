@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D | Jais George</title>
+  <style>
+    body { font-family: Helvetica, Arial, sans-serif; margin:0; background:#fff; color:#222; }
+    header, footer { text-align:center; padding:20px; }
+    h1 { margin:20px; }
+    .grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap:20px;
+      max-width:1200px;
+      margin:40px auto;
+      padding:0 20px;
+    }
+    .grid img { width:100%; height:auto; border-radius:6px; }
+    .grid-item { text-align:center; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>3D</h1>
+    <p><a href="index.html">← Back to Work</a></p>
+  </header>
+
+  <div class="grid">
+    <div class="grid-item">
+      <img src="images/3d-project1.jpg" alt="3D Project 1">
+      <p>3D Project 1 Title</p>
+    </div>
+    <div class="grid-item">
+      <img src="images/3d-project2.jpg" alt="3D Project 2">
+      <p>3D Project 2 Title</p>
+    </div>
+    <!-- Add more projects here -->
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Jais George</p>
+  </footer>
+
+</body>
+</html>
