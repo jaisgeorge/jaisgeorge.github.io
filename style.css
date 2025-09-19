@@ -93,6 +93,12 @@ h2 { margin-top: 20px; text-align: center; }
   object-fit: cover;
 }
 
+/* Force Project 2 collages to split 50/50 */
+#project2 .project-collage > .collage {
+  flex: 1; /* each collage takes equal width */
+}
+
+
 /* Responsive: stack collages vertically */
 @media (max-width: 768px) {
   .project-layout-collage .project-collage { flex-direction: column; }
@@ -157,3 +163,4 @@ footer p { font-size: 0.9rem; color: #666; }
 
 .lightbox-prev { left: 30px; }
 .lightbox-next { right: 30px; }
+
