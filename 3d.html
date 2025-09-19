@@ -4,33 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>3D | Jais George</title>
-  <!-- Link external CSS file -->
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Horizontal thumbnail navigation */
+    .thumb-nav {
+      display: flex;
+      overflow-x: auto; /* scroll if too many thumbnails */
+      gap: 15px;
+      padding: 10px 20px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #eee;
+    }
+    .thumb-nav img {
+      height: 120px;   /* approx Extra Large Icon size */
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .thumb-nav img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Project sections */
+    .project {
+      margin-bottom: 60px;
+    }
+    .project img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .project p {
+      font-size: 1rem;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
     <h1><a href="index.html">Jais George</a></h1>
     <p><a href="index.html">← Back to Work</a></p>
   </header>
 
-  <!-- PROJECT GRID -->
-  <div class="grid">
-    <div class="grid-item project">
+  <main>
+    <h2 style="text-align:center; margin-top:20px;">3D</h2>
+
+    <!-- Horizontal Thumbnails -->
+    <div class="thumb-nav">
+      <a href="#project1"><img src="images/3d-project1-thumb.jpg" alt="Project 1"></a>
+      <a href="#project2"><img src="images/3d-project2-thumb.jpg" alt="Project 2"></a>
+      <a href="#project3"><img src="images/3d-project3-thumb.jpg" alt="Project 3"></a>
+      <!-- Add more thumbnails -->
+    </div>
+
+    <!-- Full Project Sections -->
+    <div id="project1" class="project">
       <img src="images/3d-project1.jpg" alt="3D Project 1">
       <p>3D Project 1 – Short description here</p>
     </div>
-    <div class="grid-item project">
+
+    <div id="project2" class="project">
       <img src="images/3d-project2.jpg" alt="3D Project 2">
       <p>3D Project 2 – Short description here</p>
     </div>
-    <div class="grid-item project">
+
+    <div id="project3" class="project">
       <img src="images/3d-project3.jpg" alt="3D Project 3">
       <p>3D Project 3 – Short description here</p>
     </div>
+
     <!-- Add more projects -->
-  </div>
+  </main>
 
   <footer>
     <p>&copy; 2025 Jais George</p>
