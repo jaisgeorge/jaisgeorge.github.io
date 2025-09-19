@@ -118,7 +118,7 @@ footer p {
 .video-container {
   position: relative;
   width: 80%;          /* adjust as needed */
-  max-width: 1000px;   /* optional maximum width */
+  max-width: 3000px;   /* optional maximum width */
   margin: 30px auto;   /* center horizontally with spacing */
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
   height: 0;
@@ -133,3 +133,4 @@ footer p {
   border: 0;
   border-radius: 8px;
 }
+
