@@ -49,29 +49,25 @@
           <img src="3dimages/irakalcollage2.png" alt="Project 1 Image 2">
           <img src="3dimages/irakalcollage3.png" alt="Project 1 Image 3">
           <img src="3dimages/irakalcollage4.png" alt="Project 1 Image 4">
-          <img src="3dimages/irakalcollage6.png" alt="Project 1 Image 6">
-          <img src="3dimages/irakalcollage5.png" alt="Project 1 Image 7">
-          <img src="3dimages/irakalcollage6.png" alt="Project 1 Image 8">          
         </div>
         <!-- Collage 2 -->
         <div class="collage">
           <img src="3dimages/irakalcollage5.png" alt="Project 1 Image 5">
-          <img src="3dimages/irakalcollage9.png" alt="Project 1 Image 9">
-          <img src="3dimages/irakalcollage10.jpg" alt="Project 1 Image 10">
-          <img src="3dimages/irakalcollage11.jpg" alt="Project 1 Image 11">
-          <img src="3dimages/irakalcollage12.jpg" alt="Project 1 Image 12">
+          <img src="3dimages/irakalcollage6.png" alt="Project 1 Image 6">
+          <img src="3dimages/irakalcollage7.png" alt="Project 1 Image 7">
+          <img src="3dimages/irakalcollage8.png" alt="Project 1 Image 8">
         </div>
       </div>
     </div>
 
-    <!-- Project 2: Single Image (example) -->
+    <!-- Project 2: Single Image -->
     <div id="project2" class="project project-layout-video">
       <h3 class="project-title">3D Project 2</h3>
       <p class="project-desc">Short description for project 2.</p>
       <img src="images/3d-project2.jpg" alt="3D Project 2">
     </div>
 
-    <!-- Project 3: Single Image (example) -->
+    <!-- Project 3: Single Image -->
     <div id="project3" class="project project-layout-video">
       <h3 class="project-title">3D Project 3</h3>
       <p class="project-desc">Short description for project 3.</p>
@@ -79,6 +75,14 @@
     </div>
 
   </main>
+
+  <!-- Lightbox Overlay -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-img" src="" alt="Expanded Image">
+    <span class="lightbox-prev">&#10094;</span>
+    <span class="lightbox-next">&#10095;</span>
+  </div>
 
   <footer>
     <p>&copy; 2025 Jais George</p>
@@ -101,11 +105,49 @@
 
     window.addEventListener('scroll', highlightThumbnail);
     window.addEventListener('load', highlightThumbnail);
+
+    // -------------------------------
+    // Lightbox Functionality
+    // -------------------------------
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.querySelector('.lightbox-img');
+    const closeBtn = document.querySelector('.lightbox-close');
+    const prevBtn = document.querySelector('.lightbox-prev');
+    const nextBtn = document.querySelector('.lightbox-next');
+
+    let currentImages = [];
+    let currentIndex = 0;
+
+    document.querySelectorAll('.collage img').forEach(img => {
+      img.addEventListener('click', () => {
+        const collage = img.closest('.collage');
+        currentImages = Array.from(collage.querySelectorAll('img'));
+        currentIndex = currentImages.indexOf(img);
+        lightboxImg.src = currentImages[currentIndex].src;
+        lightbox.style.display = 'flex';
+      });
+    });
+
+    function showImage() {
+      lightboxImg.src = currentImages[currentIndex].src;
+    }
+
+    closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      showImage();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      showImage();
+    });
+
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) lightbox.style.display = 'none';
+    });
   </script>
 
 </body>
 </html>
-
-
-
-
