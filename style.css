@@ -1,72 +1,114 @@
-/* BODY */
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Body & Header/Footer */
 body {
   font-family: Helvetica, Arial, sans-serif;
   margin: 0;
   background: #fff;
   color: #222;
+  text-align: center; /* Centralize all text */
 }
 
-/* HEADER */
-header {
+header, footer {
   text-align: center;
   padding: 20px;
 }
 
 header h1 a {
-  text-transform: uppercase;   /* makes text all caps */
-  text-decoration: none;       /* removes underline */
-  color: inherit;              /* keeps link color same as text */
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
   font-size: 2rem;
 }
 
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 40px auto;
+/* Page title */
+h2 {
+  margin-top: 20px;
+}
+
+/* Sticky horizontal thumbnails */
+.thumb-nav-container {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  z-index: 100;
+}
+
+.thumb-nav {
+  display: flex;
+  justify-content: center; /* center thumbnails horizontally */
+  overflow-x: auto;
+  gap: 15px;
   padding: 0 20px;
 }
 
-.grid a {
-  text-decoration: none;
-  color: inherit;
+.thumb-nav img {
+  height: 120px;      
+  border-radius: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.2s, border 0.2s;
+  border: 2px solid transparent;
 }
 
-.grid-item {
+.thumb-nav img:hover {
+  transform: scale(1.05);
+}
+
+.thumb-nav img.active-thumb {
+  border: 2px solid #222; /* highlight active thumbnail */
+  transform: scale(1.08); /* subtle scaling for active thumbnail */
+}
+
+/* Project Sections */
+.project {
+  margin: 60px auto;
+  max-width: 1000px;
   border: 1px solid #eee;
   border-radius: 8px;
   overflow: hidden;
+  background: #fafafa;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   transition: transform 0.2s;
+  text-align: center; /* center images and text */
 }
 
-.grid-item:hover {
+.project:hover {
   transform: scale(1.02);
 }
 
-.grid-item img {
-  width: 100%;
+.project img {
+  width: auto;
+  max-width: 90%;
   height: auto;
+  border-radius: 8px;
   display: block;
+  margin: 0 auto 10px auto; /* center image */
 }
 
-/* Hide grid titles */
-.grid-item h2 {
-  display: none;
+.project p {
+  padding: 10px;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  border-top: 1px solid #eee;
-  margin-top: 40px;
+/* Footer */
+footer p {
   font-size: 0.9rem;
   color: #666;
 }
 
-html {
-  scroll-behavior: smooth;
+/* Responsive */
+@media (max-width: 600px) {
+  .thumb-nav img {
+    height: 90px;
+  }
+  .project {
+    margin: 40px 10px;
+  }
 }
