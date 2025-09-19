@@ -98,7 +98,7 @@ h2 {
 }
 
 .thumb-nav img {
-  max-height: 10vh; /* never taller than 10% of viewport height */
+  max-height: 5vh; /* never taller than 10% of viewport height */
   width: auto;      /* keep aspect ratio */
   flex-shrink: 0;   /* prevent shrinking */
   border-radius: 6px;
@@ -185,5 +185,6 @@ footer p {
   border-radius: 8px;
   display: block;
 }
+
 
 
