@@ -75,13 +75,19 @@ h2 { margin-top: 20px; text-align: center; }
   justify-content: center;
 }
 
-/* Columns created dynamically by JS */
+/* Each collage: make columns side by side */
+.collage {
+  display: flex;        /* side-by-side columns */
+  gap: 15px;            /* horizontal gap between columns */
+}
+
 .collage-column {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* space between images vertically */
-  flex: 1;
+  gap: 20px;            /* vertical gap between images */
+  flex: 1;               /* each column takes equal width */
 }
+
 
 .collage-column img {
   width: 100%;
@@ -155,3 +161,4 @@ footer p { font-size: 0.9rem; color: #666; }
 
 .lightbox-prev { left: 30px; }
 .lightbox-next { right: 30px; }
+
