@@ -71,20 +71,20 @@ h2 { margin-top: 20px; text-align: center; }
 /* ----------------------- LAYOUT 2: Two-Side Collage ------------------------ */
 .project-layout-collage .project-collage {
   display: flex;
-  gap: 40px; /* space between collages */
+  gap: 20px; /* space between collages */
   justify-content: center;
 }
 
 /* Each collage: make columns side by side */
 .collage {
   display: flex;        /* side-by-side columns */
-  gap: 15px;            /* horizontal gap between columns */
+  gap: 10px;            /* horizontal gap between columns */
 }
 
 .collage-column {
   display: flex;
   flex-direction: column;
-  gap: 20px;            /* vertical gap between images */
+  gap: 10px;            /* vertical gap between images */
   flex: 1;               /* each column takes equal width */
 }
 
@@ -161,4 +161,5 @@ footer p { font-size: 0.9rem; color: #666; }
 
 .lightbox-prev { left: 30px; }
 .lightbox-next { right: 30px; }
+
 
