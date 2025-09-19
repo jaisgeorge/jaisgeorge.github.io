@@ -9,7 +9,7 @@ body {
   margin: 0;
   background: #fff;
   color: #222;
-  text-align: center; /* center all inline content by default */
+  text-align: center;
 }
 
 header, footer {
@@ -30,53 +30,6 @@ h2 {
   text-align: center;
 }
 
-
-/*
-
-
-/* Sticky horizontal thumbnails */
-.thumb-nav-container {
-  position: sticky;
-  top: 0;
-  background: #fff;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
-  z-index: 100;
-}
-
-.thumb-nav {
-  display: flex;
-  justify-content: center; /* center thumbnails horizontally */
-  align-items: center;
-  overflow-x: auto;
-  gap: 15px;
-  padding: 0 20px;
-}
-
-.thumb-nav img {
-  height: 120px;      
-  border-radius: 6px;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: transform 0.2s, border 0.2s;
-  border: 2px solid transparent;
-}
-
-.thumb-nav img:hover {
-  transform: scale(1.05);
-}
-
-.thumb-nav img.active-thumb {
-  border: 2px solid #222; /* highlight active thumbnail */
-  transform: scale(1.08);  /* subtle scaling for active thumbnail */
-}
-
-
-*/
-
-
-
-
 /* Sticky horizontal thumbnails */
 .thumb-nav-container {
   position: sticky;
@@ -94,13 +47,13 @@ h2 {
   overflow-x: auto;
   gap: 15px;
   padding: 0 20px;
-  width: 100%;  /* full width */
+  width: 100%;
 }
 
 .thumb-nav img {
-  max-height: 5vh; /* never taller than 10% of viewport height */
-  width: auto;      /* keep aspect ratio */
-  flex-shrink: 0;   /* prevent shrinking */
+  max-height: 5vh; /* never taller than 5% of viewport height */
+  width: auto;      
+  flex-shrink: 0;   
   border-radius: 6px;
   cursor: pointer;
   transition: transform 0.2s, border 0.2s;
@@ -116,71 +69,26 @@ h2 {
   transform: scale(1.08);
 }
 
-
-
-
-
-
-/*
-/* Full project sections */
-.project {
-  margin: 60px auto;      /* center the project container */
-  max-width: 1000px;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #fafafa;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  transition: transform 0.2s;
-  text-align: center;      /* center text inside project */
-}
-
-.project:hover {
-  transform: scale(1.02);
-}
-
-.project img {
-  display: block;
-  margin: 0 auto 10px auto; /* center image horizontally */
-  width: auto;
-  max-width: 90%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.project p {
-  padding: 10px;
-  font-size: 0.95rem;
-  margin-bottom: 20px;
-}
-*/
-
-
-/* VARIOUS PROJJECT LAYOUTS */
-
-/* Base project wrapper (neutral, no forced layout) */
+/* Base project wrapper */
 .project {
   margin: 60px auto;
-  width: 90vw;          /* flexible width */
-  max-width: 1200px;    /* cap at desktop */
+  width: 90vw;
+  max-width: 1200px;
+  text-align: center;
 }
 
-/* Titles & descriptions (shared styling) */
-.project h2 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-.project p {
-  font-size: 1rem;
-  margin-bottom: 20px;
+.project .project-title,
+.project .project-desc {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto 20px auto;
 }
 
 /* -----------------------
    LAYOUT 1: Video Project
 ------------------------ */
+.project-layout-video img,
 .project-layout-video .video-container {
-  aspect-ratio: 16 / 9;
   width: min(90vw, 1200px);
   height: auto;
   margin: 20px 0;
@@ -189,72 +97,33 @@ h2 {
 /* -----------------------
    LAYOUT 2: Two-Side Collage
 ------------------------ */
-.project-layout-collage {
+.project-layout-collage .project-collage {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; /* two equal columns */
   gap: 20px;
-  margin-top: 20px;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .project-layout-collage .collage {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.project-layout-collage .collage img {
-  flex: 1 1 calc(50% - 10px); /* two per row */
-  height: auto;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-/* -----------------------
-   LAYOUT 3: Big Image + Small Images
------------------------- */
-.project-layout-bigimage {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.project-layout-bigimage .big-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-}
-
-.project-layout-bigimage .small-images {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.project-layout-bigimage .small-images img {
-  width: 100%;
-  height: auto;
+.project-layout-collage .collage img {
+  width: 100%;  /* scale to column width */
+  height: auto; /* preserve aspect ratio */
   border-radius: 6px;
+  object-fit: cover;
 }
 
-/* -----------------------
-   Responsive Tweaks
------------------------- */
+/* Responsive: stack collages on smaller screens */
 @media (max-width: 768px) {
-  .project-layout-collage,
-  .project-layout-bigimage {
-    grid-template-columns: 1fr; /* stack on mobile */
+  .project-layout-collage .project-collage {
+    grid-template-columns: 1fr;
   }
 }
-
-
-
-
-
-
-
-
-
 
 /* Footer */
 footer p {
@@ -262,15 +131,6 @@ footer p {
   color: #666;
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  .thumb-nav img {
-    height: 90px;
-  }
-  .project {
-    margin: 40px 10px;
-  }
-}
 /* YouTube Video Container */
 .video-container {
   margin: 30px auto;
@@ -279,7 +139,6 @@ footer p {
   height: auto;
 }
 
-
 .video-container iframe {
   width: 100%;
   height: 100%;
@@ -287,7 +146,3 @@ footer p {
   border-radius: 8px;
   display: block;
 }
-
-
-
-
