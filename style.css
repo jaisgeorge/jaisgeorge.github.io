@@ -1,7 +1,5 @@
 /* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 /* Body & Header/Footer */
 body {
@@ -24,11 +22,7 @@ header h1 a {
   font-size: 2rem;
 }
 
-/* Page title */
-h2 {
-  margin-top: 20px;
-  text-align: center;
-}
+h2 { margin-top: 20px; }
 
 /* Sticky horizontal thumbnails */
 .thumb-nav-container {
@@ -51,58 +45,50 @@ h2 {
 }
 
 .thumb-nav img {
-  max-height: 5vh; /* never taller than 5% of viewport height */
-  width: auto;      
-  flex-shrink: 0;   
+  max-height: 5vh;
+  width: auto;
+  flex-shrink: 0;
   border-radius: 6px;
   cursor: pointer;
   transition: transform 0.2s, border 0.2s;
   border: 2px solid transparent;
 }
 
-.thumb-nav img:hover {
-  transform: scale(1.05);
-}
-
-.thumb-nav img.active-thumb {
-  border: 2px solid #222;
-  transform: scale(1.08);
-}
+.thumb-nav img:hover { transform: scale(1.05); }
+.thumb-nav img.active-thumb { border: 2px solid #222; transform: scale(1.08); }
 
 /* Base project wrapper */
 .project {
   margin: 60px auto;
-  width: 90vw;      /* 90% of viewport width */
-  max-width: none;  /* remove max-width cap */
+  width: 90vw;
+  max-width: none;
   text-align: center;
 }
 
 .project .project-title,
 .project .project-desc {
-  width: 100%;  /* occupy full width of project wrapper */
+  width: 100%;
   margin: 0 auto 20px auto;
 }
 
-/* -----------------------
-   LAYOUT 2: Two-Side Collage
------------------------- */
+/* ----------------------- LAYOUT 2: Two-Side Collage ------------------------ */
 .project-layout-collage .project-collage {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* two equal columns */
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
-  width: 100%; /* full width of project wrapper */
+  width: 100%;
   margin: 0 auto;
 }
 
 .project-layout-collage .collage {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* three images per row */
+  grid-template-columns: repeat(3, 1fr); /* 3 images per row */
   gap: 10px;
 }
 
 .project-layout-collage .collage img {
-  width: 100%;   /* fit column width */
-  height: auto;  /* maintain aspect ratio */
+  width: 100%;
+  height: auto;
   border-radius: 6px;
   object-fit: cover;
 }
@@ -110,24 +96,17 @@ h2 {
 /* Responsive: stack collages on smaller screens */
 @media (max-width: 768px) {
   .project-layout-collage .project-collage {
-    grid-template-columns: 1fr;  /* single column */
+    grid-template-columns: 1fr;
   }
   .project-layout-collage .collage {
-    grid-template-columns: 1fr 1fr; /* two images per row on mobile */
+    grid-template-columns: 1fr 1fr; /* 2 per row on mobile */
   }
 }
 
-
-/* Footer */
-footer p {
-  font-size: 0.9rem;
-  color: #666;
-}
-
-/* YouTube Video Container */
+/* YouTube Video */
 .video-container {
   margin: 30px auto;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16/9;
   width: min(90vw, 1200px);
   height: auto;
 }
@@ -140,4 +119,45 @@ footer p {
   display: block;
 }
 
+/* Footer */
+footer p { font-size: 0.9rem; color: #666; }
 
+/* ----------------------- Lightbox ------------------------ */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 8px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+.lightbox-prev, .lightbox-next {
+  position: absolute;
+  top: 50%;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  transform: translateY(-50%);
+}
+
+.lightbox-prev { left: 30px; }
+.lightbox-next { right: 30px; }
