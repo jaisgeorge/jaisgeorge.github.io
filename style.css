@@ -30,6 +30,10 @@ h2 {
   text-align: center;
 }
 
+
+/*
+
+
 /* Sticky horizontal thumbnails */
 .thumb-nav-container {
   position: sticky;
@@ -66,6 +70,57 @@ h2 {
   border: 2px solid #222; /* highlight active thumbnail */
   transform: scale(1.08);  /* subtle scaling for active thumbnail */
 }
+
+
+*/
+
+
+
+
+/* Sticky horizontal thumbnails */
+.thumb-nav-container {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  z-index: 100;
+}
+
+.thumb-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+  gap: 15px;
+  padding: 0 20px;
+  width: 100%;  /* full width */
+}
+
+.thumb-nav img {
+  max-height: 10vh; /* never taller than 10% of viewport height */
+  width: auto;      /* keep aspect ratio */
+  flex-shrink: 0;   /* prevent shrinking */
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s, border 0.2s;
+  border: 2px solid transparent;
+}
+
+.thumb-nav img:hover {
+  transform: scale(1.05);
+}
+
+.thumb-nav img.active-thumb {
+  border: 2px solid #222;
+  transform: scale(1.08);
+}
+
+
+
+
+
+
 
 /* Full project sections */
 .project {
@@ -130,4 +185,5 @@ footer p {
   border-radius: 8px;
   display: block;
 }
+
 
