@@ -73,7 +73,7 @@ h2 {
 .project {
   margin: 60px auto;
   width: 90vw;      /* 90% of viewport width */
-  max-width: 1200px;
+  max-width: none;  /* remove max-width cap */
   text-align: center;
 }
 
@@ -139,4 +139,5 @@ footer p {
   border-radius: 8px;
   display: block;
 }
+
 
