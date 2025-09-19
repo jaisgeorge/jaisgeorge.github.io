@@ -72,26 +72,15 @@ h2 {
 /* Base project wrapper */
 .project {
   margin: 60px auto;
-  width: 90vw;
+  width: 90vw;      /* 90% of viewport width */
   max-width: 1200px;
   text-align: center;
 }
 
 .project .project-title,
 .project .project-desc {
-  width: 90%;
-  max-width: 1000px;
+  width: 100%;  /* occupy full width of project wrapper */
   margin: 0 auto 20px auto;
-}
-
-/* -----------------------
-   LAYOUT 1: Video Project
------------------------- */
-.project-layout-video img,
-.project-layout-video .video-container {
-  width: min(90vw, 1200px);
-  height: auto;
-  margin: 20px 0;
 }
 
 /* -----------------------
@@ -101,19 +90,19 @@ h2 {
   display: grid;
   grid-template-columns: 1fr 1fr; /* two equal columns */
   gap: 20px;
-  width: 90%;
+  width: 100%; /* full width of project wrapper */
   margin: 0 auto;
 }
 
 .project-layout-collage .collage {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* three images per row */
   gap: 10px;
 }
 
 .project-layout-collage .collage img {
-  width: 100%;  /* scale to column width */
-  height: auto; /* preserve aspect ratio */
+  width: 100%;   /* fit column width */
+  height: auto;  /* maintain aspect ratio */
   border-radius: 6px;
   object-fit: cover;
 }
@@ -121,9 +110,13 @@ h2 {
 /* Responsive: stack collages on smaller screens */
 @media (max-width: 768px) {
   .project-layout-collage .project-collage {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;  /* single column */
+  }
+  .project-layout-collage .collage {
+    grid-template-columns: 1fr 1fr; /* two images per row on mobile */
   }
 }
+
 
 /* Footer */
 footer p {
@@ -146,3 +139,4 @@ footer p {
   border-radius: 8px;
   display: block;
 }
+
