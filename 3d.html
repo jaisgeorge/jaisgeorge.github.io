@@ -8,7 +8,6 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
     <h1><a href="index.html">Jais George</a></h1>
     <p><a href="index.html">← Back to Work</a></p>
@@ -50,6 +49,25 @@
   <footer>
     <p>&copy; 2025 Jais George</p>
   </footer>
+
+  <script>
+    // Highlight active thumbnail based on scroll position
+    const thumbnails = document.querySelectorAll('.thumb-nav a img');
+    const projects = document.querySelectorAll('.project');
+
+    function highlightThumbnail() {
+      let scrollPos = window.scrollY + 200; // offset for header
+      projects.forEach((project, index) => {
+        if(scrollPos >= project.offsetTop && scrollPos < project.offsetTop + project.offsetHeight) {
+          thumbnails.forEach(img => img.classList.remove('active-thumb'));
+          thumbnails[index].classList.add('active-thumb');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', highlightThumbnail);
+    window.addEventListener('load', highlightThumbnail);
+  </script>
 
 </body>
 </html>
