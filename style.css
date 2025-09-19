@@ -69,22 +69,26 @@ h2 { margin-top: 20px; text-align: center; }
 }
 
 /* ----------------------- LAYOUT 2: Two-Side Collage ------------------------ */
-.project-layout-collage .collage {
-  display: flex;
-  flex-direction: column; /* stack vertically */
-  gap: 20px; /* vertical gap between images in column */
-}
+/* Collage container (two side-by-side collages) */
 .project-layout-collage .project-collage {
-  display: flex;
-  gap: 40px; /* horizontal gap between different columns in the collage */
-  justify-content: center; /* center columns horizontally */
+  display: flex;          /* side-by-side layout for the two collages */
+  gap: 40px;              /* horizontal gap between the two collages */
+  justify-content: center;
 }
 
+/* Each collage: 3 vertical columns */
+.project-layout-collage .collage {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px 15px;                        /* row-gap | column-gap */
+}
+
+/* Images inside the collage */
 .project-layout-collage .collage img {
-  width: 100%;
+  width: 100%;       /* fill column width */
   height: auto;
-  border-radius: 6px;
   object-fit: cover;
+  border-radius: 6px;
 }
 
 /* Responsive: stack collages on smaller screens */
@@ -153,4 +157,5 @@ footer p { font-size: 0.9rem; color: #666; }
 
 .lightbox-prev { left: 30px; }
 .lightbox-next { right: 30px; }
+
 
