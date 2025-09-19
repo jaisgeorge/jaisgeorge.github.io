@@ -49,13 +49,17 @@
           <img src="3dimages/irakalcollage2.png" alt="Project 1 Image 2">
           <img src="3dimages/irakalcollage3.png" alt="Project 1 Image 3">
           <img src="3dimages/irakalcollage4.png" alt="Project 1 Image 4">
+          <img src="3dimages/irakalcollage6.png" alt="Project 1 Image 6">
+          <img src="3dimages/irakalcollage5.png" alt="Project 1 Image 7">
+          <img src="3dimages/irakalcollage6.png" alt="Project 1 Image 8">
         </div>
         <!-- Collage 2 -->
         <div class="collage">
           <img src="3dimages/irakalcollage5.png" alt="Project 1 Image 5">
-          <img src="3dimages/irakalcollage6.png" alt="Project 1 Image 6">
-          <img src="3dimages/irakalcollage7.png" alt="Project 1 Image 7">
-          <img src="3dimages/irakalcollage8.png" alt="Project 1 Image 8">
+          <img src="3dimages/irakalcollage9.png" alt="Project 1 Image 9">
+          <img src="3dimages/irakalcollage10.jpg" alt="Project 1 Image 10">
+          <img src="3dimages/irakalcollage11.jpg" alt="Project 1 Image 11">
+          <img src="3dimages/irakalcollage12.jpg" alt="Project 1 Image 12">
         </div>
       </div>
     </div>
@@ -118,6 +122,7 @@
     let currentImages = [];
     let currentIndex = 0;
 
+    // Add click listeners only to collage images
     document.querySelectorAll('.collage img').forEach(img => {
       img.addEventListener('click', () => {
         const collage = img.closest('.collage');
