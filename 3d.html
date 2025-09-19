@@ -6,30 +6,47 @@
   <title>3D | Jais George</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Horizontal thumbnail navigation */
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Thumbnail navigation */
+    .thumb-nav-container {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      z-index: 100;
+    }
+
     .thumb-nav {
       display: flex;
-      overflow-x: auto; /* scroll if too many thumbnails */
+      overflow-x: auto;
       gap: 15px;
-      padding: 10px 20px;
-      margin-bottom: 30px;
-      border-bottom: 1px solid #eee;
+      padding: 0 20px;
     }
+
     .thumb-nav img {
-      height: 120px;   /* approx Extra Large Icon size */
+      height: 120px;      /* Approx Extra Large Icon size */
       border-radius: 6px;
       cursor: pointer;
-      transition: transform 0.2s;
       flex-shrink: 0;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
+
     .thumb-nav img:hover {
       transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
     /* Project sections */
     .project {
-      margin-bottom: 60px;
+      margin: 60px auto;
+      max-width: 1000px;
     }
+
     .project img {
       width: 100%;
       height: auto;
@@ -37,9 +54,24 @@
       display: block;
       margin-bottom: 10px;
     }
+
     .project p {
       font-size: 1rem;
       text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Header adjustments */
+    header h1 a {
+      text-transform: uppercase;
+      text-decoration: none;
+      color: inherit;
+      font-size: 2rem;
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 20px;
     }
   </style>
 </head>
@@ -53,12 +85,14 @@
   <main>
     <h2 style="text-align:center; margin-top:20px;">3D</h2>
 
-    <!-- Horizontal Thumbnails -->
-    <div class="thumb-nav">
-      <a href="#project1"><img src="images/3d-project1-thumb.jpg" alt="Project 1"></a>
-      <a href="#project2"><img src="images/3d-project2-thumb.jpg" alt="Project 2"></a>
-      <a href="#project3"><img src="images/3d-project3-thumb.jpg" alt="Project 3"></a>
-      <!-- Add more thumbnails -->
+    <!-- Sticky Horizontal Thumbnails -->
+    <div class="thumb-nav-container">
+      <div class="thumb-nav">
+        <a href="#project1"><img src="images/3d-project1-thumb.jpg" alt="Project 1"></a>
+        <a href="#project2"><img src="images/3d-project2-thumb.jpg" alt="Project 2"></a>
+        <a href="#project3"><img src="images/3d-project3-thumb.jpg" alt="Project 3"></a>
+        <!-- Add more thumbnails -->
+      </div>
     </div>
 
     <!-- Full Project Sections -->
