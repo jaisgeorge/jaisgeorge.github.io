@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D | Jais George</title>
+  <style>
+    body { font-family: Helvetica, Arial, sans-serif; margin:0; background:#fff; color:#222; }
+    header, footer { text-align:center; padding:20px; }
+    h1 { margin:20px; }
+
+    .grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap:20px;
+      max-width:1200px;
+      margin:40px auto;
+      padding:0 20px;
+    }
+
+    .project {
+      border:1px solid #eee;
+      border-radius:8px;
+      overflow:hidden;
+      background:#fafafa;
+      box-shadow:0 2px 5px rgba(0,0,0,0.05);
+      transition:transform 0.2s;
+    }
+
+    .project:hover { transform:scale(1.02); }
+    .project img { width:100%; height:auto; display:block; }
+    .project p { padding:10px; font-size:0.95rem; text-align:center; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>3D</h1>
+    <p><a href="index.html">← Back to Work</a></p>
+  </header>
+
+  <div class="grid">
+    <div class="project">
+      <img src="images/3d-project1.jpg" alt="3D Project 1">
+      <p>3D Project 1 – Short description here</p>
+    </div>
+    <div class="project">
+      <img src="images/3d-project2.jpg" alt="3D Project 2">
+      <p>3D Project 2 – Short description here</p>
+    </div>
+    <div class="project">
+      <img src="images/3d-project3.jpg" alt="3D Project 3">
+      <p>3D Project 3 – Short description here</p>
+    </div>
+    <!-- Add more projects -->
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Jais George</p>
+  </footer>
+
+</body>
+</html>
