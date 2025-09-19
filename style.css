@@ -58,7 +58,6 @@ h2 { margin-top: 20px; text-align: center; }
 .project {
   margin: 60px auto;
   width: 90vw;
-  max-width: none;
   text-align: center;
 }
 
@@ -68,26 +67,24 @@ h2 { margin-top: 20px; text-align: center; }
   margin: 0 auto 20px auto;
 }
 
-/* ----------------------- LAYOUT 2: Two-Side Collage ------------------------ */
+/* Two-Side Collage Layout */
 .project-layout-collage .project-collage {
   display: flex;
-  gap: 20px; /* space between collages */
+  gap: 20px;
   justify-content: center;
 }
 
-/* Each collage: make columns side by side */
 .collage {
-  display: flex;        /* side-by-side columns */
-  gap: 10px;            /* horizontal gap between columns */
+  display: flex;
+  gap: 10px;
 }
 
 .collage-column {
   display: flex;
   flex-direction: column;
-  gap: 10px;            /* vertical gap between images */
-  flex: 1;               /* each column takes equal width */
+  gap: 10px;
+  flex: 1;
 }
-
 
 .collage-column img {
   width: 100%;
@@ -95,66 +92,6 @@ h2 { margin-top: 20px; text-align: center; }
   border-radius: 6px;
   object-fit: cover;
 }
-
-
-
-/* ----------------------- LAYOUT: Left + Right ------------------------ */
-.project-layout-left-right .left-right-container {
-  display: flex;
-  gap: 20px; /* space between left and right */
-  width: 90vw; /* keep total width at 90% of viewport */
-  max-width: 1200px; /* optional: prevents it from getting too wide on very large screens */
-  margin: 20px auto 0 auto; /* centers container */
-  align-items: stretch; /* makes both sides equal height */
-}
-
-.project-layout-left-right .left-image {
-  flex: 0 0 40%; /* fixed 40% width */
-  display: flex; /* ensures the child img fills */
-}
-
-.project-layout-left-right .left-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* crop/scale to fill height */
-  border-radius: 6px;
-}
-
-.project-layout-left-right .right-collage {
-  flex: 1; /* takes remaining 60% */
-  display: flex;
-  gap: 10px; /* horizontal gap between columns */
-}
-
-.project-layout-left-right .right-collage .collage-column {
-  display: flex;
-  flex-direction: column;
-  gap: 10px; /* vertical gap between images */
-  flex: 1;
-}
-
-.project-layout-left-right .right-collage img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-/* Responsive: stack left and right vertically */
-@media (max-width: 768px) {
-  .project-layout-left-right .left-right-container {
-    flex-direction: column;
-  }
-
-  .project-layout-left-right .left-image,
-  .project-layout-left-right .right-collage {
-    flex: 1 1 100%;
-  }
-}
-
-
-
-
 
 /* Responsive: stack collages vertically */
 @media (max-width: 768px) {
@@ -166,7 +103,6 @@ h2 { margin-top: 20px; text-align: center; }
   margin: 30px auto;
   aspect-ratio: 16/9;
   width: min(90vw, 1200px);
-  height: auto;
 }
 
 .video-container iframe {
@@ -180,46 +116,7 @@ h2 { margin-top: 20px; text-align: center; }
 /* Footer */
 footer p { font-size: 0.9rem; color: #666; }
 
-
-
-// -------------------------------
-// Column-balanced layout for right-collage
-// -------------------------------
-document.querySelectorAll('.right-collage').forEach(collage => {
-  const images = Array.from(collage.querySelectorAll('img'));
-  const columnsCount = parseInt(collage.dataset.columns) || 2;
-
-  collage.innerHTML = '';
-
-  const columns = [];
-  for (let i = 0; i < columnsCount; i++) {
-    const col = document.createElement('div');
-    col.classList.add('collage-column');
-    columns.push(col);
-    collage.appendChild(col);
-  }
-
-  images.forEach((img, idx) => {
-    columns[idx % columnsCount].appendChild(img);
-  });
-});
-
-// Extend lightbox to right-collage images
-document.querySelectorAll('.right-collage img').forEach(img => {
-  img.addEventListener('click', () => {
-    const collage = img.closest('.right-collage');
-    currentImages = Array.from(collage.querySelectorAll('img'));
-    currentIndex = currentImages.indexOf(img);
-    lightboxImg.src = currentImages[currentIndex].src;
-    lightbox.style.display = 'flex';
-  });
-});
-
-
-
-
-
-/* ----------------------- Lightbox ------------------------ */
+/* Lightbox */
 .lightbox {
   display: none;
   position: fixed;
@@ -260,8 +157,3 @@ document.querySelectorAll('.right-collage img').forEach(img => {
 
 .lightbox-prev { left: 30px; }
 .lightbox-next { right: 30px; }
-
-
-
-
-
