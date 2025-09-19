@@ -1,0 +1,68 @@
+/* BODY */
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  background: #fff;
+  color: #222;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 20px;
+}
+
+header h1 a {
+  text-transform: uppercase;   /* makes text all caps */
+  text-decoration: none;       /* removes underline */
+  color: inherit;              /* keeps link color same as text */
+  font-size: 2rem;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.grid a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.grid-item {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.grid-item:hover {
+  transform: scale(1.02);
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Hide grid titles */
+.grid-item h2 {
+  display: none;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #eee;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #666;
+}
