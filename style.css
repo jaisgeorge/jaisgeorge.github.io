@@ -31,7 +31,7 @@ header, footer {
 /* Sticky Header with frosted white background */
 header {
   display: flex;
-  align-items: flex-start; /* top-aligned */
+  align-items: flex-start; /* lock everything to the top */
   justify-content: space-between;
   padding: 20px 40px;
   position: sticky;
@@ -41,18 +41,18 @@ header {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-sizing: border-box;
-  flex-wrap: wrap;
-  gap: 10px;
 }
 
 /* Centered "JAIS GEORGE" */
 header h1 {
+  position: absolute;
+  top: 20px; /* lock to the top padding */
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0;
   text-align: center;
-  font-weight: 200; /* ExtraLight */
-  flex: 0 1 auto;  /* allow shrinking if needed */
-  order: 0;        /* keep in visual order */
-  white-space: nowrap; /* prevent wrapping */
+  z-index: 1;
+  font-weight: 200;
 }
 
 header h1 a {
@@ -63,29 +63,25 @@ header h1 a {
   display: block;
 }
 
-/* Left Nav container allows extra rows without pushing center */
+/* Left Nav container allows extra rows without pushing header height */
 .header-left {
   display: flex;
-  flex-wrap: wrap;   /* only left items wrap */
+  flex-wrap: wrap;   /* this allows only the left items to wrap */
   align-items: flex-start;
   justify-content: flex-start;
   gap: 15px;
-  flex: 1 1 auto;   /* shrink/grow */
-  max-width: 35%;   /* prevent taking too much space */
+  flex: 1;
+  max-width: 35%;
+  padding-top: 0; /* no offset */
 }
 
-/* Extra left items go to second row when necessary */
-.header-left > *:nth-child(n+2) {
-  flex-basis: 50%;
-}
-
-/* Right Nav */
+/* Right Nav stays fixed */
 .header-right {
   display: flex;
   gap: 15px;
   align-items: center;
   justify-content: flex-end;
-  flex: 1 1 auto;
+  flex: 1;
 }
 
 header a {
@@ -109,7 +105,9 @@ header a:hover {
   }
 
   header h1 {
-    order: -1; /* name at top */
+    position: static;
+    transform: none;
+    order: -1;
     margin-bottom: 10px;
   }
 
@@ -303,16 +301,6 @@ footer p {
 
 /* Description */
 .lightbox-desc {
-  color: #fff;
-  margin-top: 10px;
-  font-size: 1rem;
-  max-width: 90%;
-  text-align: center;
-}
+  col
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .lightbox-img { max-height: 70vh; }
-  .lightbox-prev { left: 10px; font-size: 2rem; }
-  .lightbox-next { right: 10px; font-size: 2rem; }
-}
+
