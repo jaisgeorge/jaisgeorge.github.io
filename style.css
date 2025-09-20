@@ -7,8 +7,8 @@ html {
 body {
   font-family: Helvetica, Arial, sans-serif;
   margin: 0;
-  background: #000;
-  color: #222;
+  background: #fff;
+  color: #fff;
   text-align: center;
   -ms-overflow-style: none;  /* IE and Edge Legacy */
   scrollbar-width: none;      /* Firefox */
@@ -304,6 +304,7 @@ footer p {
   .lightbox-prev { left: 10px; font-size: 2rem; }
   .lightbox-next { right: 10px; font-size: 2rem; }
 }
+
 
 
 
