@@ -71,7 +71,7 @@ header h1 a {
   justify-content: flex-start;
   gap: 15px;
   flex: 1;
-  max-width: 40%;
+  max-width: 35%;
   padding-top: 0; /* no offset */
 }
 
@@ -302,5 +302,6 @@ footer p {
 /* Description */
 .lightbox-desc {
   col
+
 
 
