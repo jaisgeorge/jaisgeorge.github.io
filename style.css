@@ -26,7 +26,8 @@ h2 { margin-top: 20px; text-align: center; }
 
 
 /*
-/* Sticky horizontal thumbnails */
+
+Sticky horizontal thumbnails
 .thumb-nav-container {
   position: sticky;
   top: 0;
@@ -58,6 +59,7 @@ h2 { margin-top: 20px; text-align: center; }
 
 .thumb-nav img:hover { transform: scale(1.05); }
 .thumb-nav img.active-thumb { border: 2px solid #222; transform: scale(1.08); }
+
 */
 
 
@@ -214,5 +216,6 @@ footer p { font-size: 0.9rem; color: #666; }
 
 .lightbox-prev { left: 30px; }
 .lightbox-next { right: 30px; }
+
 
 
