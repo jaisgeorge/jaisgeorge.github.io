@@ -80,9 +80,13 @@ header a {
   transition: color 0.2s;
 }
 
+
+/*
 header a:hover {
   color: #00aced; /* optional hover color */
 }
+*/
+
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
@@ -300,5 +304,6 @@ footer p {
   .lightbox-prev { left: 10px; font-size: 2rem; }
   .lightbox-next { right: 10px; font-size: 2rem; }
 }
+
 
 
