@@ -6,41 +6,55 @@
   <title>Jais George | Work</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    body { font-family: Helvetica, Arial, sans-serif; margin:0; background:#fff; color:#222; }
-    h1 { margin:20px; }
+    /* Use Inter ExtraLight everywhere */
+    body, h1, h2, h3, h4, h5, h6, a, p {
+      font-family: 'Inter', Helvetica, Arial, sans-serif;
+      font-weight: 200; /* ExtraLight */
+      color: #222;
+    }
+
+    h1 { margin: 20px; font-size: 2rem; }
+    h2 { font-size: 1.5rem; font-weight: 200; }
+
     .grid {
-      display:grid;
+      display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap:20px;
-      max-width:none;
-      margin:40px auto;
-      padding:0 20px;
+      gap: 20px;
+      max-width: none;
+      margin: 40px auto;
+      padding: 0 20px;
     }
+
     .grid a {
-      text-decoration:none;
-      color:inherit;
+      text-decoration: none;
+      color: inherit;
     }
+
     .grid-item {
-      border:1px solid #eee;
-      border-radius:8px;
-      overflow:hidden;
-      box-shadow:0 2px 5px rgba(0,0,0,0.05);
-      transition:transform 0.2s;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
     }
-    .grid-item:hover { transform:scale(1.02); }
-    .grid-item img { width:100%; height:auto; display:block; }
-    .grid-item h2 { text-align:center; padding:10px; font-size:1.2rem; }
+
+    .grid-item:hover { transform: scale(1.02); }
+
+    .grid-item img { width: 100%; height: auto; display: block; }
+
+    .grid-item h2 { text-align: center; padding: 10px; font-size: 1.2rem; font-weight: 200; }
 
     /* Desktop: Force 4 items per row */
     @media (min-width: 1024px) {
       .grid {
         grid-template-columns: repeat(4, 1fr);
-        gap: 10px; /* tighter spacing */
+        gap: 10px; 
         padding: 0 40px;
       }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Sticky Frosted Header -->
@@ -95,3 +109,4 @@
 
 </body>
 </html>
+
