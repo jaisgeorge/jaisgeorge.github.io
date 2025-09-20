@@ -21,6 +21,11 @@ header h1 a {
 
 h2 { margin-top: 20px; text-align: center; }
 
+
+
+
+
+/*
 /* Sticky horizontal thumbnails */
 .thumb-nav-container {
   position: sticky;
@@ -53,6 +58,52 @@ h2 { margin-top: 20px; text-align: center; }
 
 .thumb-nav img:hover { transform: scale(1.05); }
 .thumb-nav img.active-thumb { border: 2px solid #222; transform: scale(1.08); }
+*/
+
+
+
+/* Vertical sticky thumbnails */
+.thumb-nav-container {
+  position: fixed;         /* stick to screen instead of scrolling */
+  top: 0;
+  left: 0;
+  height: 100vh;           /* full height of the viewport */
+  width: 80px;             /* adjust width as you like */
+  background: #fff;
+  border-right: 1px solid #eee;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.thumb-nav {
+  display: flex;
+  flex-direction: column;   /* vertical stacking */
+  align-items: center;
+  gap: 15px;
+  overflow-y: auto;         /* scroll vertically if too many */
+  padding: 0 10px;
+  width: 100%;
+}
+
+.thumb-nav img {
+  max-width: 60px;          /* constrain thumbnails horizontally */
+  max-height: none;         /* let height adjust naturally */
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s, border 0.2s;
+  border: 2px solid transparent;
+}
+
+.thumb-nav img:hover { transform: scale(1.05); }
+.thumb-nav img.active-thumb { border: 2px solid #222; transform: scale(1.08); }
+
+
+
+
 
 /* Base project wrapper */
 .project {
@@ -163,4 +214,5 @@ footer p { font-size: 0.9rem; color: #666; }
 
 .lightbox-prev { left: 30px; }
 .lightbox-next { right: 30px; }
+
 
