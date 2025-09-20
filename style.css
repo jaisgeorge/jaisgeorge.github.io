@@ -67,12 +67,14 @@ Sticky horizontal thumbnails
 /* Vertical sticky thumbnails */
 .thumb-nav-container {
   position: fixed;         /* stick to screen instead of scrolling */
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   left: 0;
   height: 100vh;           /* full height of the viewport */
   width: 80px;             /* adjust width as you like */
-  background: #fff;
-  border-right: 1px solid #eee;
+  background: transparent;
+  /* border-right: 1px solid #eee; */
+  border: none;
   z-index: 100;
   display: flex;
   justify-content: center;
@@ -216,6 +218,7 @@ footer p { font-size: 0.9rem; color: #666; }
 
 .lightbox-prev { left: 30px; }
 .lightbox-next { right: 30px; }
+
 
 
 
