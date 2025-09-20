@@ -224,8 +224,8 @@
     const lightboxDesc = document.querySelector('.lightbox-desc');
 
 function showImage() {
-  const img = currentImages[currentIndex];
-  lightboxImg.src = img.src;
+  const img = currentImages[currentIndex]; // original clicked image
+  lightboxImg.src = img.src;               // set lightbox image
   lightboxDesc.textContent = img.dataset.desc || ''; // set description
 }
 
@@ -238,15 +238,11 @@ function showImage() {
         const collage = img.closest('.collage');
         currentImages = Array.from(collage.querySelectorAll('img'));
         currentIndex = currentImages.indexOf(img);
-        lightboxImg.src = currentImages[currentIndex].src;
+        showImage(); // sets image + description
         lightbox.style.display = 'flex';
       });
     });
 
-    function showImage() {
-      lightboxImg.src = currentImages[currentIndex].src;
-      lightboxDesc.textContent = lightboxImg.dataset.desc || ''; // set description
-    }
     closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
     prevBtn.addEventListener('click', () => {
       currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
@@ -263,6 +259,7 @@ function showImage() {
 
 </body>
 </html>
+
 
 
 
