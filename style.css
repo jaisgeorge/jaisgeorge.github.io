@@ -21,7 +21,7 @@ header h1 a {
 
 h2 { margin-top: 20px; text-align: center; }
 
-/* Vertical sticky thumbnails */
+/* Vertical sticky thumbnails - Option 2 */
 .thumb-nav-container {
   position: fixed;            
   top: 50%;                   
@@ -97,7 +97,9 @@ h2 { margin-top: 20px; text-align: center; }
 }
 
 /* Force Project 2 collages to split 50/50 */
-#project2 .project-collage > .collage { flex: 1; }
+#project2 .project-collage > .collage {
+  flex: 1;
+}
 
 /* Responsive: stack collages vertically */
 @media (max-width: 768px) {
@@ -133,31 +135,39 @@ footer p { font-size: 0.9rem; color: #666; }
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  flex-direction: column;  
-  padding: 20px;           
+  flex-direction: column;
+  padding: 20px;
+}
+
+.lightbox-content {
+  position: relative;     
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 95vw;
 }
 
 .lightbox-img {
-  max-width: 90%;
-  max-height: 80%;
+  max-width: 100%;
+  max-height: 80vh;
   border-radius: 8px;
-  position: relative;
-  z-index: 1001;
+  display: block;
 }
 
 .lightbox-close {
-  position: fixed;  
+  position: fixed;
   top: 20px;
-  right: 30px;
+  right: 20px;
   font-size: 2rem;
   color: white;
   cursor: pointer;
-  z-index: 1010;   
+  z-index: 1010;
 }
 
 .lightbox-prev,
 .lightbox-next {
-  position: absolute; /* relative to lightbox container */
+  position: absolute;
   top: 50%;
   font-size: 3rem;
   color: white;
@@ -167,8 +177,8 @@ footer p { font-size: 0.9rem; color: #666; }
   z-index: 1010;
 }
 
-.lightbox-prev { left: calc(50% - 50vw + 10px); } /* align to left edge of image */
-.lightbox-next { right: calc(50% - 50vw + 10px); } /* align to right edge of image */
+.lightbox-prev { left: -50px; }
+.lightbox-next { right: -50px; }
 
 .lightbox-desc {
   color: #fff;
@@ -178,40 +188,12 @@ footer p { font-size: 0.9rem; color: #666; }
   text-align: center;
 }
 
-/* Responsive adjustments for mobile portrait */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .lightbox {
-    padding: 10px;
-    justify-content: flex-start;
-    align-items: center;
-  }
-
-  .lightbox-img {
-    max-width: 95%;
-    max-height: 70vh;
-  }
-
-  .lightbox-desc {
-    max-width: 95%;
-    margin-top: 10px;
-    font-size: 0.9rem;
-  }
-
-  .lightbox-close {
-    font-size: 1.5rem;
-    top: 10px;
-    right: 10px;
-  }
-
-  /* Arrows relative to image */
-  .lightbox-prev,
-  .lightbox-next {
-    font-size: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  /* Dynamically place arrows 5% away from image edges */
-  .lightbox-prev { left: 2.5%; }
-  .lightbox-next { right: 2.5%; }
+  .lightbox-content { max-width: 95vw; }
+  .lightbox-img { max-height: 70vh; }
+  .lightbox-prev { left: -30px; font-size: 2rem; }
+  .lightbox-next { right: -30px; font-size: 2rem; }
+  .lightbox-close { top: 10px; right: 10px; font-size: 1.5rem; }
+  .lightbox-desc { font-size: 0.9rem; max-width: 95%; }
 }
