@@ -217,4 +217,9 @@ footer p { font-size: 0.9rem; color: #666; }
   background: rgba(0,255,255,0.1);/* subtle fill so it’s visible if transparent */
 }
 
+.lightbox {
+  outline: 5px dashed red !important;
+  background: rgba(255,0,0,0.1) !important;
+}
+
 
