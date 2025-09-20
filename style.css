@@ -31,7 +31,7 @@ header, footer {
 /* Sticky Header with frosted white background */
 header {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* lock everything to the top */
   justify-content: space-between;
   padding: 20px 40px;
   position: sticky;
@@ -40,13 +40,13 @@ header {
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  flex-wrap: nowrap; /* no wrapping at header level */
   box-sizing: border-box;
 }
 
 /* Centered "JAIS GEORGE" */
 header h1 {
   position: absolute;
+  top: 20px; /* lock to the top padding */
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
@@ -63,15 +63,16 @@ header h1 a {
   display: block;
 }
 
-/* Left Nav: allow its items to wrap internally */
+/* Left Nav container allows extra rows without pushing header height */
 .header-left {
   display: flex;
-  flex-wrap: wrap;       /* wrapping happens here */
-  align-items: center;
+  flex-wrap: wrap;   /* this allows only the left items to wrap */
+  align-items: flex-start;
   justify-content: flex-start;
   gap: 15px;
   flex: 1;
-  max-width: 40%;        /* keep it from colliding with center */
+  max-width: 40%;
+  padding-top: 0; /* no offset */
 }
 
 /* Right Nav stays fixed */
@@ -100,12 +101,14 @@ header a:hover {
     flex-direction: column;
     padding: 15px 20px;
     gap: 10px;
+    align-items: center;
   }
 
   header h1 {
     position: static;
     transform: none;
     order: -1;
+    margin-bottom: 10px;
   }
 
   .header-left,
@@ -116,7 +119,6 @@ header a:hover {
     max-width: 100%;
   }
 }
-
 
 /* Page Titles */
 h2 {
@@ -300,4 +302,5 @@ footer p {
 /* Description */
 .lightbox-desc {
   col
+
 
