@@ -25,38 +25,44 @@ header, footer {
   padding: 20px;
 }
 
-/* --- NEW HEADER LAYOUT --- */
+/* Sticky Header with 80% black background */
 header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 20px 40px;
-  position: relative; /* needed for absolute positioning of h1 */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8); /* 80% transparent black */
+  backdrop-filter: blur(5px); /* optional: slight frosted effect */
+  flex-wrap: wrap;
 }
 
+/* Centered "JAIS GEORGE" */
 header h1 {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
   text-align: center;
-  z-index: 1; /* ensures it sits above left/right links if they overlap */
+  z-index: 1;
 }
 
 header h1 a {
   text-transform: uppercase;
   text-decoration: none;
-  color: inherit;
+  color: #fff; /* visible on dark background */
   font-size: 2rem;
   display: block;
 }
 
+/* Left and Right Navigation Links */
 .header-left,
 .header-right {
   display: flex;
   gap: 15px;
   align-items: center;
-  flex: 1 1 auto;
 }
 
 .header-left {
@@ -69,21 +75,27 @@ header h1 a {
 
 header a {
   text-decoration: none;
-  color: inherit;
+  color: #fff;
   font-size: 0.95rem;
   transition: color 0.2s;
 }
 
 header a:hover {
-  color: #0077b5; /* Optional hover effect */
+  color: #00aced; /* optional hover color */
 }
 
-/* Responsive: stack links on mobile */
+/* Mobile Responsive */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
-    padding: 20px;
+    padding: 15px 20px;
     gap: 10px;
+  }
+
+  header h1 {
+    position: static;
+    transform: none;
+    order: -1; /* keep name at top */
   }
 
   .header-left,
@@ -91,10 +103,6 @@ header a:hover {
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
-  }
-
-  header h1 {
-    order: -1; /* Keep name at top on small screens */
   }
 }
 
@@ -292,4 +300,5 @@ footer p {
   .lightbox-prev { left: 10px; font-size: 2rem; }
   .lightbox-next { right: 10px; font-size: 2rem; }
 }
+
 
