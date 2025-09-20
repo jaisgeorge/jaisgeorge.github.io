@@ -8,7 +8,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   margin: 0;
   background: #fff;
-  color: #fff;
+  color: #222; /* dark for readability */
   text-align: center;
   -ms-overflow-style: none;  /* IE and Edge Legacy */
   scrollbar-width: none;      /* Firefox */
@@ -25,7 +25,7 @@ header, footer {
   padding: 20px;
 }
 
-/* Sticky Header with 80% black background */
+/* Sticky Header with frosted white background */
 header {
   display: flex;
   align-items: center;
@@ -34,8 +34,9 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: rgba(1, 1, 1, 0.8); /* 80% transparent white */
-  backdrop-filter: blur(5px); /* optional: slight frosted effect */
+  background-color: rgba(255, 255, 255, 0.8); /* 80% transparent white */
+  backdrop-filter: blur(10px); /* frosted glass effect */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
   flex-wrap: wrap;
 }
 
@@ -52,7 +53,7 @@ header h1 {
 header h1 a {
   text-transform: uppercase;
   text-decoration: none;
-  color: #000; /* visible on dark background */
+  color: #222; /* dark text for white background */
   font-size: 2rem;
   display: block;
 }
@@ -75,18 +76,14 @@ header h1 a {
 
 header a {
   text-decoration: none;
-  color: #000;
+  color: #222;
   font-size: 0.95rem;
   transition: color 0.2s;
 }
 
-
-/*
 header a:hover {
-  color: #00aced; /* optional hover color */
+  color: #0077b5; /* optional hover color */
 }
-*/
-
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
@@ -304,9 +301,3 @@ footer p {
   .lightbox-prev { left: 10px; font-size: 2rem; }
   .lightbox-next { right: 10px; font-size: 2rem; }
 }
-
-
-
-
-
-
