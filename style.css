@@ -194,23 +194,25 @@ footer p { font-size: 0.9rem; color: #666; }
 }
 
 .lightbox-close {
-  position: absolute;
+  position: fixed;  /* fixed relative to viewport */
   top: 20px;
   right: 30px;
   font-size: 2rem;
   color: white;
   cursor: pointer;
+  z-index: 1010;   /* above everything */
 }
 
 .lightbox-prev,
 .lightbox-next {
-  position: absolute;
+  position: fixed; /* fixed relative to viewport */
   top: 50%;
   font-size: 3rem;
   color: white;
   cursor: pointer;
   user-select: none;
   transform: translateY(-50%);
+  z-index: 1010;
 }
 
 .lightbox-prev { left: 30px; }
@@ -224,6 +226,19 @@ footer p { font-size: 0.9rem; color: #666; }
   text-align: center;
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .lightbox-close {
+    font-size: 1.5rem;
+    top: 15px;
+    right: 20px;
+  }
+  .lightbox-prev, .lightbox-next {
+    font-size: 2rem;
+    left: 15px;
+    right: 15px;
+  }
+}
 
 
 
