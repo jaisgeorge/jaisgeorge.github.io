@@ -21,76 +21,33 @@ header h1 a {
 
 h2 { margin-top: 20px; text-align: center; }
 
-
-
-
-
-/*
-
-Sticky horizontal thumbnails
+/* Vertical sticky thumbnails */
 .thumb-nav-container {
-  position: sticky;
-  top: 0;
-  background: #fff;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  position: fixed;            
+  top: 50%;                   
+  left: 0;                    
+  width: 80px;                
+  background: transparent;    
+  border: none;                
   z-index: 100;
+  display: flex;
+  justify-content: center;     
+  transform: translateY(-50%);
+  padding: 0;                  
 }
 
 .thumb-nav {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-x: auto;
-  gap: 15px;
-  padding: 0 20px;
-  width: 100%;
-}
-
-.thumb-nav img {
-  max-height: 5vh;
-  width: auto;
-  flex-shrink: 0;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: transform 0.2s, border 0.2s;
-  border: 2px solid transparent;
-}
-
-.thumb-nav img:hover { transform: scale(1.05); }
-.thumb-nav img.active-thumb { border: 2px solid #222; transform: scale(1.08); }
-
-*/
-
-
-
-/* Vertical sticky thumbnails - Option 2 */
-.thumb-nav-container {
-  position: fixed;            /* stick to screen */
-  top: 50%;                   /* position top at 50% of viewport */
-  left: 0;                     /* align to left edge */
-  width: 80px;                /* adjust width as needed */
-  background: transparent;     /* invisible background */
-  border: none;                /* no border */
-  z-index: 100;
-  display: flex;
-  justify-content: center;     /* horizontal centering */
-  transform: translateY(-50%); /* center vertically based on container height */
-  padding: 0;                  /* remove extra padding */
-}
-
-.thumb-nav {
-  display: flex;
-  flex-direction: column;      /* stack thumbnails vertically */
+  flex-direction: column;      
   align-items: center;
   gap: 15px;
   width: 100%;
 }
 
 .thumb-nav img {
-  max-width: 60px;             /* constrain thumbnail width */
+  max-width: 60px;             
   width: 100%;
-  height: auto;                /* let height adjust naturally */
+  height: auto;                
   border-radius: 6px;
   cursor: pointer;
   transition: transform 0.2s, border 0.2s;
@@ -99,10 +56,6 @@ Sticky horizontal thumbnails
 
 .thumb-nav img:hover { transform: scale(1.05); }
 .thumb-nav img.active-thumb { border: 2px solid #fff; transform: scale(1.08); }
-
-
-
-
 
 /* Base project wrapper */
 .project {
@@ -145,9 +98,8 @@ Sticky horizontal thumbnails
 
 /* Force Project 2 collages to split 50/50 */
 #project2 .project-collage > .collage {
-  flex: 1; /* each collage takes equal width */
+  flex: 1;
 }
-
 
 /* Responsive: stack collages vertically */
 @media (max-width: 768px) {
@@ -183,8 +135,9 @@ footer p { font-size: 0.9rem; color: #666; }
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  flex-direction: column;  /* stack children vertically */
-  padding: 20px;           /* optional padding around everything */
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto; /* allow scrolling on small screens */
 }
 
 .lightbox-img {
@@ -194,29 +147,27 @@ footer p { font-size: 0.9rem; color: #666; }
 }
 
 .lightbox-close {
-  position: fixed;  /* fixed relative to viewport */
+  position: fixed;
   top: 20px;
   right: 30px;
   font-size: 2rem;
   color: white;
   cursor: pointer;
-  z-index: 1010;   /* above everything */
+  z-index: 1010;
 }
 
 .lightbox-prev,
 .lightbox-next {
-  position: fixed; /* fixed relative to viewport */
-  top: 50%;
+  position: fixed;
   font-size: 3rem;
   color: white;
   cursor: pointer;
   user-select: none;
-  transform: translateY(-50%);
   z-index: 1010;
 }
 
-.lightbox-prev { left: 30px; }
-.lightbox-next { right: 30px; }
+.lightbox-prev { left: 30px; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 30px; top: 50%; transform: translateY(-50%); }
 
 .lightbox-desc {
   color: #fff;
@@ -226,21 +177,38 @@ footer p { font-size: 0.9rem; color: #666; }
   text-align: center;
 }
 
-/* Responsive adjustments */
+/* Mobile Lightbox Adjustments */
 @media (max-width: 768px) {
+  .lightbox {
+    padding: 10px;
+    justify-content: flex-start; /* stack from top */
+    align-items: center;         /* horizontal center */
+  }
+
+  .lightbox-img {
+    max-width: 95%;
+    max-height: 70vh; /* leave space for description */
+  }
+
+  .lightbox-desc {
+    max-width: 95%;
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+
   .lightbox-close {
     font-size: 1.5rem;
-    top: 15px;
-    right: 20px;
+    top: 10px;
+    right: 10px;
   }
-  .lightbox-prev, .lightbox-next {
+
+  .lightbox-prev,
+  .lightbox-next {
     font-size: 2rem;
-    left: 15px;
-    right: 15px;
+    top: auto;
+    bottom: 20%; /* position relative to image */
   }
+
+  .lightbox-prev { left: 10px; }
+  .lightbox-next { right: 10px; }
 }
-
-
-
-
-
