@@ -261,10 +261,29 @@ function showImage() {
     lightbox.addEventListener('click', e => {
       if (e.target === lightbox) lightbox.style.display = 'none';
     });
+
+    // --- Keyboard support for lightbox ---
+    document.addEventListener('keydown', e => {
+      if (lightbox.style.display === 'flex') { // only if lightbox is open
+        if (e.key === 'ArrowLeft') {
+          currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+          showImage();
+        }
+        if (e.key === 'ArrowRight') {
+          currentIndex = (currentIndex + 1) % currentImages.length;
+          showImage();
+        }
+        if (e.key === 'Escape') {
+          lightbox.style.display = 'none';
+        }
+      }
+    });
+    
   </script>
 
 </body>
 </html>
+
 
 
 
