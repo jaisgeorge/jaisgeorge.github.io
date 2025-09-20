@@ -31,14 +31,16 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  position: relative;
-  flex-wrap: wrap;
+  position: relative; /* needed for absolute positioning of h1 */
 }
 
 header h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0;
   text-align: center;
-  flex: 1 1 auto;
+  z-index: 1; /* ensures it sits above left/right links if they overlap */
 }
 
 header h1 a {
@@ -290,3 +292,4 @@ footer p {
   .lightbox-prev { left: 10px; font-size: 2rem; }
   .lightbox-next { right: 10px; font-size: 2rem; }
 }
+
