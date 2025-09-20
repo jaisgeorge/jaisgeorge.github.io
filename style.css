@@ -137,6 +137,7 @@ footer p { font-size: 0.9rem; color: #666; }
   z-index: 1000;
   flex-direction: column;
   padding: 20px;
+  overflow: hidden; /* keeps children inside */
 }
 
 .lightbox-content {
@@ -144,26 +145,24 @@ footer p { font-size: 0.9rem; color: #666; }
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 100%;      /* match parent, not 100vw */
   height: 100%;
-  max-width: 100vw;   /* never larger than viewport */
-  max-height: 100vh;
+  max-width: 100%;  /* cut off overflow */
+  max-height: 100%;
   overflow: hidden;
-  box-sizing: border-box;
   outline: 3px solid lime;
 }
-
 
 
 /* Lightbox image */
 .lightbox-img {
   display: block;
   margin: auto;
-  max-width: 100vw;   /* cannot exceed viewport width */
-  max-height: 90vh;   /* leave some vertical breathing room */
+  max-width: 100%;   /* relative to parent, avoids scrollbar issue */
+  max-height: 90%;   /* also relative */
   width: auto;
   height: auto;
-  object-fit: contain; /* keep aspect ratio safe */
+  object-fit: contain;
   outline: 3px solid cyan;
 }
 
@@ -232,5 +231,12 @@ footer p { font-size: 0.9rem; color: #666; }
 .lightbox {
   overflow: hidden;
 }
+
+body {
+  overflow-y: scroll; /* forces scrollbar always */
+  scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
 
 
