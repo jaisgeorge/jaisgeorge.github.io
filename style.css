@@ -144,23 +144,27 @@ footer p { font-size: 0.9rem; color: #666; }
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;         /* take full parent width */
-  height: 100%;        /* take full parent height */
-  max-width: 100%;     /* don’t exceed viewport */
-  max-height: 100%; 
-  overflow: hidden;    /* chop off anything spilling */
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;   /* never larger than viewport */
+  max-height: 100vh;
+  overflow: hidden;
   box-sizing: border-box;
-  outline: 3px solid lime; /* debug */
+  outline: 3px solid lime;
 }
+
 
 
 /* Lightbox image */
 .lightbox-img {
-  max-width: 90vw;
-  max-height: 80vh;
-  border-radius: 8px;
   display: block;
-  margin: 0 auto;    /* ensures center alignment */
+  margin: auto;
+  max-width: 100vw;   /* cannot exceed viewport width */
+  max-height: 90vh;   /* leave some vertical breathing room */
+  width: auto;
+  height: auto;
+  object-fit: contain; /* keep aspect ratio safe */
+  outline: 3px solid cyan;
 }
 
 .lightbox-close {
@@ -225,5 +229,8 @@ footer p { font-size: 0.9rem; color: #666; }
   background: rgba(255,0,0,0.1) !important;
 }
 
+.lightbox {
+  overflow: hidden;
+}
 
 
