@@ -141,6 +141,8 @@ footer p { font-size: 0.9rem; color: #666; }
   max-width: 90%;
   max-height: 80%;
   border-radius: 8px;
+  position: relative;
+  z-index: 1001;
 }
 
 .lightbox-close {
@@ -155,7 +157,7 @@ footer p { font-size: 0.9rem; color: #666; }
 
 .lightbox-prev,
 .lightbox-next {
-  position: fixed; 
+  position: absolute; /* relative to lightbox container */
   top: 50%;
   font-size: 3rem;
   color: white;
@@ -165,8 +167,8 @@ footer p { font-size: 0.9rem; color: #666; }
   z-index: 1010;
 }
 
-.lightbox-prev { left: 30px; }
-.lightbox-next { right: 30px; }
+.lightbox-prev { left: calc(50% - 50vw + 10px); } /* align to left edge of image */
+.lightbox-next { right: calc(50% - 50vw + 10px); } /* align to right edge of image */
 
 .lightbox-desc {
   color: #fff;
@@ -176,7 +178,7 @@ footer p { font-size: 0.9rem; color: #666; }
   text-align: center;
 }
 
-/* Responsive adjustments for mobile */
+/* Responsive adjustments for mobile portrait */
 @media (max-width: 768px) {
   .lightbox {
     padding: 10px;
@@ -201,15 +203,15 @@ footer p { font-size: 0.9rem; color: #666; }
     right: 10px;
   }
 
-  /* Arrows now absolute relative to lightbox container so they stay next to the image */
+  /* Arrows relative to image */
   .lightbox-prev,
   .lightbox-next {
-    position: absolute;   
-    top: 50%; 
-    transform: translateY(-50%);
     font-size: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
-  .lightbox-prev { left: 5px; }
-  .lightbox-next { right: 5px; }
+  /* Dynamically place arrows 5% away from image edges */
+  .lightbox-prev { left: 2.5%; }
+  .lightbox-next { right: 2.5%; }
 }
