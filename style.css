@@ -19,9 +19,26 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+/* Header / Footer Base */
 header, footer {
   text-align: center;
   padding: 20px;
+}
+
+/* --- NEW HEADER LAYOUT --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  margin: 0;
+  text-align: center;
+  flex: 1 1 auto;
 }
 
 header h1 a {
@@ -29,8 +46,57 @@ header h1 a {
   text-decoration: none;
   color: inherit;
   font-size: 2rem;
+  display: block;
 }
 
+.header-left,
+.header-right {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex: 1 1 auto;
+}
+
+.header-left {
+  justify-content: flex-start;
+}
+
+.header-right {
+  justify-content: flex-end;
+}
+
+header a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+header a:hover {
+  color: #0077b5; /* Optional hover effect */
+}
+
+/* Responsive: stack links on mobile */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+  }
+
+  .header-left,
+  .header-right {
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  header h1 {
+    order: -1; /* Keep name at top on small screens */
+  }
+}
+
+/* Page Titles */
 h2 {
   margin-top: 20px;
   text-align: center;
@@ -224,4 +290,3 @@ footer p {
   .lightbox-prev { left: 10px; font-size: 2rem; }
   .lightbox-next { right: 10px; font-size: 2rem; }
 }
-
