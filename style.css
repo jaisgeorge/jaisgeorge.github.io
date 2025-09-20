@@ -46,17 +46,19 @@ header {
 }
 
 /* Centered "JAIS GEORGE" */
+/* Centered "JAIS GEORGE" */
 header h1 {
-  position: absolute;  /* stays perfectly centered */
-  top: 20px;
+  position: absolute;    /* stays horizontally centered */
+  top: 50%;              /* center vertically relative to header */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%); /* truly center both axes */
   margin: 0;
   text-align: center;
   z-index: 1;
   font-weight: 200;
   white-space: nowrap;
 }
+
 
 header h1 a {
   text-transform: uppercase;
@@ -305,6 +307,7 @@ footer p {
 /* Description */
 .lightbox-desc {
   col
+
 
 
 
