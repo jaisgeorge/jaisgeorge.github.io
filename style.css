@@ -199,3 +199,19 @@ footer p { font-size: 0.9rem; color: #666; }
   .lightbox-prev { left: 10px; font-size: 2rem; }
   .lightbox-next { right: 10px; font-size: 2rem; }
 }
+
+
+/* DEBUG STYLES — remove when done */
+.lightbox {
+  outline: 3px solid red;         /* outermost container */
+}
+
+.lightbox-content {
+  outline: 3px solid lime;        /* flexbox wrapper */
+}
+
+.lightbox-img {
+  outline: 3px solid cyan;        /* the actual image */
+  background: rgba(0,255,255,0.1);/* subtle fill so it’s visible if transparent */
+}
+
