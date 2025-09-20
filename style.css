@@ -214,6 +214,13 @@ footer p { font-size: 0.9rem; color: #666; }
 .lightbox-prev { left: 30px; }
 .lightbox-next { right: 30px; }
 
+.lightbox-desc {
+  color: #fff;
+  margin-top: 10px;
+  font-size: 1rem;
+  max-width: 90%;
+  text-align: center;
+}
 
 
 
