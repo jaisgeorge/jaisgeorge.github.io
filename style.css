@@ -1,5 +1,7 @@
 /* Smooth scrolling */
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 /* Body & Header/Footer */
 body {
@@ -8,9 +10,19 @@ body {
   background: #fff;
   color: #222;
   text-align: center;
+  -ms-overflow-style: none;  /* IE and Edge Legacy */
+  scrollbar-width: none;      /* Firefox */
 }
 
-header, footer { text-align: center; padding: 20px; }
+/* Hide scrollbar in Chrome, Edge, Safari */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+header, footer {
+  text-align: center;
+  padding: 20px;
+}
 
 header h1 a {
   text-transform: uppercase;
@@ -19,35 +31,37 @@ header h1 a {
   font-size: 2rem;
 }
 
-h2 { margin-top: 20px; text-align: center; }
+h2 {
+  margin-top: 20px;
+  text-align: center;
+}
 
-/* Vertical sticky thumbnails - Option 2 */
+/* Vertical sticky thumbnails */
 .thumb-nav-container {
-  position: fixed;            
-  top: 50%;                   
-  left: 0;                     
-  width: 80px;                
-  background: transparent;     
-  border: none;                
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: 80px;
+  background: transparent;
   z-index: 100;
   display: flex;
-  justify-content: center;     
-  transform: translateY(-50%); 
-  padding: 0;                  
+  justify-content: center;
+  transform: translateY(-50%);
+  padding: 0;
 }
 
 .thumb-nav {
   display: flex;
-  flex-direction: column;      
+  flex-direction: column;
   align-items: center;
   gap: 15px;
   width: 100%;
 }
 
 .thumb-nav img {
-  max-width: 60px;             
+  max-width: 60px;
   width: 100%;
-  height: auto;                
+  height: auto;
   border-radius: 6px;
   cursor: pointer;
   transition: transform 0.2s, border 0.2s;
@@ -70,7 +84,7 @@ h2 { margin-top: 20px; text-align: center; }
   margin: 0 auto 20px auto;
 }
 
-/* Two-Side Collage Layout */
+/* Collage Layout */
 .project-layout-collage .project-collage {
   display: flex;
   gap: 20px;
@@ -103,7 +117,9 @@ h2 { margin-top: 20px; text-align: center; }
 
 /* Responsive: stack collages vertically */
 @media (max-width: 768px) {
-  .project-layout-collage .project-collage { flex-direction: column; }
+  .project-layout-collage .project-collage {
+    flex-direction: column;
+  }
 }
 
 /* YouTube Video */
@@ -122,50 +138,55 @@ h2 { margin-top: 20px; text-align: center; }
 }
 
 /* Footer */
-footer p { font-size: 0.9rem; color: #666; }
+footer p {
+  font-size: 0.9rem;
+  color: #666;
+}
 
 /* Lightbox */
 .lightbox {
   display: none;
   position: fixed;
   top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0,0,0,0.9);
+  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   flex-direction: column;
-  padding: 20px;
-  overflow: hidden; /* keeps children inside */
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  outline: 5px dashed red; /* debug */
 }
 
 .lightbox-content {
-  position: relative;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 100%;      /* match parent, not 100vw */
-  height: 100%;
-  max-width: 100%;  /* cut off overflow */
+  max-width: 100%;
   max-height: 100%;
   overflow: hidden;
-  outline: 3px solid lime;
+  box-sizing: border-box;
+  outline: 3px solid lime; /* debug */
 }
-
 
 /* Lightbox image */
 .lightbox-img {
   display: block;
-  margin: auto;
-  max-width: 100%;   /* relative to parent, avoids scrollbar issue */
-  max-height: 90%;   /* also relative */
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 90%;
   width: auto;
   height: auto;
   object-fit: contain;
-  outline: 3px solid cyan;
+  outline: 3px solid cyan; /* debug */
+  background: rgba(0,255,255,0.1); /* debug visibility */
 }
 
+/* Close button */
 .lightbox-close {
   position: fixed;
   top: 20px;
@@ -176,10 +197,10 @@ footer p { font-size: 0.9rem; color: #666; }
   z-index: 1010;
 }
 
-/* Arrows should align to viewport edges */
+/* Arrows */
 .lightbox-prev,
 .lightbox-next {
-  position: fixed;   /* instead of absolute */
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
   font-size: 3rem;
@@ -193,6 +214,7 @@ footer p { font-size: 0.9rem; color: #666; }
 .lightbox-prev { left: 20px; }
 .lightbox-next { right: 20px; }
 
+/* Description */
 .lightbox-desc {
   color: #fff;
   margin-top: 10px;
@@ -207,39 +229,3 @@ footer p { font-size: 0.9rem; color: #666; }
   .lightbox-prev { left: 10px; font-size: 2rem; }
   .lightbox-next { right: 10px; font-size: 2rem; }
 }
-
-
-/* DEBUG STYLES — remove when done */
-.lightbox {
-  outline: 3px solid red;         /* outermost container */
-}
-
-.lightbox-content {
-  outline: 3px solid lime;        /* flexbox wrapper */
-}
-
-.lightbox-img {
-  outline: 3px solid cyan;        /* the actual image */
-  background: rgba(0,255,255,0.1);/* subtle fill so it’s visible if transparent */
-}
-
-.lightbox {
-  outline: 5px dashed red !important;
-  background: rgba(255,0,0,0.1) !important;
-}
-
-.lightbox {
-  overflow: hidden;
-}
-
-/* Hide scrollbar in Chrome, Edge, Safari */
-body::-webkit-scrollbar {
-  display: none;
-}
-
-/* Also prevent layout shift when scrollbar disappears */
-body {
-  -ms-overflow-style: none;  /* IE and Edge Legacy */
-  scrollbar-width: none;     /* Firefox */
-}
-
