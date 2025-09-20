@@ -177,8 +177,8 @@ footer p { font-size: 0.9rem; color: #666; }
   z-index: 1010;
 }
 
-.lightbox-prev { left: -50px; }
-.lightbox-next { right: -50px; }
+.lightbox-prev { left: 10px; }
+.lightbox-next { right: 10px; }
 
 .lightbox-desc {
   color: #fff;
@@ -192,8 +192,9 @@ footer p { font-size: 0.9rem; color: #666; }
 @media (max-width: 768px) {
   .lightbox-content { max-width: 95vw; }
   .lightbox-img { max-height: 70vh; }
-  .lightbox-prev { left: -30px; font-size: 2rem; }
-  .lightbox-next { right: -30px; font-size: 2rem; }
+  .lightbox-prev { left: 5px; font-size: 2rem; }
+  .lightbox-next { right: 5px; font-size: 2rem; }
   .lightbox-close { top: 10px; right: 10px; font-size: 1.5rem; }
   .lightbox-desc { font-size: 0.9rem; max-width: 95%; }
 }
+
