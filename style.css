@@ -232,11 +232,14 @@ footer p { font-size: 0.9rem; color: #666; }
   overflow: hidden;
 }
 
-body {
-  overflow-y: scroll; /* forces scrollbar always */
-  scrollbar-width: none; /* Firefox */
+/* Hide scrollbar in Chrome, Edge, Safari */
+body::-webkit-scrollbar {
+  display: none;
 }
-body::-webkit-scrollbar { display: none; } /* Chrome/Safari */
 
-
+/* Also prevent layout shift when scrollbar disappears */
+body {
+  -ms-overflow-style: none;  /* IE and Edge Legacy */
+  scrollbar-width: none;     /* Firefox */
+}
 
