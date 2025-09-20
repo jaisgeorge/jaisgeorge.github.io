@@ -265,6 +265,7 @@ function showImage() {
     // --- Keyboard support for lightbox ---
     document.addEventListener('keydown', e => {
       if (lightbox.style.display === 'flex') { // only if lightbox is open
+        e.preventDefault(); // <-- stop page scroll
         if (e.key === 'ArrowLeft') {
           currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
           showImage();
@@ -283,6 +284,7 @@ function showImage() {
 
 </body>
 </html>
+
 
 
 
