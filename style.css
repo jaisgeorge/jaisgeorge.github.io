@@ -159,7 +159,6 @@ footer p {
   padding: 0;
   overflow: hidden;
   box-sizing: border-box;
-  outline: 5px dashed red; /* debug */
 }
 
 .lightbox-content {
@@ -170,7 +169,6 @@ footer p {
   max-height: 100%;
   overflow: hidden;
   box-sizing: border-box;
-  outline: 3px solid lime; /* debug */
 }
 
 /* Lightbox image */
@@ -182,8 +180,6 @@ footer p {
   width: auto;
   height: auto;
   object-fit: contain;
-  outline: 3px solid cyan; /* debug */
-  background: rgba(0,255,255,0.1); /* debug visibility */
 }
 
 /* Close button */
