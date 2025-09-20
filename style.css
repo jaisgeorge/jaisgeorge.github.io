@@ -9,6 +9,7 @@ html {
 /* Body & Header/Footer */
 body {
   font-family: 'Inter', Helvetica, Arial, sans-serif;
+  font-weight: 200; /* ExtraLight for all text */
   margin: 0;
   background: #fff;
   color: #222; /* dark for readability */
@@ -41,24 +42,22 @@ header {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-sizing: border-box;
-  flex-wrap: wrap; /* allow left items to wrap */
+  flex-wrap: wrap;
   gap: 10px;
 }
 
 /* Centered "JAIS GEORGE" */
-/* Centered "JAIS GEORGE" */
 header h1 {
-  position: absolute;    /* stays horizontally centered */
-  top: 50%;              /* center vertically relative to header */
+  position: absolute;    
+  top: 50%;              
   left: 50%;
-  transform: translate(-50%, -50%); /* truly center both axes */
+  transform: translate(-50%, -50%); 
   margin: 0;
   text-align: center;
   z-index: 1;
-  font-weight: 200;
+  font-weight: 200;      /* ExtraLight */
   white-space: nowrap;
 }
-
 
 header h1 a {
   text-transform: uppercase;
@@ -66,17 +65,19 @@ header h1 a {
   color: #222;
   font-size: 2rem;
   display: block;
+  font-weight: 200; /* ExtraLight */
 }
 
 /* Left Nav container allows wrapping only when needed */
 .header-left {
   display: flex;
-  flex-wrap: wrap;      /* only wrap if needed */
+  flex-wrap: wrap;      
   align-items: flex-start;
   justify-content: flex-start;
   gap: 15px;
-  flex: 0 1 auto;       /* shrink if necessary */
-  max-width: 35%;       /* prevent taking too much space */
+  flex: 0 1 auto;       
+  max-width: 35%;       
+  font-weight: 200; /* ExtraLight */
 }
 
 /* Right Nav stays fixed on top row */
@@ -86,14 +87,15 @@ header h1 a {
   align-items: center;
   justify-content: flex-end;
   flex: 0 1 auto;
+  font-weight: 200; /* ExtraLight */
 }
-
 
 header a {
   text-decoration: none;
   color: #222;
   font-size: 0.95rem;
   transition: color 0.2s;
+  font-weight: 200; /* ExtraLight */
 }
 
 header a:hover {
@@ -129,6 +131,8 @@ header a:hover {
 h2 {
   margin-top: 20px;
   text-align: center;
+  font-weight: 200;       /* ExtraLight */
+  font-size: 2rem;        /* make larger */
 }
 
 /* Vertical sticky thumbnails */
@@ -177,6 +181,11 @@ h2 {
 .project .project-desc {
   width: 100%;
   margin: 0 auto 20px auto;
+  font-weight: 200;   /* ExtraLight */
+}
+
+.project .project-title {
+  font-size: 2rem;    /* bigger */
 }
 
 /* Collage Layout */
@@ -236,6 +245,7 @@ h2 {
 footer p {
   font-size: 0.9rem;
   color: #666;
+  font-weight: 200; /* ExtraLight */
 }
 
 /* Lightbox */
@@ -306,8 +316,10 @@ footer p {
 
 /* Description */
 .lightbox-desc {
-  col
-
-
-
-
+  color: #fff;
+  margin-top: 10px;
+  font-size: 1rem;
+  max-width: 90%;
+  text-align: center;
+  font-weight: 200; /* ExtraLight */
+}
