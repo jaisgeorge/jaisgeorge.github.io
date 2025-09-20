@@ -40,26 +40,25 @@ header {
   background-color: rgba(255, 255, 255, 0.8); /* 80% transparent white */
   backdrop-filter: blur(10px); /* frosted glass effect */
   -webkit-backdrop-filter: blur(10px); /* Safari support */
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* allows wrapping into rows */
+  box-sizing: border-box;
 }
 
 /* Centered "JAIS GEORGE" */
 header h1 {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
+  flex: 1 0 100%; /* forces it to occupy a full row when needed */
+  margin: 10px 0;
   text-align: center;
-  z-index: 1;
   font-weight: 200; /* ExtraLight */
+  order: 1; /* always keep it in the middle row */
 }
 
 header h1 a {
   text-transform: uppercase;
   text-decoration: none;
-  color: #222; /* dark text for white background */
+  color: #222;
   font-size: 2rem;
-  display: block;
+  display: inline-block;
 }
 
 /* Left and Right Navigation Links */
@@ -68,14 +67,20 @@ header h1 a {
   display: flex;
   gap: 15px;
   align-items: center;
+  flex: 1; /* balance spacing */
+  flex-wrap: wrap;
 }
 
 .header-left {
   justify-content: flex-start;
+  order: 0; /* stays above logo */
+  flex: 1 0 100%; /* full row when wrapping */
 }
 
 .header-right {
   justify-content: flex-end;
+  order: 2; /* stays below logo */
+  flex: 1 0 100%; /* full row when wrapping */
 }
 
 header a {
@@ -97,17 +102,11 @@ header a:hover {
     gap: 10px;
   }
 
-  header h1 {
-    position: static;
-    transform: none;
-    order: -1; /* keep name at top */
-  }
-
   .header-left,
   .header-right {
     justify-content: center;
     gap: 10px;
-    flex-wrap: wrap;
+    flex: 1 0 auto;
   }
 }
 
@@ -307,4 +306,5 @@ footer p {
   .lightbox-prev { left: 10px; font-size: 2rem; }
   .lightbox-next { right: 10px; font-size: 2rem; }
 }
+
 
