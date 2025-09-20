@@ -37,10 +37,10 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.8); /* 80% transparent white */
-  backdrop-filter: blur(10px); /* frosted glass effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  flex-wrap: nowrap;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  flex-wrap: nowrap; /* no wrapping at header level */
   box-sizing: border-box;
 }
 
@@ -52,32 +52,33 @@ header h1 {
   margin: 0;
   text-align: center;
   z-index: 1;
-  font-weight: 200; /* ExtraLight */
+  font-weight: 200;
 }
 
 header h1 a {
   text-transform: uppercase;
   text-decoration: none;
-  color: #222; /* dark text for white background */
+  color: #222;
   font-size: 2rem;
   display: block;
 }
 
-/* Left and Right Navigation Links */
-.header-left,
+/* Left Nav: allow its items to wrap internally */
+.header-left {
+  display: flex;
+  flex-wrap: wrap;       /* wrapping happens here */
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  flex: 1;
+  max-width: 40%;        /* keep it from colliding with center */
+}
+
+/* Right Nav stays fixed */
 .header-right {
   display: flex;
   gap: 15px;
   align-items: center;
-  flex-wrap: nowrap;
-}
-
-.header-left {
-  justify-content: flex-start;
-  flex: 1;
-}
-
-.header-right {
   justify-content: flex-end;
   flex: 1;
 }
@@ -90,15 +91,7 @@ header a {
 }
 
 header a:hover {
-  color: #FFD700; /* yellow hover color */
-}
-
-/* Breakpoint: allow left nav to wrap before colliding with center */
-@media (max-width: 1100px) {
-  .header-left {
-    flex-wrap: wrap;     /* let items drop to second line */
-    max-width: 40%;      /* limit so it doesn’t eat into center */
-  }
+  color: #FFD700;
 }
 
 /* Mobile Responsive */
@@ -112,7 +105,7 @@ header a:hover {
   header h1 {
     position: static;
     transform: none;
-    order: -1; /* keep name at top */
+    order: -1;
   }
 
   .header-left,
@@ -123,6 +116,7 @@ header a:hover {
     max-width: 100%;
   }
 }
+
 
 /* Page Titles */
 h2 {
@@ -306,3 +300,4 @@ footer p {
 /* Description */
 .lightbox-desc {
   col
+
