@@ -30,6 +30,15 @@
     .grid-item:hover { transform:scale(1.02); }
     .grid-item img { width:100%; height:auto; display:block; }
     .grid-item h2 { text-align:center; padding:10px; font-size:1.2rem; }
+
+    /* Desktop: Force 4 items per row */
+    @media (min-width: 1024px) {
+      .grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px; /* tighter spacing */
+        padding: 0 40px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -86,5 +95,3 @@
 
 </body>
 </html>
-
-
