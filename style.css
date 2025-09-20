@@ -183,6 +183,8 @@ footer p { font-size: 0.9rem; color: #666; }
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  flex-direction: column;  /* stack children vertically */
+  padding: 20px;           /* optional padding around everything */
 }
 
 .lightbox-img {
@@ -221,6 +223,7 @@ footer p { font-size: 0.9rem; color: #666; }
   max-width: 90%;
   text-align: center;
 }
+
 
 
 
