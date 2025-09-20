@@ -64,38 +64,33 @@ Sticky horizontal thumbnails
 
 
 
-/* Vertical sticky thumbnails */
+/* Vertical sticky thumbnails - Option 2 */
 .thumb-nav-container {
-  position: fixed;         /* stick to screen instead of scrolling */
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0;
-  height: 100vh;           /* full height of the viewport */
-  width: 80px;             /* adjust width as you like */
-  background: transparent;
-  /* border-right: 1px solid #eee; */
-  border: none;
+  position: fixed;            /* stick to screen */
+  top: 50%;                   /* position top at 50% of viewport */
+  left: 0;                     /* align to left edge */
+  width: 80px;                /* adjust width as needed */
+  background: transparent;     /* invisible background */
+  border: none;                /* no border */
   z-index: 100;
   display: flex;
-  justify-content: center;
-  padding: 20px 0;
+  justify-content: center;     /* horizontal centering */
+  transform: translateY(-50%); /* center vertically based on container height */
+  padding: 0;                  /* remove extra padding */
 }
 
 .thumb-nav {
   display: flex;
-  flex-direction: column;   /* vertical stacking */
+  flex-direction: column;      /* stack thumbnails vertically */
   align-items: center;
   gap: 15px;
-  overflow-y: auto;         /* scroll vertically if too many */
-  padding: 0 10px;
   width: 100%;
 }
 
 .thumb-nav img {
-  max-width: 60px;          /* constrain thumbnails horizontally */
-  max-height: none;         /* let height adjust naturally */
+  max-width: 60px;             /* constrain thumbnail width */
   width: 100%;
-  height: auto;
+  height: auto;                /* let height adjust naturally */
   border-radius: 6px;
   cursor: pointer;
   transition: transform 0.2s, border 0.2s;
@@ -218,6 +213,7 @@ footer p { font-size: 0.9rem; color: #666; }
 
 .lightbox-prev { left: 30px; }
 .lightbox-next { right: 30px; }
+
 
 
 
