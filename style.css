@@ -381,44 +381,44 @@ footer p {
 
 
 
-/* Horizontal responsive video grid */
+/* Horizontal responsive video grid - ICVFX */
 .video-grid-icvfx {
   display: flex;
-  flex-wrap: wrap;          /* allow wrapping on small screens */
-  justify-content: center;  /* center the grid */
-  gap: 20px;                /* spacing between videos */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   width: min(90vw, 1200px);
   margin: 30px auto;
 }
 
 .video-grid-icvfx .video-item {
-  flex: 1 1 30%;            /* each video takes ~30% of row, shrinks/grows */
-  position: relative;
-  padding-top: 44.6%;       /* maintains 696x311 ratio */
+  flex: 1 1 30%;           /* 3 videos per row on wide screens */
+  aspect-ratio: 696 / 311; /* maintain desired ratio dynamically */
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 .video-grid-icvfx .video-item iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   border: 0;
+  border-radius: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-/* Smaller screens: scale down and stack */
+/* Medium screens: 2 per row */
 @media (max-width: 1200px) {
   .video-grid-icvfx .video-item {
-    flex: 1 1 calc(50% - 20px); /* two per row */
-    max-width: none;
-    padding-top: 44.6%;
+    flex: 1 1 calc(50% - 20px);
   }
 }
 
+/* Small screens: 1 per row, stacked vertically */
 @media (max-width: 768px) {
   .video-grid-icvfx {
     flex-direction: column;
@@ -428,6 +428,5 @@ footer p {
   
   .video-grid-icvfx .video-item {
     flex: 1 1 100%;
-    padding-top: 44.6%;
   }
 }
