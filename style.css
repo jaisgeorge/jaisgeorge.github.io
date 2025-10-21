@@ -381,11 +381,21 @@ footer p {
 
 
 
-/* Custom video ratio only for ICVFX videos */
+/* Horizontal responsive video grid */
+.video-grid-icvfx {
+  display: flex;
+  flex-wrap: wrap;          /* allow wrapping on small screens */
+  justify-content: center;  /* center the grid */
+  gap: 20px;                /* spacing between videos */
+  width: min(90vw, 1200px);
+  margin: 30px auto;
+}
+
 .video-grid-icvfx .video-item {
+  flex: 1 1 30%;            /* take up ~30% of row, shrink/grow as needed */
+  max-width: 400px;         /* optional: limit video width */
   position: relative;
-  width: 100%;
-  padding-top: 44.6%; /* matches 696x311 ratio */
+  padding-top: 44.6%;       /* 696x311 ratio */
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -401,21 +411,16 @@ footer p {
   border: 0;
 }
 
-/* Maintain horizontal layout with wrapping for small screens */
-.video-grid-icvfx {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  width: min(90vw, 1200px);
-  margin: 30px auto;
-}
-
+/* Stack vertically on smaller screens */
 @media (max-width: 768px) {
   .video-grid-icvfx {
     flex-direction: column;
     align-items: center;
   }
-}
 
+  .video-grid-icvfx .video-item {
+    flex: 1 1 90%;
+    max-width: none;
+  }
+}
 
