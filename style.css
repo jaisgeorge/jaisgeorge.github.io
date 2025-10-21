@@ -387,14 +387,14 @@ footer p {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  width: min(90vw, 1200px);  /* same max width as projects */
+  width: min(90vw, 1200px);
   margin: 30px auto;
 }
 
 .video-grid-icvfx .video-item {
-  flex: 1 1 calc(33.333% - 20px); /* 3 videos side by side with gap accounted for */
+  flex: 1 1 0;
   position: relative;
-  padding-top: 44.6%;            /* maintain 696x311 ratio */
+  aspect-ratio: 696 / 311; /* maintain ratio */
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -402,12 +402,10 @@ footer p {
 }
 
 .video-grid-icvfx .video-item iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   border: 0;
+  display: block;
 }
 
 /* Stack vertically on smaller screens */
@@ -429,6 +427,7 @@ footer p {
     padding-top: 44.6%;
   }
 }
+
 
 
 
