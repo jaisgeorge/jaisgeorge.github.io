@@ -384,17 +384,17 @@ footer p {
 /* Horizontal responsive video grid */
 .video-grid-icvfx {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  flex-wrap: wrap;          /* allow wrapping on small screens */
+  justify-content: center;  /* center the grid */
+  gap: 20px;                /* spacing between videos */
   width: min(90vw, 1200px);
   margin: 30px auto;
 }
 
 .video-grid-icvfx .video-item {
-  flex: 1 1 0;
+  flex: 1 1 30%;            /* each video takes ~30% of row, shrinks/grows */
   position: relative;
-  aspect-ratio: 696 / 311; /* maintain ratio */
+  padding-top: 44.6%;       /* maintains 696x311 ratio */
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -402,16 +402,20 @@ footer p {
 }
 
 .video-grid-icvfx .video-item iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   border: 0;
-  display: block;
 }
 
-/* Stack vertically on smaller screens */
+/* Smaller screens: scale down and stack */
 @media (max-width: 1200px) {
   .video-grid-icvfx .video-item {
-    flex: 1 1 calc(50% - 20px); /* 2 per row if window is smaller */
+    flex: 1 1 calc(50% - 20px); /* two per row */
+    max-width: none;
+    padding-top: 44.6%;
   }
 }
 
@@ -421,13 +425,9 @@ footer p {
     align-items: center;
     gap: 15px;
   }
-
+  
   .video-grid-icvfx .video-item {
     flex: 1 1 100%;
     padding-top: 44.6%;
   }
 }
-
-
-
-
