@@ -384,18 +384,17 @@ footer p {
 /* Horizontal responsive video grid */
 .video-grid-icvfx {
   display: flex;
-  flex-wrap: wrap;          /* allow wrapping on small screens */
-  justify-content: center;  /* center the grid */
-  gap: 20px;                /* spacing between videos */
-  width: min(90vw, 1200px);
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: min(90vw, 1200px);  /* same max width as projects */
   margin: 30px auto;
 }
 
 .video-grid-icvfx .video-item {
-  flex: 1 1 30%;            /* take up ~30% of row, shrink/grow as needed */
-  max-width: 400px;         /* optional: limit video width */
+  flex: 1 1 calc(33.333% - 20px); /* 3 videos side by side with gap accounted for */
   position: relative;
-  padding-top: 44.6%;       /* 696x311 ratio */
+  padding-top: 44.6%;            /* maintain 696x311 ratio */
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -412,15 +411,24 @@ footer p {
 }
 
 /* Stack vertically on smaller screens */
+@media (max-width: 1200px) {
+  .video-grid-icvfx .video-item {
+    flex: 1 1 calc(50% - 20px); /* 2 per row if window is smaller */
+  }
+}
+
 @media (max-width: 768px) {
   .video-grid-icvfx {
     flex-direction: column;
     align-items: center;
+    gap: 15px;
   }
 
   .video-grid-icvfx .video-item {
-    flex: 1 1 90%;
-    max-width: none;
+    flex: 1 1 100%;
+    padding-top: 44.6%;
   }
 }
+
+
 
