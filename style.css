@@ -256,7 +256,7 @@ h2 {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
   margin: 40px auto;
-  width: min(90vw, 1200px);
+  width: 90vw; /* matches collage width */
 }
 
 .video-item {
@@ -384,10 +384,10 @@ footer p {
 /* Horizontal responsive video grid with fixed aspect ratio per video */
 .video-grid-icvfx {
   display: flex;
-  flex-wrap: wrap;          /* wrap on small screens */
-  justify-content: center;  /* center the grid */
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
-  width: min(90vw, 1200px);
+  width: 90vw; /* matches collage layout */
   margin: 30px auto;
 }
 
@@ -430,3 +430,4 @@ footer p {
     flex: 1 1 100%;
   }
 }
+
