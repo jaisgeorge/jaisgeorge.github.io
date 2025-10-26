@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Short Films | Jais George</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <style>
-    /* Shortfilms grid */
+    /* Video grid styling */
+    main {
+      padding: 2rem 5%;
+    }
+
+    main h2 {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 1.5rem;
       justify-items: center;
-      padding: 2rem 5%;
     }
 
-    /* Keep 696:311 ratio */
+    /* Maintain 696:311 ratio */
     .video-wrapper {
       position: relative;
       width: 100%;
       max-width: 696px;
-      aspect-ratio: 696 / 311; /* keeps ratio perfectly */
-      overflow: hidden;
+      aspect-ratio: 696 / 311;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .video-wrapper iframe {
@@ -35,10 +44,8 @@
       border: 0;
     }
 
-    main h2 {
-      text-align: center;
-      font-weight: 600;
-      margin-top: 2rem;
+    footer {
+      margin-top: 3rem;
     }
   </style>
 </head>
@@ -65,48 +72,52 @@
   <h2>Short Films</h2>
 
   <div class="video-grid">
-    <!-- Example embeds — replace with your video links -->
+
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/RKYhSXQ7R7g?rel=0&modestbranding=1&showinfo=0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/VVUgUS99tmc" title="Neenguvadhale - Official Video song |Srikanth KVB, Padmaja Sreenivasan | Ft Rahul Adithya, Shreya" allowfullscreen></iframe>
     </div>
+
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/XxxYourVideo2ID?rel=0&modestbranding=1&showinfo=0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/nF6bPWlTBmY" title="COCHIN CARNIVAL 2022 TEASER" allowfullscreen></iframe>
     </div>
+
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/XxxYourVideo3ID?rel=0&modestbranding=1&showinfo=0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/KLuK2LiG3n4" title="Shell You Be Mine (Film Festival Private Link)" allowfullscreen></iframe>
     </div>
+
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/XxxYourVideo4ID?rel=0&modestbranding=1&showinfo=0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/RKYhSXQ7R7g?list=PL4ac6F7HYJtnFaZIjVqs-4f5Lf4g4S_8q" title="Carboard Camelot - SIC 2024 Student Short Film" allowfullscreen></iframe>
     </div>
+
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/XxxYourVideo5ID?rel=0&modestbranding=1&showinfo=0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/kVXefJhFTgo?list=PL4ac6F7HYJtnFaZIjVqs-4f5Lf4g4S_8q" title="Abducted - SIC 2024 Student Short Film" allowfullscreen></iframe>
     </div>
+
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/XxxYourVideo6ID?rel=0&modestbranding=1&showinfo=0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/GKwyLP5-E_c?list=PL4ac6F7HYJtnFaZIjVqs-4f5Lf4g4S_8q" title="Winded - SIC 2024 Student Short Film" allowfullscreen></iframe>
     </div>
+
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/XxxYourVideo7ID?rel=0&modestbranding=1&showinfo=0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/XI2GnIEzztE" title="College Fest PROMO 2k18 | Rajagiri College of Engineering and Technology, Kakkanad" allowfullscreen></iframe>
     </div>
+
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/XxxYourVideo8ID?rel=0&modestbranding=1&showinfo=0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/GLNrW72UvNA" title="Abhiyanthriki Official Promo Teaser 2019" allowfullscreen></iframe>
     </div>
+
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/XxxYourVideo9ID?rel=0&modestbranding=1&showinfo=0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/BCjK2zDKqaQ" title="Techkshetra 2k19 Official Teaser" allowfullscreen></iframe>
     </div>
+
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/XxxYourVideo10ID?rel=0&modestbranding=1&showinfo=0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/Je8y_IxBWiQ" title="RAJAGIRI FAREWELL 2019 OFFICIAL PROMO - NOKLACHIYA" allowfullscreen></iframe>
     </div>
-    <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/XxxYourVideo11ID?rel=0&modestbranding=1&showinfo=0" allowfullscreen></iframe>
-    </div>
-    <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/XxxYourVideo12ID?rel=0&modestbranding=1&showinfo=0" allowfullscreen></iframe>
-    </div>
+
   </div>
 </main>
 
 <footer>
-  <p> UNREAL ENGINE | BLENDER 3D | COMFYUI | HOUDINI | MAYA | TOUCHDESIGNER | VEX | PYTHON | C++ | ICVFX | AI | 3D PREVIZ | MOCAP | VIDEO PRODUCTION | FILM DIRECTION | ART DIRECTION</p>
+  <p>UNREAL ENGINE | BLENDER 3D | COMFYUI | HOUDINI | MAYA | TOUCHDESIGNER | VEX | PYTHON | C++ | ICVFX | AI | 3D PREVIZ | MOCAP | VIDEO PRODUCTION | FILM DIRECTION | ART DIRECTION</p>
   <p>&copy; 2025 Jais George</p>
 </footer>
 
