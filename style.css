@@ -460,5 +460,111 @@ footer p {
 }
 
 
+/* ==========================
+   RESUME SECTION
+   ========================== */
+
+.resume {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 60px 5vw; /* consistent spacing with rest of site */
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.resume-item {
+  display: grid;
+  grid-template-columns: minmax(70px, 100px) 1fr 1fr;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem 0;
+}
+
+/* Column 1 — Year */
+.resume-item .year {
+  text-align: left;
+  font-weight: 400;
+  color: #555;
+  white-space: nowrap;
+}
+
+/* Column 2 — Company */
+.resume-item .company {
+  text-align: left;
+  font-weight: 400;
+  color: #222;
+}
+
+/* Column 3 — Job Title */
+.resume-item .title {
+  text-align: left;
+  font-style: italic;
+  color: #444;
+}
+
+/* Optional: Section title style (matches your aesthetic) */
+.resume h2 {
+  font-weight: 200;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* ============= RESPONSIVE BEHAVIOR ============= */
+
+/* Tablets and small laptops */
+@media (max-width: 768px) {
+  .resume-item {
+    grid-template-columns: 80px 1fr;
+    grid-template-areas:
+      "year company"
+      ". title";
+  }
+
+  .resume-item .year {
+    grid-area: year;
+  }
+
+  .resume-item .company {
+    grid-area: company;
+  }
+
+  .resume-item .title {
+    grid-area: title;
+    padding-left: 80px;
+    color: #666;
+    font-style: normal;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .resume-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: none;
+    padding: 0.5rem 0;
+  }
+
+  .resume-item .year,
+  .resume-item .company,
+  .resume-item .title {
+    padding: 0;
+  }
+
+  .resume-item .title {
+    font-style: normal;
+    color: #555;
+  }
+}
+
 
 
