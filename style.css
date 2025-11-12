@@ -267,7 +267,7 @@ h2 {
   position: relative;
   flex: 1 1 696px;           /* base width but flexible */
   aspect-ratio: 696 / 391;   /* keeps correct proportions */
-  border-radius: 12px;
+  border-radius: 0px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   max-width: 696px;          /* ensures consistent size on wide screens */
@@ -284,7 +284,7 @@ h2 {
   width: 100%;
   height: 100%;
   border: none;
-  border-radius: 12px;
+  border-radius: 0px;
 }
 
 /* --- Responsive adjustments --- */
@@ -458,6 +458,7 @@ footer p {
     flex: 1 1 100%;
   }
 }
+
 
 
 
