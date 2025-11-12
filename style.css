@@ -460,7 +460,7 @@ footer p {
 }
 
 /* ==========================
-   RESUME SECTION (Expandable + Responsive)
+   RESUME SECTION (Hover Expand + Responsive)
    ========================== */
 
 .resume {
@@ -477,7 +477,7 @@ footer p {
 /* Each résumé row */
 .resume-item {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* equal-width columns */
+  grid-template-columns: repeat(3, 1fr); /* equal width columns */
   align-items: center;
   gap: 1rem;
   width: 100%;
@@ -485,7 +485,6 @@ footer p {
   border-bottom: 1px solid #eee;
   box-sizing: border-box;
   min-height: 4rem;
-  cursor: pointer; /* so users know it’s clickable */
   transition: background-color 0.3s ease;
 }
 
@@ -493,29 +492,27 @@ footer p {
   background-color: #fafafa;
 }
 
-/* Year column */
+/* Columns */
 .resume-item .year {
   text-align: left;
   font-weight: 400;
-  color: #000; /* black text */
+  color: #000;
   white-space: nowrap;
 }
 
-/* Company column */
 .resume-item .company {
   text-align: left;
   font-weight: 400;
-  color: #000; /* black text */
+  color: #000;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Job title column */
 .resume-item .title {
   text-align: right;
   font-style: italic;
-  color: #000; /* match year/company */
+  color: #000;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -523,9 +520,9 @@ footer p {
 
 /* Description (hidden by default on desktop) */
 .resume-item .description {
-  grid-column: 1 / span 3; /* span all three columns */
+  grid-column: 1 / span 3;
   margin-top: 0.5rem;
-  color: #444; /* grey tone (old title color) */
+  color: #444;
   font-size: 0.95rem;
   line-height: 1.4;
   overflow: hidden;
@@ -534,9 +531,9 @@ footer p {
   transition: all 0.4s ease;
 }
 
-/* Expanded (visible) state */
-.resume-item.expanded .description {
-  max-height: 200px; /* can adjust based on length */
+/* Show description on hover */
+.resume-item:hover .description {
+  max-height: 200px;
   opacity: 1;
 }
 
@@ -548,8 +545,6 @@ footer p {
   text-align: center;
   letter-spacing: 0.5px;
 }
-
-/* ============= RESPONSIVE BEHAVIOR ============= */
 
 /* Medium screens */
 @media (max-width: 900px) {
@@ -571,7 +566,6 @@ footer p {
     grid-template-columns: repeat(3, 1fr);
     padding: 0.8rem 2vw;
     gap: 0.4rem;
-    cursor: default; /* not clickable */
   }
 
   .resume-item .year,
