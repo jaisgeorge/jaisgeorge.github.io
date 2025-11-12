@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RESUME | Jais George</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <a href="index.html">WORK</a>
+    <a href="resume.html">RESUME</a>
+    <a href="awards.html">SPOTLIGHT</a>
+    <a href="https://www.imdb.com/name/nm17583632/?ref_=ext_shr_lnk" target="_blank">IMDb</a>
+    <a href="about.html">ABOUT</a>
+  </div>
+
+  <h1><a href="index.html">JAIS GEORGE</a></h1>
+
+  <div class="header-right">
+    <a href="https://www.linkedin.com/in/jais-george/" target="_blank">in</a>
+    <a href="mailto:jaisgeorge28@gmail.com">EMAIL</a>
+  </div>
+</header>
+
+
+  <main>
+    <h2>RESUME</h2>
+
+    <!-- Sticky Horizontal Thumbnails -->
+    <div class="thumb-nav-container">
+      <div class="thumb-nav">
+        <a href="#project1"><img src="3dimages/irakalprojectthumb.png" alt="Project 1"></a>
+        <a href="#project2"><img src="3dimages/carnivalprojectthumb.jpg" alt="Project 2"></a>
+        <a href="#project3"><img src="3dimages/theyyamprojectthumb.jpg" alt="Project 3"></a>
+        <a href="#project4"><img src="3dimages/characterfxprojectthumb.png" alt="Project 4"></a>
+      </div>
+    </div>
+
+
+    <!-- Project 1 -->
+    <div id="project1" class="project project-layout-collage">
+      <h3 class="project-title">Irakal (Preys) Short Film - WIP</h3>
+      <p class="project-desc">
+        IRAKAL is a personal short film project I began developing a couple of years ago while I was in India. The key inspiration came from a decommissioned amphitheater I visited with friends while backpacking. I developed a story around the location, planned shots, created storyboards, and surveyed the location to build a VIRTUAL environment. Now I'm also using some Gen AI tools to animate the wolf!
+      </p>
+   
+  </main>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <span class="lightbox-close">&times;</span>
+  
+  <!-- Wrap image + arrows in container -->
+  <div class="lightbox-content">
+    <span class="lightbox-prev">&#10094;</span>
+    <img class="lightbox-img" src="" alt="Expanded Image">
+    <span class="lightbox-next">&#10095;</span>
+  </div>
+  
+  <p class="lightbox-desc"></p>
+</div>
+
+
+  <footer>
+    <p> UNREAL ENGINE | BLENDER 3D | COMFYUI | HOUDINI | MAYA | TOUCHDESIGNER | VEX | PYTHON | C++ | ICVFX | AI | 3D PREVIZ | MOCAP | VIDEO PRODUCTION | FILM DIRECTION | ART DIRECTION</p>
+    <p>&copy; 2025 Jais George</p>
+  </footer>
+
+  <script>
+    // Highlight active thumbnail
+    const thumbnails = document.querySelectorAll('.thumb-nav a img');
+    const projects = document.querySelectorAll('.project');
+
+    function highlightThumbnail() {
+      let scrollPos = window.scrollY + 200;
+      projects.forEach((project, index) => {
+        if(scrollPos >= project.offsetTop && scrollPos < project.offsetTop + project.offsetHeight) {
+          thumbnails.forEach(img => img.classList.remove('active-thumb'));
+          thumbnails[index].classList.add('active-thumb');
+        }
+      });
+    }
+    window.addEventListener('scroll', highlightThumbnail);
+    window.addEventListener('load', highlightThumbnail);
+
+    // Column-balanced collage layout
+    document.querySelectorAll('.collage').forEach(collage => {
+      const images = Array.from(collage.querySelectorAll('img'));
+      const columnsCount = parseInt(collage.dataset.columns) || 3;
+
+      collage.innerHTML = '';
+      const columns = [];
+      for (let i = 0; i < columnsCount; i++) {
+        const col = document.createElement('div');
+        col.classList.add('collage-column');
+        columns.push(col);
+        collage.appendChild(col);
+      }
+      images.forEach((img, idx) => {
+        columns[idx % columnsCount].appendChild(img);
+      });
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.querySelector('.lightbox-img');
+    const closeBtn = document.querySelector('.lightbox-close');
+    const prevBtn = document.querySelector('.lightbox-prev');
+    const nextBtn = document.querySelector('.lightbox-next');
+    const lightboxDesc = document.querySelector('.lightbox-desc');
+
+function showImage() {
+  const img = currentImages[currentIndex]; // original clicked image
+  lightboxImg.src = img.src;               // set lightbox image
+  lightboxDesc.textContent = img.dataset.desc || ''; // set description
+}
+
+
+    let currentImages = [];
+    let currentIndex = 0;
+
+    document.querySelectorAll('.collage img').forEach(img => {
+      img.addEventListener('click', () => {
+        const collage = img.closest('.collage');
+        currentImages = Array.from(collage.querySelectorAll('img'));
+        currentIndex = currentImages.indexOf(img);
+        showImage(); // sets image + description
+        lightbox.style.display = 'flex';
+      });
+    });
+
+    closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      showImage();
+    });
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      showImage();
+    });
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) lightbox.style.display = 'none';
+    });
+
+    // --- Keyboard support for lightbox ---
+    document.addEventListener('keydown', e => {
+      if (lightbox.style.display === 'flex') { // only if lightbox is open
+        e.preventDefault(); // <-- stop page scroll
+        if (e.key === 'ArrowLeft') {
+          currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+          showImage();
+        }
+        if (e.key === 'ArrowRight') {
+          currentIndex = (currentIndex + 1) % currentImages.length;
+          showImage();
+        }
+        if (e.key === 'Escape') {
+          lightbox.style.display = 'none';
+        }
+      }
+    });
+    
+  </script>
+
+</body>
+</html>
