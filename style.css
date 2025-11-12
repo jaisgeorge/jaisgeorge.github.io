@@ -460,30 +460,31 @@ footer p {
 }
 
 /* ==========================
-   RESUME SECTION (Updated)
+   RESUME SECTION (Refined)
    ========================== */
 
 .resume {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 100vw;             /* take full viewport width */
+  width: 100vw;             /* span full screen width */
   margin: 0;
-  padding: 60px 0;
+  padding: 80px 0;
   box-sizing: border-box;
   text-align: left;
 }
 
-/* Each entry row */
+/* Each résumé row */
 .resume-item {
   display: grid;
   grid-template-columns: minmax(70px, 100px) 1fr 1fr;
   align-items: center;
   gap: 1rem;
   width: 100%;
-  padding: 0.5rem 5vw;      /* consistent side padding, scales on wide and small screens */
+  padding: 1rem 5vw;        /* increased vertical padding → taller rows */
   border-bottom: 1px solid #eee;
   box-sizing: border-box;
+  min-height: 4rem;         /* ensures consistent tall row height */
 }
 
 /* Year column */
@@ -494,9 +495,9 @@ footer p {
   white-space: nowrap;
 }
 
-/* Company column */
+/* Company column (centered) */
 .resume-item .company {
-  text-align: left;
+  text-align: center;
   font-weight: 400;
   color: #222;
   white-space: nowrap;
@@ -504,9 +505,9 @@ footer p {
   text-overflow: ellipsis;
 }
 
-/* Job title column */
+/* Job title column (right-aligned) */
 .resume-item .title {
-  text-align: left;
+  text-align: right;
   font-style: italic;
   color: #444;
   white-space: nowrap;
@@ -525,41 +526,40 @@ footer p {
 
 /* ============= RESPONSIVE BEHAVIOR ============= */
 
-/* Medium screens: still full width, just shrink gaps slightly */
 @media (max-width: 1024px) {
   .resume-item {
     gap: 0.5rem;
-    padding: 0.5rem 4vw;
+    padding: 0.8rem 4vw;
+    min-height: 3.5rem;
   }
 }
 
-/* Small screens: keep items on one line by scaling font size */
 @media (max-width: 768px) {
   .resume-item {
     grid-template-columns: minmax(60px, 80px) 1fr 1fr;
     gap: 0.5rem;
-    padding: 0.4rem 3vw;
+    padding: 0.7rem 3vw;
+    min-height: 3rem;
   }
 
   .resume-item .year,
   .resume-item .company,
   .resume-item .title {
-    font-size: clamp(0.8rem, 2vw, 1rem); /* scales smoothly */
+    font-size: clamp(0.8rem, 2vw, 1rem);
   }
 }
 
-/* Very small phones: reduce font and spacing further to keep single-line fit */
 @media (max-width: 480px) {
   .resume-item {
     grid-template-columns: minmax(50px, 70px) 1fr 1fr;
-    padding: 0.3rem 2vw;
+    padding: 0.6rem 2vw;
     gap: 0.3rem;
+    min-height: 2.5rem;
   }
 
   .resume-item .year,
   .resume-item .company,
   .resume-item .title {
     font-size: clamp(0.65rem, 1.8vw, 0.85rem);
-    letter-spacing: 0;
   }
 }
