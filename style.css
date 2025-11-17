@@ -131,8 +131,8 @@ header a:hover {
 h2 {
   margin-top: 20px;
   text-align: center;
-  font-weight: 200;       /* ExtraLight */
-  font-size: 2rem;        /* make larger */
+  font-weight: 500;       /* Bold */
+  font-size: 1.5rem;        /* make smaller */
 }
 
 /* Vertical sticky thumbnails */
@@ -580,6 +580,7 @@ footer p {
     margin-top: 0.4rem;
   }
 }
+
 
 
 
