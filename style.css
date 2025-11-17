@@ -582,8 +582,8 @@ footer p {
 }
 
 
-/* Container for side-by-side slideshows */
-.slideshow-project1-container {
+/* --- Three-column layout for Project 1 slideshows --- */
+.slideshow-project1-row {
   display: flex;
   gap: 20px;
   justify-content: center;
@@ -591,42 +591,41 @@ footer p {
   margin: 30px auto;
   width: 90vw;
   max-width: 1200px;
+  align-items: flex-start; /* align top edges */
 }
 
-/* Base slideshow styling */
-.slideshow-project1 {
-  width: 580px;
-  height: 350px;
-  overflow: hidden;
-  position: relative;
-  border-radius: 6px;
+/* Each column (two slideshows + static image) */
+.slideshow-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* All images stacked on top of each other, hidden by default */
-.slideshow-project1 img {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Slideshow images */
+.slideshow-column img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 6px;
   object-fit: cover;
-  display: none;
 }
 
-/* Show the first image initially */
-.slideshow-project1 img:first-child {
+/* Optional: static image column */
+.static-image img {
   display: block;
+  width: 100%;
+  height: auto;
 }
 
-/* Responsive: stack vertically on mobile */
+/* Mobile: stack columns vertically */
 @media (max-width: 768px) {
-  .slideshow-project1-container {
+  .slideshow-project1-row {
     flex-direction: column;
     align-items: center;
   }
-  .slideshow-project1 {
-    width: 90vw;
-    height: auto;
-  }
+}
+
 }
 }
+
