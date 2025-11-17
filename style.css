@@ -582,43 +582,70 @@ footer p {
 }
 
 
-/* --- Auto Slideshow (CSS-only) --- */
-.slideshow {
-  width: 100%;
-  max-width: 900px;
+/* Container for Project 1 slideshows: side by side */
+.slideshow-project1-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap; /* stacks on small screens */
   margin: 30px auto;
+  width: 90vw;
+  max-width: 1200px;
+}
+
+/* Each slideshow row */
+.slideshow-track-project1-row1,
+.slideshow-track-project1-row2 {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 580px; /* side by side max width */
   overflow: hidden;
   border-radius: 6px;
 }
 
-.slideshow-track {
-  display: flex;
-  width: 400%; /* 4 images = 400% */
-  animation: slide 16s infinite;
-}
-
-.slideshow-track img {
+.slideshow-track-project1-row1 img,
+.slideshow-track-project1-row2 img {
   width: 100%;
   flex-shrink: 0;
   object-fit: cover;
   display: block;
 }
 
-@keyframes slide {
-  0%   { transform: translateX(0%); }
-  20%  { transform: translateX(0%); }
-
-  25%  { transform: translateX(-100%); }
-  45%  { transform: translateX(-100%); }
-
-  50%  { transform: translateX(-200%); }
-  70%  { transform: translateX(-200%); }
-
-  75%  { transform: translateX(-300%); }
-  95%  { transform: translateX(-300%); }
-
-  100% { transform: translateX(0%); }
+/* Row 1 animation */
+.slideshow-track-project1-row1 {
+  animation: scroll-row1 20s linear infinite;
 }
+
+/* Row 2 animation */
+.slideshow-track-project1-row2 {
+  animation: scroll-row2 25s linear infinite;
+}
+
+/* Keyframes */
+@keyframes scroll-row1 {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes scroll-row2 {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 768px) {
+  .slideshow-project1-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .slideshow-track-project1-row1,
+  .slideshow-track-project1-row2 {
+    max-width: 90vw;
+  }
+}
+
 
 
 
