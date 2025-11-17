@@ -65,7 +65,7 @@ header h1 a {
   color: #222;
   font-size: 2rem;
   display: block;
-  font-weight: 200; /* ExtraLight */
+  font-weight: 100; /* ExtraLight */
 }
 
 /* Left Nav container allows wrapping only when needed */
@@ -580,5 +580,6 @@ footer p {
     margin-top: 0.4rem;
   }
 }
+
 
 
