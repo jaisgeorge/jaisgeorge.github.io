@@ -265,12 +265,12 @@ h2 {
 
 .video-grid .video-wrapper {
   position: relative;
-  flex: 1 1 696px;           /* base width but flexible */
+  flex: 1 1 30%;           /* base width but flexible */
   aspect-ratio: 696 / 391;   /* keeps correct proportions */
   border-radius: 0px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  max-width: 696px;          /* ensures consistent size on wide screens */
+  max-width: 31%;          /* ensures consistent size on wide screens */
   transition: transform 0.3s ease;
 }
 
@@ -631,5 +631,6 @@ footer p {
     max-width: 90vw;
   }
 }
+
 
 
