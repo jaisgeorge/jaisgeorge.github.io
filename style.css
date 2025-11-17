@@ -185,7 +185,7 @@ h2 {
 }
 
 .project .project-title {
-  font-size: 2rem;    /* bigger */
+  font-size: 1.5rem;    /* smaller */
 }
 
 /* Collage Layout */
@@ -580,6 +580,7 @@ footer p {
     margin-top: 0.4rem;
   }
 }
+
 
 
 
