@@ -586,21 +586,22 @@ footer p {
 /* Container for the three columns */
 .slideshow-project1-row {
   display: flex;
-  justify-content: center; /* center the whole row */
-  gap: 20px;               /* space between columns */
-  flex-wrap: nowrap;        /* prevent wrapping into rows */
+  justify-content: center;  /* center the row */
+  gap: 20px;
+  flex-wrap: wrap;          /* allow wrapping only if really needed */
   margin: 30px auto;
-  width: 90vw;
-  max-width: 1200px;
-  align-items: flex-start;  /* align top edges */
+  max-width: 1200px;        /* limit max width */
+  width: 100%;              /* full width but not too wide */
+  align-items: flex-start;  
 }
 
 /* Each column (slideshows or static image) */
 .slideshow-column {
-  flex: 0 0 380px; /* fixed width for each column */
+  flex: 1 1 380px;          /* flexible: grow, shrink, base 380px */
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 380px;         /* ensures no column gets too wide */
 }
 
 /* Slideshow images */
@@ -612,13 +613,6 @@ footer p {
   object-fit: cover;
 }
 
-/* Static image */
-.static-image img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
 /* Mobile: stack vertically on small screens */
 @media (max-width: 768px) {
   .slideshow-project1-row {
@@ -626,6 +620,9 @@ footer p {
     align-items: center;
   }
   .slideshow-column {
-    flex: 0 0 90vw; /* nearly full width on mobile */
+    flex: 1 1 90vw;         /* nearly full width on mobile */
+    max-width: 90vw;
   }
 }
+
+
