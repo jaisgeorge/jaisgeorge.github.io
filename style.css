@@ -612,6 +612,14 @@ footer p {
   object-fit: cover;
 }
 
+.column-caption {
+  margin-top: 8px;           /* space above caption */
+  font-size: 0.9rem;
+  text-align: center;        /* center under column content */
+  color: #444;
+  font-weight: 200;          /* matches your Inter ExtraLight */
+}
+
 /* Mobile: stack vertically on small screens */
 @media (max-width: 768px) {
   .slideshow-project1-row {
@@ -623,6 +631,5 @@ footer p {
     max-width: 90vw;
   }
 }
-
 
 
