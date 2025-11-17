@@ -254,9 +254,9 @@ h2 {
 /* Video Grid Layout (updated, responsive & centered) */
 .video-grid {
   display: flex;
-  justify-content: center;   /* center both videos as a group */
+  justify-content: space-between;   /* center both videos as a group */
   align-items: flex-start;
-  gap: 10px;                 /* smaller space between videos */
+  gap: 20px;
   flex-wrap: wrap;           /* allows wrapping on smaller screens */
   margin: 40px auto;
   width: 90vw;               /* keeps layout within page width */
@@ -265,12 +265,12 @@ h2 {
 
 .video-grid .video-wrapper {
   position: relative;
-  flex: 1 1 30%;           /* base width but flexible */
-  aspect-ratio: 696 / 391;   /* keeps correct proportions */
+  flex: 1 1 calc((100% - 40px) / 3); /* three per row minus gaps */
+  aspect-ratio: 696 / 391;            /* keeps correct proportions */
   border-radius: 0px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  max-width: 31%;          /* ensures consistent size on wide screens */
+  max-width: none;                     /* let flex handle width */
   transition: transform 0.3s ease;
 }
 
@@ -631,6 +631,7 @@ footer p {
     max-width: 90vw;
   }
 }
+
 
 
 
