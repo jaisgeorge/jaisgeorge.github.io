@@ -583,20 +583,21 @@ footer p {
 
 
 /* --- Three-column layout for Project 1 slideshows --- */
+/* Container for the three columns */
 .slideshow-project1-row {
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: center; /* center the whole row */
+  gap: 20px;               /* space between columns */
+  flex-wrap: nowrap;        /* prevent wrapping into rows */
   margin: 30px auto;
   width: 90vw;
   max-width: 1200px;
-  align-items: flex-start; /* align top edges */
+  align-items: flex-start;  /* align top edges */
 }
 
-/* Each column (two slideshows + static image) */
+/* Each column (slideshows or static image) */
 .slideshow-column {
-  flex: 1;
+  flex: 0 0 380px; /* fixed width for each column */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -611,21 +612,26 @@ footer p {
   object-fit: cover;
 }
 
-/* Optional: static image column */
+/* Static image */
 .static-image img {
   display: block;
   width: 100%;
   height: auto;
 }
 
-/* Mobile: stack columns vertically */
+/* Mobile: stack vertically on small screens */
 @media (max-width: 768px) {
   .slideshow-project1-row {
     flex-direction: column;
     align-items: center;
   }
+  .slideshow-column {
+    flex: 0 0 90vw; /* nearly full width on mobile */
+  }
 }
+
 
 }
 }
+
 
