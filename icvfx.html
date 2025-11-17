@@ -314,6 +314,24 @@ function showImage() {
     });
     
   </script>
+ 
+<script>
+function startSlideshow(slideshowId, interval = 3000) {
+  const container = document.getElementById(slideshowId);
+  const images = container.querySelectorAll('img');
+  let index = 0;
+
+  setInterval(() => {
+    images[index].style.display = 'none';             // hide current
+    index = (index + 1) % images.length;              // next image
+    images[index].style.display = 'block';            // show next
+  }, interval);
+}
+
+// Start both slideshows independently
+startSlideshow('slideshow-left', 3000);   // left changes every 3 sec
+startSlideshow('slideshow-right', 4000);  // right changes every 4 sec
+</script>
 
 </body>
 </html>
