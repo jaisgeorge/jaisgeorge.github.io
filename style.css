@@ -584,17 +584,16 @@ footer p {
 
 /* --- Three-column layout for Project 1 slideshows --- */
 /* Container for the three columns */
-.slideshow-project1-row {
+.slideshow-row {
   display: flex;
-  justify-content: center;  /* center the row */
+  justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;          /* allow wrapping only if really needed */
+  flex-wrap: wrap;
   margin: 30px auto;
-  max-width: 1200px;        /* limit max width */
-  width: 100%;              /* full width but not too wide */
-  align-items: flex-start;  
+  width: 90vw;
+  max-width: 1200px;
+  align-items: flex-start;
 }
-
 /* Each column (slideshows or static image) */
 .slideshow-column {
   flex: 1 1 380px;          /* flexible: grow, shrink, base 380px */
@@ -624,5 +623,6 @@ footer p {
     max-width: 90vw;
   }
 }
+
 
 
