@@ -621,7 +621,7 @@ footer p {
   margin-top: 8px;           /* space above caption */
   font-size: 0.9rem;
   text-align: center;        /* center under column content */
-  color: #444;
+  color: #ddd;
   font-weight: 200;          /* matches your Inter ExtraLight */
 }
 
@@ -636,6 +636,7 @@ footer p {
     max-width: 90vw;
   }
 }
+
 
 
 
