@@ -76,22 +76,23 @@ header h1 a {
 /* Left Nav container allows wrapping only when needed */
 .header-left {
   display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 1 auto;
+  font-weight: 200; /* ExtraLight */
+
+}
+
+/* Right Nav stays fixed on top row */
+.header-right {
+  display: flex;
   flex-wrap: wrap;      
   align-items: flex-start;
   justify-content: flex-start;
   gap: 15px;
   flex: 0 1 auto;       
   max-width: 35%;       
-  font-weight: 200; /* ExtraLight */
-}
-
-/* Right Nav stays fixed on top row */
-.header-right {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-  justify-content: flex-end;
-  flex: 0 1 auto;
   font-weight: 200; /* ExtraLight */
 }
 
@@ -136,8 +137,8 @@ header a:hover {
 h2 {
   margin-top: 20px;
   text-align: center;
-  font-weight: 500;       /* Bold */
-  font-size: 1.5rem;        /* make smaller */
+  font-weight: 200;       /* Bold */
+  font-size: 0.5rem;        /* make smaller */
 }
 
 /* Vertical sticky thumbnails */
@@ -636,6 +637,7 @@ footer p {
     max-width: 90vw;
   }
 }
+
 
 
 
