@@ -394,7 +394,7 @@ footer p {
   background-color: rgba(0,0,0,0.95);
   justify-content: center;
   align-items: center;
-  z-index: 5000;
+  z-index: 9999;
   flex-direction: column;
   padding: 0;
   overflow: hidden;
@@ -756,6 +756,7 @@ footer p {
     justify-content: space-between;
   }
 }
+
 
 
 
