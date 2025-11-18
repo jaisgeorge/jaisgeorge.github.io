@@ -403,7 +403,7 @@ footer p {
   font-size: 2rem;
   color: white;
   cursor: pointer;
-  z-index: 1010;
+  z-index: 6000;
 }
 
 /* Arrows */
@@ -721,6 +721,7 @@ footer p {
     justify-content: space-between;
   }
 }
+
 
 
 
