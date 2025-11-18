@@ -108,7 +108,11 @@ header a:hover {
   color: #888;
 }
 
-/* Mobile Responsive */
+
+/* 
+
+Mobile Responsive Header Type 1 - headers jump onto new lines
+
 @media (max-width: 768px) {
   header {
     flex-direction: column;
@@ -132,6 +136,22 @@ header a:hover {
     max-width: 100%;
   }
 }
+
+*/
+
+
+/* Mobile Responsive Header Type 2 - headers don't move */
+
+header {
+  flex-wrap: nowrap !important;
+}
+
+.header-left,
+.header-right {
+  flex-wrap: nowrap !important;
+}
+
+
 
 /* Page Titles */
 h2 {
@@ -341,7 +361,7 @@ footer p {
   background-color: rgba(0,0,0,0.95);
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 5000;
   flex-direction: column;
   padding: 0;
   overflow: hidden;
@@ -407,7 +427,11 @@ footer p {
   font-weight: 200; /* ExtraLight */
 }
 
-
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  z-index: 5010;
+}
 
 
 
@@ -691,6 +715,7 @@ footer p {
     justify-content: space-between;
   }
 }
+
 
 
 
