@@ -77,11 +77,11 @@ header h1 a {
 .header-left {
   display: flex;
   gap: 15px;
-  align-items: left;
+  align-items: flex-start;
   justify-content: flex-start;
   flex: 0 1 auto;
   font-weight: 200; /* ExtraLight */
-
+  text-align: left;  
 }
 
 /* Right Nav stays fixed on top row */
@@ -637,6 +637,7 @@ footer p {
     max-width: 90vw;
   }
 }
+
 
 
 
