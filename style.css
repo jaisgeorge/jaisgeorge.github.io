@@ -487,28 +487,28 @@ footer p {
   gap: 1rem;
   width: 100%;
   padding: 1rem 5vw;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
   box-sizing: border-box;
   min-height: 4rem;
   transition: background-color 0.3s ease;
 }
 
 .resume-item:hover {
-  background-color: #fafafa;
+  background-color: rgba(255,255,255,0.05); /* subtle highlight on hover */
 }
 
 /* Columns */
 .resume-item .year {
   text-align: left;
   font-weight: 400;
-  color: #000;
+  color: #fff;
   white-space: nowrap;
 }
 
 .resume-item .company {
   text-align: left;
   font-weight: 400;
-  color: #000;
+  color: #fff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -517,7 +517,7 @@ footer p {
 .resume-item .title {
   text-align: right;
   font-style: italic;
-  color: #000;
+  color: #fff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -527,7 +527,7 @@ footer p {
 .resume-item .description {
   grid-column: 1 / span 3;
   margin-top: 0.5rem;
-  color: #444;
+  color: #fff;
   font-size: 0.95rem;
   line-height: 1.4;
   overflow: hidden;
@@ -636,6 +636,7 @@ footer p {
     max-width: 90vw;
   }
 }
+
 
 
 
