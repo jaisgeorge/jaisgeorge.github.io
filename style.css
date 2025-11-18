@@ -1,1 +1,111 @@
-/* Import Inter ExtraLight */ @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;700&display=swap'); /* Smooth scrolling */ html { scroll-behavior: smooth; } /* Body & Header/Footer */ body { font-family: 'Inter', Helvetica, Arial, sans-serif; font-weight: 200; /* ExtraLight for all text */ margin: 0; background-color: #000; color: #fff; text-align: center; -ms-overflow-style: none; /* IE and Edge Legacy */ scrollbar-width: none; /* Firefox */ } a { color: #fff; /* white links */ } /* Hide scrollbar in Chrome, Edge, Safari */ body::-webkit-scrollbar { display: none; } /* Header / Footer Base */ header, footer { text-align: center; padding: 20px; } /* Sticky Header with frosted white background */ header { display: flex; align-items: flex-start; /* top-aligned */ justify-content: space-between; padding: 20px 40px; position: sticky; top: 0; z-index: 1000; background-color: rgba(0, 0, 0, 0.8); color: #fff; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-sizing: border-box; flex-wrap: wrap; gap: 10px; } /* Centered "JAIS GEORGE" */ header h1 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0; text-align: center; z-index: 1; font-weight: 200; /* ExtraLight */ white-space: nowrap; } header h1 a { text-transform: none; text-decoration: none; color: #fff; font-size: 2rem; display: block; font-weight: 200; /* ExtraLight */ } /* Left Nav container allows wrapping only when needed */ .header-left { display: flex; gap: 15px; align-items: flex-start; justify-content: flex-start; flex: 0 1 auto; font-weight: 200; /* ExtraLight */ text-align: left; } /* Right Nav stays fixed on top row */ .header-right { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: flex-end; gap: 15px; flex: 0 1 auto; max-width: 35%; font-weight: 200; /* ExtraLight */ } header a { text-decoration: none; color: #fff; font-size: 0.95rem; transition: color 0.2s; font-weight: 200; /* ExtraLight */ } header a:hover { color: #888; } /* Mobile Responsive */ @media (max-width: 768px) { header { flex-direction: column; padding: 15px 20px; gap: 10px; align-items: center; } header h1 { position: static; transform: none; order: -1; margin-bottom: 10px; } .header-left, .header-right { justify-content: center; gap: 10px; flex-wrap: wrap; max-width: 100%; } } /* Page Titles */ h2 { margin-top: 0px; text-align: center; font-weight: 200; /* Bold */ font-size: 1rem; /* make smaller */ } /* Vertical sticky thumbnails */ .thumb-nav-container { position: fixed; top: 50%; left: 0; width: 80px; background: transparent; z-index: 100; display: flex; justify-content: center; transform: translateY(-50%); padding: 0; } .thumb-nav { display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; } .thumb-nav img { max-width: 60px; width: 100%; height: auto; border-radius: 0px; cursor: pointer; transition: transform 0.2s, border 0.2s; border: 2px solid transparent; } .thumb-nav img:hover { transform: scale(1.05); } .thumb-nav img.active-thumb { border: 2px solid #fff; transform: scale(1.08); } /* Base project wrapper */ .project { margin: 60px auto; width: 90vw; text-align: center; } .project .project-title, .project .project-desc { width: 100%; margin: 0 auto 20px auto; font-weight: 200; /* ExtraLight */ } .project .project-title { font-size: 1.5rem; /* smaller */ } /* Collage Layout */ .project-layout-collage .project-collage { display: flex; gap: 20px; justify-content: center; } .collage { display: flex; gap: 10px; } .collage-column { display: flex; flex-direction: column; gap: 10px; flex: 1; } .collage-column img { width: 100%; height: auto; border-radius: 0px; object-fit: cover; } /* Force Project 2 collages to split 50/50 */ #project2 .project-collage > .collage { flex: 1; } /* Responsive: stack collages vertically */ @media (max-width: 768px) { .project-layout-collage .project-collage { flex-direction: column; } } /* YouTube Video */ .video-container { margin: 30px auto; aspect-ratio: 16/9; width: min(90vw, 1200px); } .video-container iframe { width: 100%; height: 100%; border: 0; border-radius: 0px; display: block; } /* Video Grid Layout (updated, responsive & centered) */ .video-grid { display: flex; justify-content: space-between; /* center both videos as a group */ align-items: flex-start; gap: 20px; flex-wrap: wrap; /* allows wrapping on smaller screens */ margin: 40px auto; width: 90vw; /* keeps layout within page width */ max-width: 1500px; /* don't stretch too wide on large monitors */ } .video-grid .video-wrapper { position: relative; flex: 1 1 calc((100% - 40px) / 3); /* three per row minus gaps */ aspect-ratio: 696 / 391; /* keeps correct proportions */ border-radius: 0px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); max-width: none; /* let flex handle width */ transition: transform 0.3s ease; } .video-grid .video-wrapper:hover { transform: translateY(-4px); } .video-grid iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 0px; } /* --- Responsive adjustments --- */ /* Medium screens: shrink smoothly but stay side-by-side */ @media (max-width: 1200px) { .video-grid .video-wrapper { flex: 1 1 45%; /* each takes about half the width */ max-width: 100%; } } /* Small screens: stack vertically */ @media (max-width: 768px) { .video-grid { flex-direction: column; align-items: center; gap: 15px; } .video-grid .video-wrapper { width: 90vw; /* use most of screen width */ aspect-ratio: 696 / 391; /* maintain ratio */ max-width: none; } } /* Footer */ footer p { font-size: 0.9rem; color: #fff; font-weight: 200; /* ExtraLight */ } /* Lightbox */ .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); justify-content: center; align-items: center; z-index: 1000; flex-direction: column; padding: 0; overflow: hidden; box-sizing: border-box; } .lightbox-content { display: inline-flex; justify-content: center; align-items: center; max-width: 100%; max-height: 100%; overflow: hidden; box-sizing: border-box; } /* Lightbox image */ .lightbox-img { display: block; margin: 0 auto; max-width: 100vw; max-height: 100vh; width: auto; height: auto; object-fit: contain; } /* Close button */ .lightbox-close { position: fixed; top: 20px; right: 20px; font-size: 2rem; color: white; cursor: pointer; z-index: 1010; } /* Arrows */ .lightbox-prev, .lightbox-next { position: fixed; top: 50%; transform: translateY(-50%); font-size: 3rem; color: white; cursor: pointer; user-select: none; z-index: 1010; padding: 10px; } .lightbox-prev { left: 20px; } .lightbox-next { right: 20px; } /* Description */ .lightbox-desc { color: #fff; margin-top: 10px; font-size: 1rem; max-width: 90%; text-align: center; font-weight: 200; /* ExtraLight */ } /* Horizontal responsive video grid with fixed aspect ratio per video */ .video-grid-icvfx { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; width: 90vw; /* matches collage layout */ margin: 30px auto; } .video-grid-icvfx .video-item { flex: 1 1 calc(33.333% - 20px); /* three per row on wide screens */ position: relative; padding-top: calc(311 / 696 * 100%); /* 696:311 ratio */ overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; } .video-grid-icvfx .video-item iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 12px; } /* Medium screens: two per row */ @media (max-width: 1200px) { .video-grid-icvfx .video-item { flex: 1 1 calc(50% - 20px); } } /* Small screens: stack vertically */ @media (max-width: 768px) { .video-grid-icvfx { flex-direction: column; align-items: center; gap: 15px; } .video-grid-icvfx .video-item { flex: 1 1 100%; } } /* ========================== RESUME SECTION (Hover Expand + Responsive) ========================== */ .resume { display: flex; flex-direction: column; gap: 1rem; width: 100vw; margin: 0; padding: 80px 0; box-sizing: border-box; text-align: left; } /* Each résumé row */ .resume-item { display: grid; grid-template-columns: repeat(3, 1fr); /* equal width columns */ align-items: center; gap: 1rem; width: 100%; padding: 1rem 5vw; border-bottom: 1px solid rgba(255,255,255,0.2); box-sizing: border-box; min-height: 4rem; transition: background-color 0.3s ease; } .resume-item:hover { background-color: rgba(255,255,255,0.05); /* subtle highlight on hover */ } /* Columns */ .resume-item .year { text-align: left; font-weight: 400; color: #fff; white-space: nowrap; } .resume-item .company { text-align: left; font-weight: 400; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .resume-item .title { text-align: right; font-style: italic; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } /* Description (hidden by default on desktop) */ .resume-item .description { grid-column: 1 / span 3; margin-top: 0.5rem; color: #fff; font-size: 0.95rem; line-height: 1.4; overflow: hidden; max-height: 0; opacity: 0; transition: all 0.4s ease; } /* Show description on hover */ .resume-item:hover .description { max-height: 200px; opacity: 1; } /* Section title */ .resume h2 { font-weight: 200; font-size: 2rem; margin-bottom: 1.5rem; text-align: center; letter-spacing: 0.5px; } /* Medium screens */ @media (max-width: 900px) { .resume-item { padding: 0.8rem 3vw; gap: 0.6rem; } .resume-item .year, .resume-item .company, .resume-item .title { font-size: clamp(0.9rem, 2vw, 1rem); } } /* Small screens: description always visible */ @media (max-width: 768px) { .resume-item { grid-template-columns: repeat(3, 1fr); padding: 0.8rem 2vw; gap: 0.4rem; } .resume-item .year, .resume-item .company, .resume-item .title { font-size: clamp(0.8rem, 1.8vw, 1rem); } .resume-item .description { max-height: none; opacity: 1; margin-top: 0.4rem; } } /* --- Three-column layout for Project 1 slideshows --- */ /* Container for the three columns */ .slideshow-row { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 30px auto; width: 90vw; max-width: 1200px; align-items: flex-start; } /* Each column (slideshows or static image) */ .slideshow-column { flex: 1 1 380px; /* flexible: grow, shrink, base 380px */ display: flex; flex-direction: column; align-items: center; max-width: 380px; /* ensures no column gets too wide */ } /* Slideshow images */ .slideshow-column img { width: 100%; height: auto; margin-bottom: 10px; border-radius: 6px; object-fit: cover; } .column-caption { margin-top: 8px; /* space above caption */ font-size: 0.9rem; text-align: center; /* center under column content */ color: #ddd; font-weight: 200; /* matches your Inter ExtraLight */ } /* Mobile: stack vertically on small screens */ @media (max-width: 768px) { .slideshow-project1-row { flex-direction: column; align-items: center; } .slideshow-column { flex: 1 1 90vw; /* nearly full width on mobile */ max-width: 90vw; } } .mobile-menu-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 2000; } .mobile-menu-items { display: flex; flex-direction: column; gap: 25px; /* double-spacing effect */ text-align: center; } .mobile-menu-items a { color: white; font-size: 1.7rem; text-decoration: none; font-weight: 200; } .menu-icon, .close-icon { width: 28px; height: 28px; cursor: pointer; display: none; /* hidden by default */ z-index: 1500; position: relative; } @media (max-width: 768px) { .header-right { display: none; } .menu-icon { display: block; } .close-icon { display: none; } header { justify-content: space-between; } }
+/* Import Inter ExtraLight */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;700&display=swap');
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Body & Header/Footer */
+body {
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  font-weight: 200; /* ExtraLight for all text */
+  margin: 0;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  -ms-overflow-style: none; /* IE and Edge Legacy */
+  scrollbar-width: none; /* Firefox */
+}
+
+a {
+  color: #fff; /* white links */
+}
+
+/* Hide scrollbar in Chrome, Edge, Safari */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Header / Footer Base */
+header, footer {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Sticky Header with frosted white background */
+header {
+  display: flex;
+  align-items: flex-start; /* top-aligned */
+  justify-content: space-between;
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Centered "JAIS GEORGE" */
+header h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  text-align: center;
+  z-index: 1;
+  font-weight: 200; /* ExtraLight */
+  white-space: nowrap;
+}
+
+header h1 a {
+  text-transform: none;
+  text-decoration: none;
+  color: #fff;
+  font-size: 2rem;
+  display: block;
+  font-weight: 200; /* ExtraLight */
+}
+
+/* Left Nav container allows wrapping only when needed */
+.header-left {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 0 1 auto;
+  font-weight: 200; /* ExtraLight */
+  text-align: left;
+}
+
+/* Right Nav stays fixed on top row */
+.header-right {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 15px;
+  flex: 0 1 auto;
+  max-width: 35%;
+  font-weight: 200; /* ExtraLight */
+}
+
+header a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+  font-weight: 200; /* ExtraLight */
+}
+
+header a:hover {
+  color: #888;
+}
+
+/* Mobile*
