@@ -1,150 +1,128 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3D | Jais George</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D | Jais George</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <!-- Sticky Frosted Header -->
+    <header>
+        <nav class="header-left">
+            <a href="index.html">Work<br>&nbsp;&nbsp;+ 3D</a>
+        </nav>
+        <h1><a href="index.html">J a i s &nbsp;&nbsp;G e o r g e</a></h1>
+        <nav class="header-right">
+            <a href="resume.html">Resume</a>
+            <a href="spot.html">Spot</a>
+            <a href="https://www.imdb.com/name/nm17583632/?ref_=ext_shr_lnk" target="_blank">IMDb</a>
+            <a href="about.html">Chai?</a>
+            <a href="https://www.linkedin.com" target="_blank">in</a>
+            <a href="mailto:jaisgeorge28@gmail.com">Email</a>
+        </nav>
 
-  <!-- Sticky Frosted Header -->
-  <header>
-    <nav class="header-left">
-      <a href="index.html">Work<br>&nbsp;&nbsp;+ 3D</a>
-    </nav>
+        <!-- HAMBURGER ICON (shown only on mobile) -->
+        <img src="icons/hamburgerw54.png" class="menu-icon" id="menuBtn">
 
-    <h1><a href="index.html">J a i s &nbsp;&nbsp;G e o r g e</a></h1>
+        <!-- CLOSE ICON (hidden until menu opened) -->
+        <img src="icons/crossw54.png" class="close-icon" id="closeBtn">
+    </header>
 
-    <nav class="header-right">
-      <a href="resume.html">Resume</a>
-      <a href="spot.html">Spot</a>
-      <a href="https://www.imdb.com/name/nm17583632/?ref_=ext_shr_lnk" target="_blank">IMDb</a>
-      <a href="about.html">Chai?</a>
-      <a href="https://www.linkedin.com" target="_blank">in</a>
-      <a href="mailto:jaisgeorge28@gmail.com">Email</a>
-    </nav>
-
-  <!-- HAMBURGER ICON (shown only on mobile) -->
-  <img src="icons/hamburgerw54.png" class="menu-icon" id="menuBtn">
-
-  <!-- CLOSE ICON (hidden until menu opened) -->
-<img src="icons/crossw54.png" class="close-icon" id="menuCloseBtn">
-  
-  </header>
-
-<!-- FULLSCREEN MENU OVERLAY -->
-<div id="mobileMenu" class="mobile-menu-overlay">
-  <div class="mobile-menu-items">
-      <a href="resume.html">Resume</a>
-      <a href="spot.html">Spot</a>
-      <a href="https://www.imdb.com/name/nm17583632/?ref_=ext_shr_lnk" target="_blank">IMDb</a>
-      <a href="about.html">Chai?</a>
-      <a href="https://www.linkedin.com" target="_blank">in</a>
-      <a href="mailto:jaisgeorge28@gmail.com">Email</a>
-  </div>
-</div>
- 
-  <main>
-    <h2></h2>
-
-    <!-- Sticky Horizontal Thumbnails -->
-    <div class="thumb-nav-container">
-      <div class="thumb-nav">
-        <a href="#project1"><img src="3dimages/irakalprojectthumb.png" alt="Project 1"></a>
-        <a href="#project2"><img src="3dimages/carnivalprojectthumb.jpg" alt="Project 2"></a>
-        <a href="#project3"><img src="3dimages/theyyamprojectthumb.jpg" alt="Project 3"></a>
-        <a href="#project4"><img src="3dimages/characterfxprojectthumb.png" alt="Project 4"></a>
-      </div>
+    <!-- FULLSCREEN MENU OVERLAY -->
+    <div id="mobileMenu" class="mobile-menu-overlay">
+        <div class="mobile-menu-items">
+            <a href="resume.html">Resume</a>
+            <a href="spot.html">Spot</a>
+            <a href="https://www.imdb.com/name/nm17583632/?ref_=ext_shr_lnk" target="_blank">IMDb</a>
+            <a href="about.html">Chai?</a>
+            <a href="https://www.linkedin.com" target="_blank">in</a>
+            <a href="mailto:jaisgeorge28@gmail.com">Email</a>
+        </div>
     </div>
 
-    <!-- YouTube Video -->
-    <div class="video-container">
-      <iframe 
-        src="https://www.youtube.com/embed/_5Gac66KIM0?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3" 
-        title="YouTube video" 
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-      </iframe>
-    </div>
+    <main>
+        <h2></h2>
 
-    <!-- Project 1 -->
-    <div id="project1" class="project project-layout-collage">
-      <h3 class="project-title">Irakal (Preys) Short Film - WIP</h3>
-      <p class="project-desc">
-        IRAKAL is a personal short film project I began developing a couple of years ago while I was in India. The key inspiration came from a decommissioned amphitheater I visited with friends while backpacking. I developed a story around the location, planned shots, created storyboards, and surveyed the location to build a VIRTUAL environment. Now I'm also using some Gen AI tools to animate the wolf!
-      </p>
-
-      <div class="project-collage">
-        <div class="collage" data-columns="3">
-          <img src="3dimages/irakalcollage1.png" alt="Project 1 Image 1" data-desc="Unreal Engine Screenshot.">
-          <img src="3dimages/irakalcollage2.png" alt="Project 1 Image 2" data-desc="Unreal Engine Screenshot.">
-          <img src="3dimages/irakalcollage3.png" alt="Project 1 Image 3" data-desc="Unreal Engine Screenshot.">
-          <img src="3dimages/irakalcollage4.png" alt="Project 1 Image 4" data-desc="Unreal Engine Screenshot.">
-          <img src="3dimages/irakalcollage6.png" alt="Project 1 Image 6" data-desc="Unreal Engine Screenshot.">
-          <img src="3dimages/irakalcollage7.jpg" alt="Project 1 Image 7" data-desc="Matte-painted Photograph + Storyboard">
-          <img src="3dimages/irakalcollage8.jpg" alt="Project 1 Image 8" data-desc="Matte-painted Photograph + Storyboard">
+        <!-- Sticky Horizontal Thumbnails -->
+        <div class="thumb-nav-container">
+            <div class="thumb-nav">
+                <a href="#project1"><img src="3dimages/irakalprojectthumb.png" alt="Project 1"></a>
+                <a href="#project2"><img src="3dimages/carnivalprojectthumb.jpg" alt="Project 2"></a>
+                <a href="#project3"><img src="3dimages/theyyamprojectthumb.jpg" alt="Project 3"></a>
+                <a href="#project4"><img src="3dimages/characterfxprojectthumb.png" alt="Project 4"></a>
+            </div>
         </div>
-        <div class="collage" data-columns="3">
-          <img src="3dimages/irakalcollage5.png" alt="Project 1 Image 5" data-desc="Unreal Engine Screenshot - Daylight.">
-          <img src="3dimages/irakalcollage9.png" alt="Project 1 Image 9" data-desc="Unreal Engine Screenshot - Greybox.">
-          <img src="3dimages/irakalcollage10.jpg" alt="Project 1 Image 10" data-desc="Location Reference.">
-          <img src="3dimages/irakalcollage11.jpg" alt="Project 1 Image 11" data-desc="Auto CAD Drawing based on location survey">
-          <img src="3dimages/irakalcollage12.jpg" alt="Project 1 Image 12" data-desc="Storyboard">
-          <img src="3dimages/irakalcollage13.png" alt="Project 1 Image 13" data-desc="Wolf 3D model. Not used for the renders.">          
+
+        <!-- YouTube Video -->
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/_5Gac66KIM0?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3" title="YouTube video"
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
         </div>
-      </div>
-    </div>
 
-
-
-    
-    <!-- Project 2 (same layout as Project 1) 
-    <div id="project2" class="project project-layout-collage">
-      <h3 class="project-title">Project 2 Title</h3>
-      <p class="project-desc">As creative director for Cochin Carnival 2022—Kochi’s iconic New Year festival drawing over 500,000 attendees—I designed the 60-foot “Papanji” effigy, the festival’s centerpiece. Burned at midnight on New Year’s Eve, Papanji was imagined welcoming foreign visitors while crushing a coronavirus cell, inspired by the post-pandemic return of tourism and the myth of Vamana and Mahabali. I also created Franco, the event mascot—a hermit crab with a discarded sanitizer cap as its shell—to raise awareness about plastic pollution along Fort Kochi’s shores. The animated promotional video was fully produced in Blender, where I handled concept, modeling, stylized rendering, lighting, and sound, bringing the festival’s story to life in motion.</p>
-
-      <div class="project-collage">
-        <div class="collage" data-columns="1">
-          <img src="3dimages/carnivalcollage1.jpg" alt="Project 2 Image 1">
+        <!-- Project 1 -->
+        <div id="project1" class="project project-layout-collage">
+            <h3 class="project-title">Irakal (Preys) Short Film - WIP</h3>
+            <p class="project-desc">
+                IRAKAL is a personal short film project I began developing a couple of years ago while I was in India. The key
+                inspiration came from a decommissioned amphitheater I visited with friends while backpacking. I developed a story
+                around the location, planned shots, created storyboards, and surveyed the location to build a VIRTUAL environment.
+                Now I'm also using some Gen AI tools to animate the wolf!
+            </p>
+            <div class="project-collage">
+                <div class="collage" data-columns="3">
+                    <img src="3dimages/irakalcollage1.png" alt="Project 1 Image 1" data-desc="Unreal Engine Screenshot.">
+                    <img src="3dimages/irakalcollage2.png" alt="Project 1 Image 2" data-desc="Unreal Engine Screenshot.">
+                    <img src="3dimages/irakalcollage3.png" alt="Project 1 Image 3" data-desc="Unreal Engine Screenshot.">
+                    <img src="3dimages/irakalcollage4.png" alt="Project 1 Image 4" data-desc="Unreal Engine Screenshot.">
+                    <img src="3dimages/irakalcollage6.png" alt="Project 1 Image 6" data-desc="Unreal Engine Screenshot.">
+                    <img src="3dimages/irakalcollage7.jpg" alt="Project 1 Image 7" data-desc="Matte-painted Photograph + Storyboard">
+                    <img src="3dimages/irakalcollage8.jpg" alt="Project 1 Image 8" data-desc="Matte-painted Photograph + Storyboard">
+                </div>
+                <div class="collage" data-columns="3">
+                    <img src="3dimages/irakalcollage5.png" alt="Project 1 Image 5" data-desc="Unreal Engine Screenshot - Daylight.">
+                    <img src="3dimages/irakalcollage9.png" alt="Project 1 Image 9" data-desc="Unreal Engine Screenshot - Greybox.">
+                    <img src="3dimages/irakalcollage10.jpg" alt="Project 1 Image 10" data-desc="Location Reference.">
+                    <img src="3dimages/irakalcollage11.jpg" alt="Project 1 Image 11" data-desc="Auto CAD Drawing based on location survey">
+                    <img src="3dimages/irakalcollage12.jpg" alt="Project 1 Image 12" data-desc="Storyboard">
+                    <img src="3dimages/irakalcollage13.png" alt="Project 1 Image 13" data-desc="Wolf 3D model. Not used for the renders.">
+                </div>
+            </div>
         </div>
-        <div class="collage" data-columns="2">
-          <img src="3dimages/carnivalcollage2.jpg" alt="Project 2 Image 2">
-          <img src="3dimages/carnivalcollage3.jpg" alt="Project 2 Image 3">
-          <img src="3dimages/carnivalcollage4.jpg" alt="Project 2 Image 4">
-          <img src="3dimages/carnivalcollage6.jpg" alt="Project 2 Image 6">
-          <img src="3dimages/carnivalcollage5.jpg" alt="Project 2 Image 5">    
-        </div>
-      </div>
-    </div>
--->
 
+        <!-- Project 2 -->
+        <div id="project2" class="project project-layout-collage">
+            <h3 class="project-title">Cochin Carnival 2022 Teaser for Kerala Tourism</h3>
+            <p class="project-desc">
+                As creative director for Cochin Carnival 2022—Kochi’s iconic New Year festival drawing over 500,000 attendees—I designed
+                the 60-foot “Papanji” effigy, the festival’s centerpiece. Burned at midnight on New Year’s Eve, Papanji was imagined
+                welcoming foreign visitors while crushing a coronavirus cell, inspired by the post-pandemic return of tourism and the
+                myth of Vamana and Mahabali. I also created Franco, the event mascot—a hermit crab with a discarded sanitizer cap as
+                its shell—to raise awareness about plastic pollution along Fort Kochi’s shores. The animated promotional video was
+                fully produced in Blender, where I handled concept, modeling, stylized rendering, lighting, and sound, bringing the
+                festival’s story to life in motion.
+            </p>
+            <div class="project-collage">
+                <!-- Left: 1 image -->
+                <div class="collage" data-columns="1">
+                    <div class="collage-column">
+                        <img src="3dimages/carnivalcollage1.jpg" alt="Project 2 Image 1" data-desc="Blender NPR Render - Final Environment">
+                    </div>
+                </div>
 
-
-    
-    <!-- Project 2 -->
-    <div id="project2" class="project project-layout-collage">
-      <h3 class="project-title">Cochin Carnival 2022 Teaser for Kerala Tourism</h3>
-      <p class="project-desc">As creative director for Cochin Carnival 2022—Kochi’s iconic New Year festival drawing over 500,000 attendees—I designed the 60-foot “Papanji” effigy, the festival’s centerpiece. Burned at midnight on New Year’s Eve, Papanji was imagined welcoming foreign visitors while crushing a coronavirus cell, inspired by the post-pandemic return of tourism and the myth of Vamana and Mahabali. I also created Franco, the event mascot—a hermit crab with a discarded sanitizer cap as its shell—to raise awareness about plastic pollution along Fort Kochi’s shores. The animated promotional video was fully produced in Blender, where I handled concept, modeling, stylized rendering, lighting, and sound, bringing the festival’s story to life in motion.</p>    
-      <div class="project-collage">
-        <!-- Left: 1 image -->
-        <div class="collage" data-columns="1">
-          <div class="collage-column">
-            <img src="3dimages/carnivalcollage1.jpg" alt="Project 2 Image 1" data-desc="Blender NPR Render - Final Environment">
-          </div>
+                <!-- Right: 3 columns -->
+                <div class="collage" data-columns="3">
+                    <img src="3dimages/carnivalcollage3.jpg" alt="Project 2 Image 3" data-desc="Blender Solid-shaded view.">
+                    <img src="3dimages/carnivalcollage4.jpg" alt="Project 2 Image 4" data-desc="Blender Character Rig - NPR Shaded.">
+                    <img src="3dimages/carnivalcollage5.jpg" alt="Project 2 Image 5" data-desc="Newspaper Article about my Papanji design.">
+                    <img src="3dimages/carnivalcollage2.jpg" alt="Project 2 Image 2" data-desc="Papanji and Mascot Design.">
+                    <img src="3dimages/carnivalcollage6.jpg" alt="Project 2 Image 6" data-desc="From the midnight ceremony.">
+                </div>
+            </div>
         </div>
-    
-        <!-- Right: 3 columns -->
-        <div class="collage" data-columns="3">
-          <img src="3dimages/carnivalcollage3.jpg" alt="Project 2 Image 3" data-desc="Blender Solid-shaded view.">
-          <img src="3dimages/carnivalcollage4.jpg" alt="Project 2 Image 4" data-desc="Blender Character Rig - NPR Shaded.">
-          <img src="3dimages/carnivalcollage5.jpg" alt="Project 2 Image 5" data-desc="Newspaper Article about my Papanji design.">
-          <img src="3dimages/carnivalcollage2.jpg" alt="Project 2 Image 2" data-desc="Papanji and Mascot Design.">
-          <img src="3dimages/carnivalcollage6.jpg" alt="Project 2 Image 6" data-desc="From the midnight ceremony.">
-        </div>
-      </div>
-    </div>
 
 
     <!-- Project 3 -->
@@ -356,4 +334,5 @@ menuCloseBtn.onclick = () => {
   menuCloseBtn.style.display = 'none';
 };
 </script>
+
 
