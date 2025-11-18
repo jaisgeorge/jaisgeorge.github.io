@@ -77,8 +77,8 @@ header h1 a {
 .header-left {
   display: flex;
   gap: 15px;
-  align-items: center;
-  justify-content: flex-end;
+  align-items: left;
+  justify-content: flex-start;
   flex: 0 1 auto;
   font-weight: 200; /* ExtraLight */
 
@@ -88,8 +88,8 @@ header h1 a {
 .header-right {
   display: flex;
   flex-wrap: wrap;      
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: flex-end;
+  justify-content: flex-end;
   gap: 15px;
   flex: 0 1 auto;       
   max-width: 35%;       
@@ -637,6 +637,7 @@ footer p {
     max-width: 90vw;
   }
 }
+
 
 
 
