@@ -49,6 +49,7 @@ header {
   box-sizing: border-box;
   flex-wrap: wrap;
   gap: 10px;
+  font-weight: 200; /* ExtraLight for all text */
 }
 
 /* Centered "JAIS GEORGE" */
@@ -703,6 +704,7 @@ footer p {
     justify-content: space-between;
   }
 }
+
 
 
 
