@@ -16,18 +16,14 @@ html { scroll-behavior: smooth; }
 body {
   background-color: #000;
   text-align: center;
-  -ms-overflow-style: none;  /* IE/Edge */
-  scrollbar-width: none;      /* Firefox */
+  color: #fff;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 body::-webkit-scrollbar { display: none; }
 
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
+a { color: inherit; text-decoration: none; transition: color 0.2s; }
 a:hover { color: #888; }
 
 /* =========================
@@ -57,11 +53,11 @@ header h1 {
   transform: translate(-50%, -50%);
   margin: 0;
   z-index: 1;
-  font-size: 3rem; /* restored */
+  font-size: 2rem; /* fixed */
   white-space: nowrap;
 }
 
-header h1 a { font-size: 3rem; text-decoration: none; color: #fff; }
+header h1 a { font-size: 2rem; text-decoration: none; color: #fff; }
 
 .header-left,
 .header-right {
@@ -133,8 +129,12 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
   text-align: center;
 }
 
-.project .project-title { font-size: 1.5rem; margin-bottom: 20px; }
-.project .project-desc { margin-bottom: 20px; }
+.project .project-title,
+.project .project-desc {
+  font-weight: 200;
+  color: #fff; /* fixed */
+  margin-bottom: 20px;
+}
 
 .project-layout-collage .project-collage,
 .collage { display: flex; gap: 20px; justify-content: center; }
@@ -164,10 +164,11 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
 .video-container iframe {
   width: 100%;
   height: 100%;
-  border: 0;
-  border-radius: 0;
+  border: none;      /* fixed */
+  outline: none;
+  box-shadow: none;
   display: block;
-  position: static; /* fixed */
+  position: static;
 }
 
 .video-grid, .video-grid-icvfx {
@@ -334,6 +335,7 @@ footer p { font-size: 0.9rem; }
 .slideshow-column img { width: 100%; margin-bottom: 10px; border-radius: 6px; object-fit: cover; }
 .column-caption { margin-top: 8px; font-size: 0.9rem; text-align: center; color: #ddd; }
 
+/* Mobile stack */
 @media (max-width: 768px) {
   .slideshow-row, .slideshow-column { flex-direction: column; width: 90vw; max-width: 90vw; }
 }
@@ -357,6 +359,4 @@ footer p { font-size: 0.9rem; }
 
 .menu-icon, .close-icon { width: 28px; height: 28px; cursor: pointer; display: none; position: relative; z-index: 1500; }
 
-@media (max-width: 768px) {
-  .menu-icon { display: block; }
-}
+@media (max-width: 768px) { .menu-icon { display: block; } }
