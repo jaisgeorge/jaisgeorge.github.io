@@ -60,7 +60,6 @@ header h1 {
   margin: 0;
   text-align: center;
   z-index: 1;
-  font-weight: 200;      /* ExtraLight */
   white-space: nowrap;
 }
 
@@ -70,7 +69,6 @@ header h1 a {
   color: #fff;
   font-size: 2rem;
   display: block;
-  font-weight: 200; /* ExtraLight */
 }
 
 /* Left Nav container allows wrapping only when needed */
@@ -80,7 +78,6 @@ header h1 a {
   align-items: flex-start;
   justify-content: flex-start;
   flex: 0 1 auto;
-  font-weight: 200; /* ExtraLight */
   text-align: left;  
 }
 
@@ -93,7 +90,6 @@ header h1 a {
   gap: 15px;
   flex: 0 1 auto;       
   max-width: 35%;       
-  font-weight: 200; /* ExtraLight */
 }
 
 header a {
@@ -101,7 +97,6 @@ header a {
   color: #fff;
   font-size: 0.95rem;
   transition: color 0.2s;
-  font-weight: 200; /* ExtraLight */
 }
 
 header a:hover {
@@ -157,7 +152,6 @@ header {
 h2 {
   margin-top: 0px;
   text-align: center;
-  font-weight: 200;       /* Bold */
   font-size: 1rem;        /* make smaller */
 }
 
@@ -207,7 +201,6 @@ h2 {
 .project .project-desc {
   width: 100%;
   margin: 0 auto 20px auto;
-  font-weight: 200;   /* ExtraLight */
 }
 
 .project .project-title {
@@ -348,7 +341,6 @@ h2 {
 footer p {
   font-size: 0.9rem;
   color: #fff;
-  font-weight: 200; /* ExtraLight */
 }
 
 /* Lightbox */
@@ -424,7 +416,6 @@ footer p {
   font-size: 1rem;
   max-width: 90%;
   text-align: center;
-  font-weight: 200; /* ExtraLight */
 }
 
 .lightbox-close,
@@ -569,7 +560,6 @@ footer p {
 
 /* Section title */
 .resume h2 {
-  font-weight: 200;
   font-size: 2rem;
   margin-bottom: 1.5rem;
   text-align: center;
@@ -647,7 +637,6 @@ footer p {
   font-size: 0.9rem;
   text-align: center;        /* center under column content */
   color: #ddd;
-  font-weight: 200;          /* matches your Inter ExtraLight */
 }
 
 /* Mobile: stack vertically on small screens */
@@ -685,7 +674,6 @@ footer p {
   color: white;
   font-size: 1.7rem;
   text-decoration: none;
-  font-weight: 200;
 }
 
 .menu-icon, .close-icon {
@@ -715,6 +703,7 @@ footer p {
     justify-content: space-between;
   }
 }
+
 
 
 
