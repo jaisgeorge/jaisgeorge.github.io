@@ -42,7 +42,8 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-sizing: border-box;
@@ -66,7 +67,7 @@ header h1 {
 header h1 a {
   text-transform: uppercase;
   text-decoration: none;
-  color: #222;
+  color: #fff;
   font-size: 2rem;
   display: block;
   font-weight: 200; /* ExtraLight */
@@ -96,14 +97,14 @@ header h1 a {
 
 header a {
   text-decoration: none;
-  color: #222;
+  color: #fff;
   font-size: 0.95rem;
   transition: color 0.2s;
   font-weight: 200; /* ExtraLight */
 }
 
 header a:hover {
-  color: #FFD700;
+  color: #888;
 }
 
 /* Mobile Responsive */
@@ -635,6 +636,7 @@ footer p {
     max-width: 90vw;
   }
 }
+
 
 
 
