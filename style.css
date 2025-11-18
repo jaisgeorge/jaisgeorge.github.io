@@ -140,6 +140,8 @@ Mobile Responsive Header Type 1 - headers jump onto new lines
 */
 
 
+
+
 /* Mobile Responsive Header Type 2 - headers don't move */
 
 header {
@@ -156,6 +158,36 @@ header.lightbox-open {
   pointer-events: none;
   opacity: 0;
 }
+
+
+/* Z-INDEX HIERARCHY FIX */
+header {
+  z-index: 3000; /* stays above page but under menus */
+}
+
+.menu-icon,
+.close-icon {
+  position: relative;
+  z-index: 4000; /* always clickable */
+}
+
+.mobile-menu-overlay {
+  z-index: 5000; /* mobile menu is above header */
+}
+
+.lightbox {
+  z-index: 9000; /* topmost */
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  z-index: 9999; /* stay above image */
+}
+
+
+
+
 
 
 
@@ -729,6 +761,7 @@ footer p {
     justify-content: space-between;
   }
 }
+
 
 
 
