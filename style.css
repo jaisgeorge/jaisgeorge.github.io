@@ -11,11 +11,15 @@ body {
   font-family: 'Inter', Helvetica, Arial, sans-serif;
   font-weight: 200; /* ExtraLight for all text */
   margin: 0;
-  background: #fff;
-  color: #222; /* dark for readability */
+  background-color: #000;
+  color: #fff; 
   text-align: center;
   -ms-overflow-style: none;  /* IE and Edge Legacy */
   scrollbar-width: none;      /* Firefox */
+}
+
+a {
+  color: #fff;              /* white links */
 }
 
 /* Hide scrollbar in Chrome, Edge, Safari */
@@ -321,7 +325,7 @@ h2 {
 /* Footer */
 footer p {
   font-size: 0.9rem;
-  color: #666;
+  color: #fff;
   font-weight: 200; /* ExtraLight */
 }
 
@@ -631,6 +635,7 @@ footer p {
     max-width: 90vw;
   }
 }
+
 
 
 
