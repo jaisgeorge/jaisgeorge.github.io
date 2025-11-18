@@ -290,15 +290,13 @@ function openLightbox(img) {
 
   showImage();
   lightbox.style.display = 'flex';
-  header.style.pointerEvents = 'none';
-  header.style.opacity = '0';
+
 }
 
 // Close lightbox and restore header
 function closeLightbox() {
   lightbox.style.display = 'none';
-  header.style.pointerEvents = 'auto';
-  header.style.opacity = '1';
+
 }
 
 // Thumbnail click -> open lightbox
@@ -358,3 +356,4 @@ menuCloseBtn.onclick = () => {
   menuCloseBtn.style.display = 'none';
 };
 </script>
+
