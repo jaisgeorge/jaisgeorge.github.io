@@ -29,7 +29,7 @@
   <img src="icons/hamburgerw54.png" class="menu-icon" id="menuBtn">
 
   <!-- CLOSE ICON (hidden until menu opened) -->
-  <img src="icons/crossw54.png" class="close-icon" id="closeBtn">
+<img src="icons/crossw54.png" class="close-icon" id="menuCloseBtn">
   
   </header>
 
@@ -317,66 +317,24 @@ function showImage() {
   </script>
 
 <script>
-  const menuBtn = document.getElementById('menuBtn');
-  const closeBtn = document.getElementById('closeBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
+const menuBtn = document.getElementById('menuBtn');
+const menuCloseBtn = document.getElementById('menuCloseBtn');
+const mobileMenu = document.getElementById('mobileMenu');
 
-  menuBtn.onclick = () => {
-    mobileMenu.style.display = "flex";
-    menuBtn.style.display = "none";
-    closeBtn.style.display = "block";
-  };
+menuBtn.onclick = () => {
+  mobileMenu.style.display = "flex";
+  menuBtn.style.display = "none";
+  menuCloseBtn.style.display = "block";
+};
 
-  closeBtn.onclick = () => {
-    mobileMenu.style.display = "none";
-    menuBtn.style.display = "block";
-    closeBtn.style.display = "none";
-  };
+menuCloseBtn.onclick = () => {
+  mobileMenu.style.display = "none";
+  menuBtn.style.display = "block";
+  menuCloseBtn.style.display = "none";
+};
 </script>
 
  
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
