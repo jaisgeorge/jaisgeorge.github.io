@@ -152,6 +152,12 @@ header {
 }
 
 
+header.lightbox-open {
+  pointer-events: none;
+  opacity: 0;
+}
+
+
 
 /* Page Titles */
 h2 {
@@ -715,7 +721,6 @@ footer p {
     justify-content: space-between;
   }
 }
-
 
 
 
