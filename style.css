@@ -694,12 +694,20 @@ footer p {
   font-weight: 200;
 }
 
-.menu-icon, .close-icon {
+.menu-icon {
   width: 28px;
   height: 28px;
   cursor: pointer;
   display: none;      /* hidden by default */
-  z-index: 1500;
+  z-index: 3000;
+  position: relative;
+}
+
+.menu-icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  z-index: 3000;
   position: relative;
 }
 
@@ -721,6 +729,7 @@ footer p {
     justify-content: space-between;
   }
 }
+
 
 
 
