@@ -273,15 +273,22 @@ function showImage() {
     let currentImages = [];
     let currentIndex = 0;
 
-    document.querySelectorAll('.collage img').forEach(img => {
-      img.addEventListener('click', () => {
-        const collage = img.closest('.collage');
-        currentImages = Array.from(collage.querySelectorAll('img'));
-        currentIndex = currentImages.indexOf(img);
-        showImage(); // sets image + description
-        lightbox.style.display = 'flex';
-      });
-    });
+const header = document.querySelector('header');
+
+document.querySelectorAll('.collage img').forEach(img => {
+  img.addEventListener('click', () => {
+    const collage = img.closest('.collage');
+    currentImages = Array.from(collage.querySelectorAll('img'));
+    currentIndex = currentImages.indexOf(img);
+    showImage(); // sets image + description
+    lightbox.style.display = 'flex';
+    
+    // Hide header while lightbox is open
+    header.style.pointerEvents = 'none';
+    header.style.opacity = '0';
+  });
+});
+
 
     closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
     prevBtn.addEventListener('click', () => {
@@ -337,4 +344,5 @@ menuCloseBtn.onclick = () => {
  
 </body>
 </html>
+
 
