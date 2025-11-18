@@ -136,9 +136,9 @@ header a:hover {
 /* Page Titles */
 h2 {
   margin-top: 20px;
-  text-align: center;
+  text-align: left;
   font-weight: 200;       /* Bold */
-  font-size: 0.5rem;        /* make smaller */
+  font-size: 1rem;        /* make smaller */
 }
 
 /* Vertical sticky thumbnails */
@@ -637,6 +637,7 @@ footer p {
     max-width: 90vw;
   }
 }
+
 
 
 
