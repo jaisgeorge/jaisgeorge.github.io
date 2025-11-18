@@ -219,134 +219,142 @@
     <p> UNREAL ENGINE | BLENDER 3D | COMFYUI | HOUDINI | MAYA | TOUCHDESIGNER | VEX | PYTHON | C++ | ICVFX | AI | 3D PREVIZ | MOCAP | VIDEO PRODUCTION | FILM DIRECTION | ART DIRECTION</p>
     <p>&copy; 2025 Jais George</p>
   </footer>
+<script>
+/* =========================
+   THUMBNAIL HIGHLIGHT
+========================= */
+const thumbnails = document.querySelectorAll('.thumb-nav a img');
+const projects = document.querySelectorAll('.project');
 
-  <script>
-    // Highlight active thumbnail
-    const thumbnails = document.querySelectorAll('.thumb-nav a img');
-    const projects = document.querySelectorAll('.project');
-
-    function highlightThumbnail() {
-      let scrollPos = window.scrollY + 200;
-      projects.forEach((project, index) => {
-        if(scrollPos >= project.offsetTop && scrollPos < project.offsetTop + project.offsetHeight) {
-          thumbnails.forEach(img => img.classList.remove('active-thumb'));
-          thumbnails[index].classList.add('active-thumb');
-        }
-      });
+function highlightThumbnail() {
+  const scrollPos = window.scrollY + 200;
+  projects.forEach((project, index) => {
+    if (scrollPos >= project.offsetTop && scrollPos < project.offsetTop + project.offsetHeight) {
+      thumbnails.forEach(img => img.classList.remove('active-thumb'));
+      thumbnails[index].classList.add('active-thumb');
     }
-    window.addEventListener('scroll', highlightThumbnail);
-    window.addEventListener('load', highlightThumbnail);
-
-    // Column-balanced collage layout
-    document.querySelectorAll('.collage').forEach(collage => {
-      const images = Array.from(collage.querySelectorAll('img'));
-      const columnsCount = parseInt(collage.dataset.columns) || 3;
-
-      collage.innerHTML = '';
-      const columns = [];
-      for (let i = 0; i < columnsCount; i++) {
-        const col = document.createElement('div');
-        col.classList.add('collage-column');
-        columns.push(col);
-        collage.appendChild(col);
-      }
-      images.forEach((img, idx) => {
-        columns[idx % columnsCount].appendChild(img);
-      });
-    });
-
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.querySelector('.lightbox-img');
-    const closeBtn = document.querySelector('.lightbox-close');
-    const prevBtn = document.querySelector('.lightbox-prev');
-    const nextBtn = document.querySelector('.lightbox-next');
-    const lightboxDesc = document.querySelector('.lightbox-desc');
-
-function showImage() {
-  const img = currentImages[currentIndex]; // original clicked image
-  lightboxImg.src = img.src;               // set lightbox image
-  lightboxDesc.textContent = img.dataset.desc || ''; // set description
+  });
 }
 
+window.addEventListener('scroll', highlightThumbnail);
+window.addEventListener('load', highlightThumbnail);
 
-    let currentImages = [];
-    let currentIndex = 0;
 
-const header = document.querySelector('header');
+/* =========================
+   COLLAGE COLUMN LAYOUT
+========================= */
+document.querySelectorAll('.collage').forEach(collage => {
+  const images = Array.from(collage.querySelectorAll('img'));
+  const columnsCount = parseInt(collage.dataset.columns) || 3;
 
-document.querySelectorAll('.collage img').forEach(img => {
-  img.addEventListener('click', () => {
-    const collage = img.closest('.collage');
-    currentImages = Array.from(collage.querySelectorAll('img'));
-    currentIndex = currentImages.indexOf(img);
-    showImage(); // sets image + description
-    lightbox.style.display = 'flex';
-    
-    // Hide header while lightbox is open
-    header.style.pointerEvents = 'none';
-    header.style.opacity = '0';
+  collage.innerHTML = '';
+  const columns = Array.from({ length: columnsCount }, () => {
+    const col = document.createElement('div');
+    col.classList.add('collage-column');
+    collage.appendChild(col);
+    return col;
+  });
+
+  images.forEach((img, idx) => {
+    columns[idx % columnsCount].appendChild(img);
   });
 });
 
 
-closeBtn.addEventListener('click', () => {
+/* =========================
+   LIGHTBOX + HEADER LOGIC
+========================= */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.querySelector('.lightbox-img');
+const lightboxDesc = document.querySelector('.lightbox-desc');
+const closeBtn = document.querySelector('.lightbox-close');
+const prevBtn = document.querySelector('.lightbox-prev');
+const nextBtn = document.querySelector('.lightbox-next');
+
+const header = document.querySelector('header');
+let currentImages = [];
+let currentIndex = 0;
+
+// Show image in lightbox
+function showImage() {
+  const img = currentImages[currentIndex];
+  lightboxImg.src = img.src;
+  lightboxDesc.textContent = img.dataset.desc || '';
+}
+
+// Open lightbox and hide header
+function openLightbox(img) {
+  const collage = img.closest('.collage');
+  currentImages = Array.from(collage.querySelectorAll('img'));
+  currentIndex = currentImages.indexOf(img);
+
+  showImage();
+  lightbox.style.display = 'flex';
+  header.style.pointerEvents = 'none';
+  header.style.opacity = '0';
+}
+
+// Close lightbox and restore header
+function closeLightbox() {
   lightbox.style.display = 'none';
   header.style.pointerEvents = 'auto';
   header.style.opacity = '1';
+}
+
+// Thumbnail click -> open lightbox
+document.querySelectorAll('.collage img').forEach(img => {
+  img.addEventListener('click', () => openLightbox(img));
 });
 
+// Navigation
+prevBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+  showImage();
+});
+nextBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  showImage();
+});
+
+// Close buttons / background click
+closeBtn.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', e => {
-  if (e.target === lightbox) {
-    lightbox.style.display = 'none';
-    header.style.pointerEvents = 'auto';
-    header.style.opacity = '1';
+  if (e.target === lightbox) closeLightbox();
+});
+
+// Keyboard support
+document.addEventListener('keydown', e => {
+  if (lightbox.style.display === 'flex') {
+    e.preventDefault();
+    if (e.key === 'ArrowLeft') {
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      showImage();
+    }
+    if (e.key === 'ArrowRight') {
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      showImage();
+    }
+    if (e.key === 'Escape') closeLightbox();
   }
 });
 
-    // --- Keyboard support for lightbox ---
-    document.addEventListener('keydown', e => {
-      if (lightbox.style.display === 'flex') { // only if lightbox is open
-        e.preventDefault(); // <-- stop page scroll
-        if (e.key === 'ArrowLeft') {
-          currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-          showImage();
-        }
-        if (e.key === 'ArrowRight') {
-          currentIndex = (currentIndex + 1) % currentImages.length;
-          showImage();
-        }
-        if (e.key === 'Escape') {
-          lightbox.style.display = 'none';
-          header.style.pointerEvents = 'auto';
-          header.style.opacity = '1';
-        }
-      }
-    });
-    
-  </script>
 
-<script>
+/* =========================
+   MOBILE MENU TOGGLE
+========================= */
 const menuBtn = document.getElementById('menuBtn');
 const menuCloseBtn = document.getElementById('menuCloseBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 
 menuBtn.onclick = () => {
-  mobileMenu.style.display = "flex";
-  menuBtn.style.display = "none";
-  menuCloseBtn.style.display = "block";
+  mobileMenu.style.display = 'flex';
+  menuBtn.style.display = 'none';
+  menuCloseBtn.style.display = 'block';
 };
 
 menuCloseBtn.onclick = () => {
-  mobileMenu.style.display = "none";
-  menuBtn.style.display = "block";
-  menuCloseBtn.style.display = "none";
+  mobileMenu.style.display = 'none';
+  menuBtn.style.display = 'block';
+  menuCloseBtn.style.display = 'none';
 };
 </script>
-
- 
-</body>
-</html>
-
-
-
