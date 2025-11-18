@@ -290,18 +290,19 @@ document.querySelectorAll('.collage img').forEach(img => {
 });
 
 
-    closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
-    prevBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-      showImage();
-    });
-    nextBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % currentImages.length;
-      showImage();
-    });
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) lightbox.style.display = 'none';
-    });
+closeBtn.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+  header.style.pointerEvents = 'auto';
+  header.style.opacity = '1';
+});
+
+lightbox.addEventListener('click', e => {
+  if (e.target === lightbox) {
+    lightbox.style.display = 'none';
+    header.style.pointerEvents = 'auto';
+    header.style.opacity = '1';
+  }
+});
 
     // --- Keyboard support for lightbox ---
     document.addEventListener('keydown', e => {
@@ -317,6 +318,8 @@ document.querySelectorAll('.collage img').forEach(img => {
         }
         if (e.key === 'Escape') {
           lightbox.style.display = 'none';
+          header.style.pointerEvents = 'auto';
+          header.style.opacity = '1';
         }
       }
     });
@@ -344,5 +347,6 @@ menuCloseBtn.onclick = () => {
  
 </body>
 </html>
+
 
 
