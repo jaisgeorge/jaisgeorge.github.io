@@ -77,7 +77,7 @@ header h1 a {
 
 header a, footer a { color: #fff; }
 
-.menu-icon, .close-icon { width: 28px; height: 28px; cursor: pointer; display: none; position: relative; z-index: 1500; }
+.menu-icon, .close-icon { width: 28px; height: 28px; cursor: pointer; position: relative; z-index: 1500; }
 
 /* -------------------------
    MOBILE HEADER
@@ -371,9 +371,10 @@ footer p { font-size: 0.9rem; }
 
 .mobile-menu-items a { font-size: 1.7rem; font-weight: 200; color: #fff; }
 
-.menu-icon, .close-icon { width: 28px; height: 28px; cursor: pointer; display: none; position: relative; z-index: 1500; }
+.menu-icon, .close-icon { width: 28px; height: 28px; cursor: pointer; position: relative; z-index: 1500; }
 
 @media (max-width: 768px) { .menu-icon { display: block; } }
+
 
 
 
