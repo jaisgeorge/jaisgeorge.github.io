@@ -184,10 +184,20 @@
 /* ============================================================
    Mobile Menu Toggle
 ============================================================ */
-const menuButton = document.querySelector(".menu-button");
-const header = document.querySelector("header");
+const menuButton = document.getElementById("menuBtn");
+const menuCloseButton = document.getElementById("menuCloseBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
 menuButton.addEventListener("click", () => {
-  header.classList.toggle("menu-open");
+  mobileMenu.style.display = "flex";
+  menuButton.style.display = "none";
+  menuCloseButton.style.display = "block";
+});
+
+menuCloseButton.addEventListener("click", () => {
+  mobileMenu.style.display = "none";
+  menuButton.style.display = "block";
+  menuCloseButton.style.display = "none";
 });
 
 /* ============================================================
@@ -255,11 +265,13 @@ document.querySelectorAll(".collage").forEach(collage => {
 ============================================================ */
 const lightbox = document.querySelector(".lightbox");
 const lightboxImg = document.querySelector(".lightbox-img");
+const lightboxDesc = document.querySelector(".lightbox-desc");
 let currentImages = [];
 let currentIndex = 0;
 
 function updateLightbox() {
   lightboxImg.src = currentImages[currentIndex].src;
+  lightboxDesc.textContent = currentImages[currentIndex].dataset.desc || "";
 }
 
 function openLightboxFromImage(img) {
@@ -305,4 +317,6 @@ document.querySelector(".lightbox-prev").addEventListener("click", () => {
   updateLightbox();
 });
 </script>
+
+
 
