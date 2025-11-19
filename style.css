@@ -58,7 +58,7 @@ header h1 {
 }
 
 header h1 a {
-  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-size: clamp(1.6rem, 4vw, 2rem);
   text-decoration: none;
   color: #fff;
 }
@@ -373,4 +373,5 @@ footer p { font-size: 0.9rem; }
 .menu-icon, .close-icon { width: 28px; height: 28px; cursor: pointer; display: none; position: relative; z-index: 1500; }
 
 @media (max-width: 768px) { .menu-icon { display: block; } }
+
 
