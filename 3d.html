@@ -181,91 +181,112 @@
       SCRIPTS (Unified, optimized)
 ============================ -->
 <script>
-/* --------------------------------------
-   Populate mobile menu (DRY)
--------------------------------------- */
-const mainNav = document.getElementById("mainNav");
-const mobileMenuItems = document.getElementById("mobileMenuItems");
-mobileMenuItems.innerHTML = mainNav.innerHTML;
+/* ============================================================
+   Mobile Menu Toggle
+============================================================ */
+const menuButton = document.querySelector(".menu-button");
+const header = document.querySelector("header");
+menuButton.addEventListener("click", () => {
+  header.classList.toggle("menu-open");
+});
 
-/* --------------------------------------
-   Mobile menu toggling using classes
--------------------------------------- */
-const menuBtn = document.getElementById('menuBtn');
-const menuCloseBtn = document.getElementById('menuCloseBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-
-menuBtn.onclick = () => {
-  mobileMenu.classList.add("open");
-  mobileMenu.setAttribute("aria-hidden", "false");
+/* ============================================================
+   Header Scroll State
+============================================================ */
+const updateHeaderState = () => {
+  if (window.scrollY > 10) {
+    document.body.classList.add("scrolled");
+  } else {
+    document.body.classList.remove("scrolled");
+  }
 };
 
-menuCloseBtn.onclick = () => {
-  mobileMenu.classList.remove("open");
-  mobileMenu.setAttribute("aria-hidden", "true");
-};
+window.addEventListener("scroll", updateHeaderState);
+updateHeaderState();
 
-/* --------------------------------------
-   Column-balanced collage builder
--------------------------------------- */
+/* ============================================================
+   Thumbnail Highlight on Scroll
+============================================================ */
+const thumbnails = document.querySelectorAll(".thumb-nav a");
+const projects = document.querySelectorAll(".project");
+
+function highlightThumbnail() {
+  let scrollPos = window.scrollY + window.innerHeight * 0.3;
+
+  projects.forEach((project, index) => {
+    if (scrollPos >= project.offsetTop &&
+        scrollPos < project.offsetTop + project.offsetHeight) {
+
+      thumbnails.forEach(t => t.classList.remove("active"));
+      thumbnails[index]?.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", highlightThumbnail);
+highlightThumbnail();
+
+/* ============================================================
+   Collage Builder (rebuilds DOM)
+============================================================ */
 document.querySelectorAll(".collage").forEach(collage => {
   const imgs = [...collage.querySelectorAll("img")];
   const count = Number(collage.dataset.columns) || 3;
 
+  // wipe the original DOM
   collage.innerHTML = "";
-  const cols = Array.from({ length: count }, () => {
-    const div = document.createElement("div");
-    div.classList.add("collage-column");
-    collage.appendChild(div);
-    return div;
+
+  // create column containers
+  const columns = Array.from({ length: count }, () => {
+    const col = document.createElement("div");
+    col.classList.add("collage-column");
+    collage.appendChild(col);
+    return col;
   });
 
-  imgs.forEach((img, i) => cols[i % count].appendChild(img));
+  // distribute images
+  imgs.forEach((img, i) => {
+    columns[i % count].appendChild(img);
+  });
 });
 
-/* --------------------------------------
-   Lightbox
--------------------------------------- */
+/* ============================================================
+   Lightbox Functions
+============================================================ */
+const lightbox = document.querySelector(".lightbox");
+const lightboxImg = document.querySelector(".lightbox-img");
 let currentImages = [];
 let currentIndex = 0;
 
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.querySelector(".lightbox-img");
-const lightboxDesc = document.querySelector(".lightbox-desc");
-
 function updateLightbox() {
-  const img = currentImages[currentIndex];
-  lightboxImg.src = img.src;
-  lightboxDesc.textContent = img.dataset.desc || "";
+  lightboxImg.src = currentImages[currentIndex].src;
 }
 
-document.querySelectorAll(".collage img").forEach(img => {
-  img.addEventListener("click", () => {
-    const collage = img.closest(".collage");
-    currentImages = [...collage.querySelectorAll("img")];
-    currentIndex = currentImages.indexOf(img);
+function openLightboxFromImage(img) {
+  const collage = img.closest(".collage");
+  currentImages = [...collage.querySelectorAll("img")];
+  currentIndex = currentImages.indexOf(img);
 
-    updateLightbox();
-    lightbox.classList.add("open");
-    lightbox.setAttribute("aria-hidden", "false");
+  updateLightbox();
+  lightbox.classList.add("open");
+  lightbox.setAttribute("aria-hidden", "false");
+}
+
+function enableLightbox() {
+  document.querySelectorAll(".collage img").forEach(img => {
+    img.addEventListener("click", () => openLightboxFromImage(img));
   });
-});
+}
 
-document.querySelector(".lightbox-close").onclick = () => {
+enableLightbox(); // IMPORTANT: after collage builder rewrites DOM
+
+/* Close lightbox */
+document.querySelector(".lightbox-close").addEventListener("click", () => {
   lightbox.classList.remove("open");
   lightbox.setAttribute("aria-hidden", "true");
-};
+});
 
-document.querySelector(".lightbox-prev").onclick = () => {
-  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-  updateLightbox();
-};
-
-document.querySelector(".lightbox-next").onclick = () => {
-  currentIndex = (currentIndex + 1) % currentImages.length;
-  updateLightbox();
-};
-
+/* Click outside image closes lightbox */
 lightbox.addEventListener("click", e => {
   if (e.target === lightbox) {
     lightbox.classList.remove("open");
@@ -273,46 +294,15 @@ lightbox.addEventListener("click", e => {
   }
 });
 
-/* --------------------------------------
-   Keyboard Controls - safe version
--------------------------------------- */
-document.addEventListener("keydown", e => {
-  if (!lightbox.classList.contains("open")) return;
-
-  if (e.key === "ArrowLeft") {
-    e.preventDefault();
-    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-    updateLightbox();
-  }
-  if (e.key === "ArrowRight") {
-    e.preventDefault();
-    currentIndex = (currentIndex + 1) % currentImages.length;
-    updateLightbox();
-  }
-  if (e.key === "Escape") {
-    lightbox.classList.remove("open");
-  }
+/* Next / Prev */
+document.querySelector(".lightbox-next").addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  updateLightbox();
 });
 
-/* --------------------------------------
-   Thumbnail Highlight (IntersectionObserver)
--------------------------------------- */
-const thumbs = document.querySelectorAll(".thumb-nav a img");
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const index = [...projects].indexOf(entry.target);
-      thumbs.forEach(t => t.classList.remove("active-thumb"));
-      thumbs[index]?.classList.add("active-thumb");
-    }
-  });
-}, { threshold: 0.5 });
-
-const projects = document.querySelectorAll(".project");
-projects.forEach(p => observer.observe(p));
-
+document.querySelector(".lightbox-prev").addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+  updateLightbox();
+});
 </script>
 
-</body>
-</html>
