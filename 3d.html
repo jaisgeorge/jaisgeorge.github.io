@@ -66,17 +66,14 @@
   <p>&copy; 2025 Jais George</p>
 </footer>
 
-<!-- ============================
-      SCRIPTS
-============================ -->
-<script>
 function checkHeaderCollapse() {
   const windowWidth = window.innerWidth;
   const rightRect = headerRight.getBoundingClientRect();
   const centerRect = headerCenter.getBoundingClientRect();
 
-  // Condition to collapse: either mobile width OR right header close to center
-  const shouldCollapse = windowWidth <= 768 || (rightRect.left - centerRect.right < 40);
+  // Use a larger buffer so it collapses earlier
+  const buffer = 80; 
+  const shouldCollapse = windowWidth <= 768 || (rightRect.left - centerRect.right < buffer);
 
   if (shouldCollapse) {
     // Collapse
@@ -86,7 +83,7 @@ function checkHeaderCollapse() {
     mobileMenu.style.display = "none";
     header.classList.add("mobile-collapsed");
   } else {
-    // Expand (wide screen / enough space)
+    // Expand
     headerRight.style.display = "flex";
     menuButton.style.display = "none";
     closeButton.style.display = "none";
@@ -94,6 +91,7 @@ function checkHeaderCollapse() {
     header.classList.remove("mobile-collapsed");
   }
 }
+
 
 // Run on load & resize
 window.addEventListener("resize", checkHeaderCollapse);
@@ -214,6 +212,7 @@ document.addEventListener("keydown", e => {
 </script>
 </body>
 </html>
+
 
 
 
