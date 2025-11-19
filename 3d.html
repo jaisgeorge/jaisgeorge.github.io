@@ -169,28 +169,69 @@
       SCRIPTS
 ============================ -->
 <script>
+const header = document.querySelector("header");
+const headerRight = document.querySelector(".header-right");
+const headerCenter = document.querySelector("header h1");
+const menuButton = document.getElementById("menuBtn");
+const closeButton = document.getElementById("menuCloseBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+const mobileMenuItems = document.getElementById("mobileMenuItems");
+const rightLinks = document.querySelectorAll(".header-right a");
+
+// Populate mobile menu with right header links
+rightLinks.forEach(link => {
+  const clone = link.cloneNode(true);
+  mobileMenuItems.appendChild(clone);
+});
+
+// Open menu
+menuButton.addEventListener("click", () => {
+  mobileMenu.style.display = "flex";
+  mobileMenu.setAttribute("aria-hidden", "false");
+  menuButton.style.display = "none";
+  closeButton.style.display = "block";
+});
+
+// Close menu
+closeButton.addEventListener("click", () => {
+  mobileMenu.style.display = "none";
+  mobileMenu.setAttribute("aria-hidden", "true");
+  closeButton.style.display = "none";
+  menuButton.style.display = "block";
+});
+
+// Close if clicking outside menu panel
+mobileMenu.addEventListener("click", e => {
+  if (e.target === mobileMenu) {
+    mobileMenu.style.display = "none";
+    mobileMenu.setAttribute("aria-hidden", "true");
+    closeButton.style.display = "none";
+    menuButton.style.display = "block";
+  }
+});
+
+// Collapse logic with buffer
 function checkHeaderCollapse() {
   const windowWidth = window.innerWidth;
   const rightRect = headerRight.getBoundingClientRect();
   const centerRect = headerCenter.getBoundingClientRect();
+  const buffer = 80;
 
-  // Use a larger buffer so it collapses earlier
-  const buffer = 80; 
-  const shouldCollapse = windowWidth <= 768 || (rightRect.left - centerRect.right < buffer);
+  const shouldCollapse =
+    windowWidth <= 768 ||
+    (rightRect.left - centerRect.right < buffer);
 
   if (shouldCollapse) {
-    // Collapse
     headerRight.style.display = "none";
     menuButton.style.display = "block";
     closeButton.style.display = "none";
-    mobileMenu.style.display = "none";
+    mobileMenu.style.display = "none"; // ensure hidden on resize
     header.classList.add("mobile-collapsed");
   } else {
-    // Expand
     headerRight.style.display = "flex";
     menuButton.style.display = "none";
     closeButton.style.display = "none";
-    mobileMenu.style.display = "none";
+    mobileMenu.style.display = "none"; 
     header.classList.remove("mobile-collapsed");
   }
 }
@@ -314,6 +355,7 @@ document.addEventListener("keydown", e => {
 </script>
 </body>
 </html>
+
 
 
 
