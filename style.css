@@ -88,9 +88,10 @@ header a, footer a { color: #fff; }
   header h1 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
   /* Right header collapses into menu button */
-  .header-right { display: none; }
+/*  .header-right { display: none; }
   .menu-icon { display: block; }
-  .close-icon { display: none; }
+  .close-icon { display: none; } */
+
 }
 
 /* =========================
@@ -373,5 +374,6 @@ footer p { font-size: 0.9rem; }
 .menu-icon, .close-icon { width: 28px; height: 28px; cursor: pointer; display: none; position: relative; z-index: 1500; }
 
 @media (max-width: 768px) { .menu-icon { display: block; } }
+
 
 
