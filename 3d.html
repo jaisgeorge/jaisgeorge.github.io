@@ -222,16 +222,27 @@ function checkHeaderCollapse() {
     (rightRect.left - centerRect.right < buffer);
 
   if (shouldCollapse) {
+    // COLLAPSE
     headerRight.style.display = "none";
     menuButton.style.display = "block";
     closeButton.style.display = "none";
-    mobileMenu.style.display = "none"; // ensure hidden on resize
+
+    // force mobile menu closed if resizing while open
+    mobileMenu.style.display = "none";
+    mobileMenu.setAttribute("aria-hidden", "true");
+
     header.classList.add("mobile-collapsed");
+
   } else {
+    // UNCOLLAPSE
     headerRight.style.display = "flex";
     menuButton.style.display = "none";
     closeButton.style.display = "none";
-    mobileMenu.style.display = "none"; 
+
+    // ensure mobile menu fully closed & reset
+    mobileMenu.style.display = "none";
+    mobileMenu.setAttribute("aria-hidden", "true");
+
     header.classList.remove("mobile-collapsed");
   }
 }
@@ -355,6 +366,7 @@ document.addEventListener("keydown", e => {
 </script>
 </body>
 </html>
+
 
 
 
