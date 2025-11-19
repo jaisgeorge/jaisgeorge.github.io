@@ -117,16 +117,19 @@ mobileMenu.addEventListener("click", e => {
 // Handle responsive header state
 function checkHeaderCollapse() {
   const windowWidth = window.innerWidth;
+  const rightRect = headerRight.getBoundingClientRect();
+  const centerRect = headerCenter.getBoundingClientRect();
 
-  if (windowWidth <= 768) {
+  // Collapse conditions: mobile width OR right header is too close to center
+  if (windowWidth <= 768 || rightRect.left - centerRect.right < 40) {
     // Mobile / collapse state
     headerRight.style.display = "none";
     menuButton.style.display = "block";
     closeButton.style.display = "none";
-    mobileMenu.style.display = "none"; // hide on resize
+    mobileMenu.style.display = "none";
     header.classList.add("mobile-collapsed");
   } else {
-    // Desktop / expanded
+    // Wide screen / expanded
     headerRight.style.display = "flex";
     menuButton.style.display = "none";
     closeButton.style.display = "none";
@@ -254,5 +257,6 @@ document.addEventListener("keydown", e => {
 </script>
 </body>
 </html>
+
 
 
