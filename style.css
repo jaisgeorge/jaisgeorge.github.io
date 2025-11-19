@@ -33,7 +33,7 @@ header, footer { color: #fff; text-align: center; padding: 20px; }
 
 header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   padding: 20px 40px;
   position: sticky;
@@ -53,7 +53,7 @@ header h1 {
   transform: translate(-50%, -50%);
   margin: 0;
   z-index: 1;
-  font-size: 2rem; /* fixed */
+  font-size: 2rem;
   white-space: nowrap;
 }
 
@@ -64,20 +64,29 @@ header h1 a { font-size: 2rem; text-decoration: none; color: #fff; }
   display: flex;
   gap: 15px;
   flex: 0 1 auto;
-  align-items: flex-start;
+  align-items: center;
 }
+
+.header-left { justify-content: flex-start; }
 
 .header-right { justify-content: flex-end; max-width: 35%; }
 
 header a, footer a { color: #fff; }
 
+.menu-icon, .close-icon { width: 28px; height: 28px; cursor: pointer; display: none; position: relative; z-index: 1500; }
+
+/* -------------------------
+   MOBILE HEADER
+------------------------- */
 @media (max-width: 768px) {
-  header { justify-content: space-between; }
+  /* Keep left header top-left, center header centered */
+  .header-left { justify-content: flex-start; }
+  header h1 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+  /* Right header collapses into menu button */
   .header-right { display: none; }
   .menu-icon { display: block; }
   .close-icon { display: none; }
-  header h1 { position: static; transform: none; order: -1; margin-bottom: 10px; }
-  .header-left, .header-right { justify-content: center; gap: 10px; max-width: 100%; }
 }
 
 /* =========================
@@ -132,7 +141,7 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
 .project .project-title,
 .project .project-desc {
   font-weight: 200;
-  color: #fff; /* fixed */
+  color: #fff;
   margin-bottom: 20px;
 }
 
@@ -164,7 +173,7 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
 .video-container iframe {
   width: 100%;
   height: 100%;
-  border: none;      /* fixed */
+  border: none;
   outline: none;
   box-shadow: none;
   display: block;
