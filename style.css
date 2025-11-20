@@ -29,12 +29,6 @@ a:hover { color: #888; }
 /* =========================
    HEADER & NAVIGATION
 ========================= */
-/* DESKTOP DEFAULT — hide mobile icons */
-.menu-icon,
-.close-icon {
-  display: none !important;
-}
-
 header, footer { color: #fff; text-align: center; padding: 20px; }
 
 header {
@@ -83,26 +77,65 @@ header h1 a {
 
 header a, footer a { color: #fff; }
 
-.menu-icon, .close-icon { width: 28px; height: 28px; cursor: pointer; position: relative; z-index: 1500; }
+.menu-icon, .close-icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1500;
+  display: none; /* default hidden on desktop */
+}
+
+/* =========================
+   MOBILE COLLAPSE / MENU
+========================= */
+header.mobile-collapsed .header-right {
+  display: none !important;
+}
+
+header.mobile-collapsed .menu-icon {
+  display: block !important;
+}
+
+header.mobile-collapsed .close-icon {
+  display: none !important;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.mobile-menu-overlay.open {
+  display: flex;
+}
+
+.mobile-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  text-align: center;
+}
+
+.mobile-menu-items a {
+  font-size: 1.7rem;
+  font-weight: 200;
+  color: #fff;
+}
 
 /* -------------------------
-   MOBILE HEADER
+   MOBILE HEADER / MEDIA
 ------------------------- */
 @media (max-width: 768px) {
-  /* Keep left header top-left, center header centered */
   .header-left { justify-content: flex-start; }
   header h1 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-  .menu-icon {
-    display: block !important;
-  }
-  .close-icon {
-    display: none !important;
-  }
-  /* Right header collapses into menu button */
-/*  .header-right { display: none; }
-  .menu-icon { display: block; }
-  .close-icon { display: none; } */
-
+  .menu-icon { display: block !important; }
+  .close-icon { display: none !important; }
 }
 
 /* =========================
@@ -364,29 +397,3 @@ footer p { font-size: 0.9rem; }
 @media (max-width: 768px) {
   .slideshow-row, .slideshow-column { flex-direction: column; width: 90vw; max-width: 90vw; }
 }
-
-/* =========================
-   MOBILE MENU
-========================= */
-.mobile-menu-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
-
-.mobile-menu-items { display: flex; flex-direction: column; gap: 25px; text-align: center; }
-
-.mobile-menu-items a { font-size: 1.7rem; font-weight: 200; color: #fff; }
-
-.menu-icon, .close-icon { width: 28px; height: 28px; cursor: pointer; position: relative; z-index: 1500; }
-
-@media (max-width: 768px) { .menu-icon { display: block; } }
-
-
-
-
-
