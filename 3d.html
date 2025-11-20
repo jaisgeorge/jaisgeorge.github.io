@@ -169,80 +169,48 @@
       SCRIPTS
 ============================ -->
 <script>
+// ============================
+// HEADER COLLAPSE / MOBILE MENU
+// ============================
 const header = document.querySelector("header");
 const headerRight = document.querySelector(".header-right");
-const headerCenter = document.querySelector("header h1");
 const menuButton = document.querySelector(".menu-icon");
 const closeButton = document.querySelector(".close-icon");
 const mobileMenu = document.getElementById("mobileMenu");
 const mobileMenuItems = document.getElementById("mobileMenuItems");
 const rightLinks = document.querySelectorAll(".header-right a");
 
-// Populate mobile menu with right header links
+// Populate mobile menu
 rightLinks.forEach(link => {
-  const clone = link.cloneNode(true);
-  mobileMenuItems.appendChild(clone);
+  mobileMenuItems.appendChild(link.cloneNode(true));
 });
 
-// Open menu
-menuButton.addEventListener("click", () => {
-  mobileMenu.style.display = "flex";
-  mobileMenu.setAttribute("aria-hidden", "false");
-  menuButton.style.display = "none";
-  closeButton.style.display = "block";
-});
+// Toggle mobile menu open/close
+function openMenu() {
+  mobileMenu.classList.add("open");
+  header.classList.add("mobile-collapsed");
+}
+function closeMenu() {
+  mobileMenu.classList.remove("open");
+  header.classList.remove("mobile-collapsed");
+}
 
-// Close menu
-closeButton.addEventListener("click", () => {
-  mobileMenu.style.display = "none";
-  mobileMenu.setAttribute("aria-hidden", "true");
-  closeButton.style.display = "none";
-  menuButton.style.display = "block";
-});
-
-// Close if clicking outside menu panel
+// Menu button events
+menuButton.addEventListener("click", openMenu);
+closeButton.addEventListener("click", closeMenu);
 mobileMenu.addEventListener("click", e => {
-  if (e.target === mobileMenu) {
-    mobileMenu.style.display = "none";
-    mobileMenu.setAttribute("aria-hidden", "true");
-    closeButton.style.display = "none";
-    menuButton.style.display = "block";
-  }
+  if (e.target === mobileMenu) closeMenu();
 });
 
-// Collapse logic with buffer
+// Collapse logic based on screen width
 function checkHeaderCollapse() {
   const windowWidth = window.innerWidth;
-  const rightRect = headerRight.getBoundingClientRect();
-  const centerRect = headerCenter.getBoundingClientRect();
-  const buffer = 80;
 
-  const shouldCollapse =
-    windowWidth <= 768 ||
-    (rightRect.left - centerRect.right < buffer);
-
-  if (shouldCollapse) {
-    // COLLAPSE
-    headerRight.style.display = "none";
-    menuButton.style.display = "block";
-    closeButton.style.display = "none";
-
-    // force mobile menu closed if resizing while open
-    mobileMenu.style.display = "none";
-    mobileMenu.setAttribute("aria-hidden", "true");
-
+  if (windowWidth <= 768) {
+    // Mobile view: hide header-right, show menu button
     header.classList.add("mobile-collapsed");
-
   } else {
-    // UNCOLLAPSE
-    headerRight.style.display = "flex";
-    menuButton.style.display = "none";
-    closeButton.style.display = "none";
-
-    // ensure mobile menu fully closed & reset
-    mobileMenu.style.display = "none";
-    mobileMenu.setAttribute("aria-hidden", "true");
-
+    // Desktop view: show header-right
     header.classList.remove("mobile-collapsed");
   }
 }
@@ -250,7 +218,7 @@ function checkHeaderCollapse() {
 // Run on load & resize
 window.addEventListener("resize", checkHeaderCollapse);
 window.addEventListener("load", checkHeaderCollapse);
-
+  
 /* ============================================================
    HEADER SCROLL STATE
 ============================================================ */
@@ -366,6 +334,7 @@ document.addEventListener("keydown", e => {
 </script>
 </body>
 </html>
+
 
 
 
