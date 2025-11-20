@@ -29,6 +29,12 @@ a:hover { color: #888; }
 /* =========================
    HEADER & NAVIGATION
 ========================= */
+/* DESKTOP DEFAULT — hide mobile icons */
+.menu-icon,
+.close-icon {
+  display: none !important;
+}
+
 header, footer { color: #fff; text-align: center; padding: 20px; }
 
 header {
@@ -86,7 +92,12 @@ header a, footer a { color: #fff; }
   /* Keep left header top-left, center header centered */
   .header-left { justify-content: flex-start; }
   header h1 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-
+  .menu-icon {
+    display: block !important;
+  }
+  .close-icon {
+    display: none !important;
+  }
   /* Right header collapses into menu button */
 /*  .header-right { display: none; }
   .menu-icon { display: block; }
@@ -374,6 +385,7 @@ footer p { font-size: 0.9rem; }
 .menu-icon, .close-icon { width: 28px; height: 28px; cursor: pointer; position: relative; z-index: 1500; }
 
 @media (max-width: 768px) { .menu-icon { display: block; } }
+
 
 
 
