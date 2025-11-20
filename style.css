@@ -143,9 +143,11 @@ header.mobile-collapsed .close-icon {
 ========================= */
 h2 { margin-top: 0; text-align: center; font-size: 1rem; }
 
-/* =========================
+
+/*
+=========================
    THUMBNAILS
-========================= */
+=========================
 .thumb-nav-container {
   position: fixed;
   top: 50%;
@@ -177,6 +179,9 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
 
 .thumb-nav img:hover { transform: scale(1.05); }
 .thumb-nav img.active-thumb { border: 2px solid #fff; transform: scale(1.08); }
+
+*/
+
 
 /* =========================
    PROJECTS / COLLAGES
@@ -397,3 +402,4 @@ footer p { font-size: 0.9rem; }
 @media (max-width: 768px) {
   .slideshow-row, .slideshow-column { flex-direction: column; width: 90vw; max-width: 90vw; }
 }
+
