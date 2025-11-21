@@ -6,11 +6,13 @@
   <title>Jais George | Work</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Use Inter ExtraLight everywhere */
+    /* =========================
+       PAGE-SPECIFIC STYLING
+    ========================= */
     body, h1, h2, h3, h4, h5, h6, a, p {
       font-family: 'Inter', Helvetica, Arial, sans-serif;
       font-weight: 200; /* ExtraLight */
-      color: #222;
+      color: #fff; /* keep readable on dark background */
     }
 
     h1 { margin: 20px; font-size: 2rem; }
@@ -20,7 +22,6 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
-      max-width: none;
       margin: 40px auto;
       padding: 0 20px;
     }
@@ -31,8 +32,8 @@
     }
 
     .grid-item {
-      border: 0px solid #eee;
-      border-radius: 0px;
+      border: 0;
+      border-radius: 0;
       overflow: hidden;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       transition: transform 0.2s;
@@ -42,9 +43,7 @@
 
     .grid-item img { width: 100%; height: auto; display: block; }
 
-    .grid-item h2 { text-align: center; padding: 10px; font-size: 1.2rem; font-weight: 200; }
-
-    /* Desktop: Force 4 items per row */
+    /* Desktop: force 4 items per row */
     @media (min-width: 1024px) {
       .grid {
         grid-template-columns: repeat(4, 1fr);
@@ -72,10 +71,10 @@
     <a href="spot.html">Spot</a>
     <a href="about.html">Chai?</a>
     <a href="https://www.linkedin.com/in/jais-george/" target="_blank">
-    <img src="icons/linkediniconw54.png" alt="LinkedIn" style="width:24px; height:24px;">
+      <img src="icons/linkediniconw54.png" alt="LinkedIn" style="width:24px; height:24px;">
     </a>
     <a href="https://www.imdb.com/name/nm17583632/?ref_=ext_shr_lnk" target="_blank">
-    <img src="icons/imdbiconw54.png" alt="IMDb" style="width:35px; height:35px;">
+      <img src="icons/imdbiconw54.png" alt="IMDb" style="width:35px; height:35px;">
     </a>
   </nav>
 
@@ -84,7 +83,7 @@
 </header>
 
 <!-- ============================
-      MOBILE MENU (auto-populated)
+      MOBILE MENU
 ============================ -->
 <div id="mobileMenu" class="mobile-menu-overlay" aria-hidden="true">
   <div class="mobile-menu-items" id="mobileMenuItems"></div>
@@ -93,36 +92,37 @@
 <!-- ============================
       MAIN CONTENT
 ============================ -->
-<main>  
-  <div class="grid">
-    <a href="3d.html" class="grid-item">
-      <img src="images/3dcoverthumb.png" alt="3D">
-    </a>
-    <a href="icvfx.html" class="grid-item">
-      <img src="images/icvfxcoverthumb1.png" alt="ICVFX">
-    </a>
-    <a href="storyvisdev.html" class="grid-item">
-      <img src="images/story-visdevcoverthumb.jpg" alt="Story">
-    </a>
-    <a href="ai.html" class="grid-item">
-      <img src="images/aicoverthumb.png" alt="AI">
-    </a>
-    <a href="interactive.html" class="grid-item">
-      <img src="images/interactivecoverthumb.png" alt="Interactive">
-    </a>
-    <a href="shortfilms.html" class="grid-item">
-      <img src="images/shortfilmscoverthumb.png" alt="Short Films">
-    </a>
-    <a href="cinema.html" class="grid-item">
-      <img src="images/cinemacoverthumb.png" alt="Cinema">
-    </a>
-    <a href="misc.html" class="grid-item">
-      <img src="images/misccoverthumb.png" alt="Misc">
-    </a>
-  </div>
+<main>
+  <section class="projects">
+    <div class="grid">
+      <a href="3d.html" class="grid-item">
+        <img src="images/3dcoverthumb.png" alt="3D">
+      </a>
+      <a href="icvfx.html" class="grid-item">
+        <img src="images/icvfxcoverthumb1.png" alt="ICVFX">
+      </a>
+      <a href="storyvisdev.html" class="grid-item">
+        <img src="images/story-visdevcoverthumb.jpg" alt="Story">
+      </a>
+      <a href="ai.html" class="grid-item">
+        <img src="images/aicoverthumb.png" alt="AI">
+      </a>
+      <a href="interactive.html" class="grid-item">
+        <img src="images/interactivecoverthumb.png" alt="Interactive">
+      </a>
+      <a href="shortfilms.html" class="grid-item">
+        <img src="images/shortfilmscoverthumb.png" alt="Short Films">
+      </a>
+      <a href="cinema.html" class="grid-item">
+        <img src="images/cinemacoverthumb.png" alt="Cinema">
+      </a>
+      <a href="misc.html" class="grid-item">
+        <img src="images/misccoverthumb.png" alt="Misc">
+      </a>
+    </div>
+  </section>
+</main>
 
- </main>
-  
 <!-- ============================
       FOOTER
 ============================ -->
@@ -135,171 +135,52 @@
       SCRIPTS
 ============================ -->
 <script>
-// ============================
-// HEADER COLLAPSE / MOBILE MENU
-// ============================
-const header = document.querySelector("header");
-const headerRight = document.querySelector(".header-right");
-const menuButton = document.querySelector(".menu-icon");
-const closeButton = document.querySelector(".close-icon");
-const mobileMenu = document.getElementById("mobileMenu");
-const mobileMenuItems = document.getElementById("mobileMenuItems");
-const rightLinks = document.querySelectorAll(".header-right a");
+  // ============================
+  // HEADER COLLAPSE / MOBILE MENU
+  // ============================
+  const header = document.querySelector("header");
+  const menuButton = document.querySelector(".menu-icon");
+  const closeButton = document.querySelector(".close-icon");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileMenuItems = document.getElementById("mobileMenuItems");
+  const rightLinks = document.querySelectorAll(".header-right a");
 
-// Populate mobile menu
-rightLinks.forEach(link => {
-  mobileMenuItems.appendChild(link.cloneNode(true));
-});
+  // Populate mobile menu
+  rightLinks.forEach(link => {
+    mobileMenuItems.appendChild(link.cloneNode(true));
+  });
 
-// Toggle mobile menu open/close
-function openMenu() {
-  mobileMenu.classList.add("open");
-  header.classList.add("mobile-collapsed");
-}
-function closeMenu() {
-  mobileMenu.classList.remove("open");
-  header.classList.remove("mobile-collapsed");
-}
-
-// Menu button events
-menuButton.addEventListener("click", openMenu);
-closeButton.addEventListener("click", closeMenu);
-mobileMenu.addEventListener("click", e => {
-  if (e.target === mobileMenu) closeMenu();
-});
-
-// Collapse logic based on screen width
-function checkHeaderCollapse() {
-  const windowWidth = window.innerWidth;
-
-  if (windowWidth <= 768) {
-    // Mobile view: hide header-right, show menu button
+  function openMenu() {
+    mobileMenu.classList.add("open");
     header.classList.add("mobile-collapsed");
-  } else {
-    // Desktop view: show header-right
+  }
+  function closeMenu() {
+    mobileMenu.classList.remove("open");
     header.classList.remove("mobile-collapsed");
   }
-}
 
-// Run on load & resize
-window.addEventListener("resize", checkHeaderCollapse);
-window.addEventListener("load", checkHeaderCollapse);
-  
-/* ============================================================
-   HEADER SCROLL STATE
-============================================================ */
-const updateHeaderState = () => {
-  if (window.scrollY > 10) document.body.classList.add("scrolled");
-  else document.body.classList.remove("scrolled");
-};
-window.addEventListener("scroll", updateHeaderState);
-updateHeaderState();
-
-/* ============================================================
-   THUMBNAIL HIGHLIGHT ON SCROLL
-============================================================ */
-const thumbnails = document.querySelectorAll(".thumb-nav a img");
-const projects = document.querySelectorAll(".project");
-
-function highlightThumbnail() {
-  const scrollPos = window.scrollY + window.innerHeight * 0.3;
-  projects.forEach((project, index) => {
-    if (scrollPos >= project.offsetTop && scrollPos < project.offsetTop + project.offsetHeight) {
-      thumbnails.forEach(t => t.classList.remove("active-thumb"));
-      thumbnails[index]?.classList.add("active-thumb");
-    }
-  });
-}
-window.addEventListener("scroll", highlightThumbnail);
-highlightThumbnail();
-
-/* ============================================================
-   COLLAGE BUILDER
-============================================================ */
-document.querySelectorAll(".collage").forEach(collage => {
-  const imgs = [...collage.querySelectorAll("img")];
-  const count = Number(collage.dataset.columns) || 3;
-
-  collage.innerHTML = "";
-
-  const columns = Array.from({ length: count }, () => {
-    const col = document.createElement("div");
-    col.classList.add("collage-column");
-    collage.appendChild(col);
-    return col;
+  menuButton.addEventListener("click", openMenu);
+  closeButton.addEventListener("click", closeMenu);
+  mobileMenu.addEventListener("click", e => {
+    if (e.target === mobileMenu) closeMenu();
   });
 
-  imgs.forEach((img, i) => columns[i % count].appendChild(img));
-});
-
-/* ============================================================
-   LIGHTBOX
-============================================================ */
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.querySelector(".lightbox-img");
-const lightboxDesc = document.querySelector(".lightbox-desc");
-let currentImages = [];
-let currentIndex = 0;
-
-function showImage() {
-  const img = currentImages[currentIndex];
-  lightboxImg.src = img.src;
-  lightboxDesc.textContent = img.dataset.desc || "";
-}
-
-function openLightbox(img) {
-  const collage = img.closest(".collage");
-  currentImages = [...collage.querySelectorAll("img")];
-  currentIndex = currentImages.indexOf(img);
-  showImage();
-  lightbox.style.display = "flex";
-  lightbox.setAttribute("aria-hidden", "false");
-}
-
-document.querySelectorAll(".collage img").forEach(img =>
-  img.addEventListener("click", () => openLightbox(img))
-);
-
-document.querySelector(".lightbox-close").addEventListener("click", () => {
-  lightbox.style.display = "none";
-  lightbox.setAttribute("aria-hidden", "true");
-});
-
-document.querySelector(".lightbox-prev").addEventListener("click", () => {
-  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-  showImage();
-});
-
-document.querySelector(".lightbox-next").addEventListener("click", () => {
-  currentIndex = (currentIndex + 1) % currentImages.length;
-  showImage();
-});
-
-lightbox.addEventListener("click", e => {
-  if (e.target === lightbox) {
-    lightbox.style.display = "none";
-    lightbox.setAttribute("aria-hidden", "true");
+  function checkHeaderCollapse() {
+    if (window.innerWidth <= 768) header.classList.add("mobile-collapsed");
+    else header.classList.remove("mobile-collapsed");
   }
-});
 
-/* Keyboard support */
-document.addEventListener("keydown", e => {
-  if (lightbox.style.display === "flex") {
-    if (e.key === "ArrowLeft") {
-      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-      showImage();
-    } else if (e.key === "ArrowRight") {
-      currentIndex = (currentIndex + 1) % currentImages.length;
-      showImage();
-    } else if (e.key === "Escape") {
-      lightbox.style.display = "none";
-      lightbox.setAttribute("aria-hidden", "true");
-    }
-  }
-});
+  window.addEventListener("resize", checkHeaderCollapse);
+  window.addEventListener("load", checkHeaderCollapse);
+
+  // Header scroll state
+  const updateHeaderState = () => {
+    if (window.scrollY > 10) document.body.classList.add("scrolled");
+    else document.body.classList.remove("scrolled");
+  };
+  window.addEventListener("scroll", updateHeaderState);
+  updateHeaderState();
 </script>
+
 </body>
 </html>
-
-
-
