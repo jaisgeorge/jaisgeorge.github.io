@@ -152,101 +152,193 @@
     <p>&copy; 2025 Jais George</p>
   </footer>
 
-  <script>
-    // Highlight active thumbnail
-    const thumbnails = document.querySelectorAll('.thumb-nav a img');
-    const projects = document.querySelectorAll('.project');
+<!-- ============================
+      SCRIPTS
+============================ -->
+<script>
+// ============================
+// HEADER COLLAPSE / MOBILE MENU
+// ============================
+const header = document.querySelector("header");
+const headerRight = document.querySelector(".header-right");
+const menuButton = document.querySelector(".menu-icon");
+const closeButton = document.querySelector(".close-icon");
+const mobileMenu = document.getElementById("mobileMenu");
+const mobileMenuItems = document.getElementById("mobileMenuItems");
+const rightLinks = document.querySelectorAll(".header-right a");
 
-    function highlightThumbnail() {
-      let scrollPos = window.scrollY + 200;
-      projects.forEach((project, index) => {
-        if(scrollPos >= project.offsetTop && scrollPos < project.offsetTop + project.offsetHeight) {
-          thumbnails.forEach(img => img.classList.remove('active-thumb'));
-          thumbnails[index].classList.add('active-thumb');
-        }
-      });
-    }
-    window.addEventListener('scroll', highlightThumbnail);
-    window.addEventListener('load', highlightThumbnail);
+// Populate mobile menu
+rightLinks.forEach(link => {
+  mobileMenuItems.appendChild(link.cloneNode(true));
+});
 
-    // Column-balanced collage layout
-    document.querySelectorAll('.collage').forEach(collage => {
-      const images = Array.from(collage.querySelectorAll('img'));
-      const columnsCount = parseInt(collage.dataset.columns) || 3;
-
-      collage.innerHTML = '';
-      const columns = [];
-      for (let i = 0; i < columnsCount; i++) {
-        const col = document.createElement('div');
-        col.classList.add('collage-column');
-        columns.push(col);
-        collage.appendChild(col);
-      }
-      images.forEach((img, idx) => {
-        columns[idx % columnsCount].appendChild(img);
-      });
-    });
-
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.querySelector('.lightbox-img');
-    const closeBtn = document.querySelector('.lightbox-close');
-    const prevBtn = document.querySelector('.lightbox-prev');
-    const nextBtn = document.querySelector('.lightbox-next');
-    const lightboxDesc = document.querySelector('.lightbox-desc');
-
-function showImage() {
-  const img = currentImages[currentIndex]; // original clicked image
-  lightboxImg.src = img.src;               // set lightbox image
-  lightboxDesc.textContent = img.dataset.desc || ''; // set description
+// Toggle mobile menu open/close
+function openMenu() {
+  mobileMenu.classList.add("open");
+  header.classList.add("mobile-collapsed");
+}
+function closeMenu() {
+  mobileMenu.classList.remove("open");
+  header.classList.remove("mobile-collapsed");
 }
 
+// Menu button events
+menuButton.addEventListener("click", openMenu);
+closeButton.addEventListener("click", closeMenu);
+mobileMenu.addEventListener("click", e => {
+  if (e.target === mobileMenu) closeMenu();
+});
 
-    let currentImages = [];
-    let currentIndex = 0;
+// Collapse logic based on screen width
+function checkHeaderCollapse() {
+  const windowWidth = window.innerWidth;
 
-    document.querySelectorAll('.collage img').forEach(img => {
-      img.addEventListener('click', () => {
-        const collage = img.closest('.collage');
-        currentImages = Array.from(collage.querySelectorAll('img'));
-        currentIndex = currentImages.indexOf(img);
-        showImage(); // sets image + description
-        lightbox.style.display = 'flex';
-      });
-    });
+  if (windowWidth <= 768) {
+    // Mobile view: hide header-right, show menu button
+    header.classList.add("mobile-collapsed");
+  } else {
+    // Desktop view: show header-right
+    header.classList.remove("mobile-collapsed");
+  }
+}
 
-    closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
-    prevBtn.addEventListener('click', () => {
+// Run on load & resize
+window.addEventListener("resize", checkHeaderCollapse);
+window.addEventListener("load", checkHeaderCollapse);
+  
+/* ============================================================
+   HEADER SCROLL STATE
+============================================================ */
+const updateHeaderState = () => {
+  if (window.scrollY > 10) document.body.classList.add("scrolled");
+  else document.body.classList.remove("scrolled");
+};
+window.addEventListener("scroll", updateHeaderState);
+updateHeaderState();
+
+/* ============================================================
+   THUMBNAIL HIGHLIGHT ON SCROLL
+============================================================ */
+const thumbnails = document.querySelectorAll(".thumb-nav a img");
+const projects = document.querySelectorAll(".project");
+
+function highlightThumbnail() {
+  const scrollPos = window.scrollY + window.innerHeight * 0.3;
+  projects.forEach((project, index) => {
+    if (scrollPos >= project.offsetTop && scrollPos < project.offsetTop + project.offsetHeight) {
+      thumbnails.forEach(t => t.classList.remove("active-thumb"));
+      thumbnails[index]?.classList.add("active-thumb");
+    }
+  });
+}
+window.addEventListener("scroll", highlightThumbnail);
+highlightThumbnail();
+
+/* ============================================================
+   COLLAGE BUILDER
+============================================================ */
+document.querySelectorAll(".collage").forEach(collage => {
+  const imgs = [...collage.querySelectorAll("img")];
+  const count = Number(collage.dataset.columns) || 3;
+
+  collage.innerHTML = "";
+
+  const columns = Array.from({ length: count }, () => {
+    const col = document.createElement("div");
+    col.classList.add("collage-column");
+    collage.appendChild(col);
+    return col;
+  });
+
+  imgs.forEach((img, i) => columns[i % count].appendChild(img));
+});
+
+/* ============================================================
+   LIGHTBOX
+============================================================ */
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.querySelector(".lightbox-img");
+const lightboxDesc = document.querySelector(".lightbox-desc");
+let currentImages = [];
+let currentIndex = 0;
+
+function showImage() {
+  const img = currentImages[currentIndex];
+  lightboxImg.src = img.src;
+  lightboxDesc.textContent = img.dataset.desc || "";
+}
+
+function openLightbox(img) {
+  const collage = img.closest(".collage");
+  currentImages = [...collage.querySelectorAll("img")];
+  currentIndex = currentImages.indexOf(img);
+  showImage();
+  lightbox.style.display = "flex";
+  lightbox.setAttribute("aria-hidden", "false");
+}
+
+document.querySelectorAll(".collage img").forEach(img =>
+  img.addEventListener("click", () => openLightbox(img))
+);
+
+document.querySelector(".lightbox-close").addEventListener("click", () => {
+  lightbox.style.display = "none";
+  lightbox.setAttribute("aria-hidden", "true");
+});
+
+document.querySelector(".lightbox-prev").addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+  showImage();
+});
+
+document.querySelector(".lightbox-next").addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  showImage();
+});
+
+lightbox.addEventListener("click", e => {
+  if (e.target === lightbox) {
+    lightbox.style.display = "none";
+    lightbox.setAttribute("aria-hidden", "true");
+  }
+});
+
+/* Keyboard support */
+document.addEventListener("keydown", e => {
+  if (lightbox.style.display === "flex") {
+    if (e.key === "ArrowLeft") {
       currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
       showImage();
-    });
-    nextBtn.addEventListener('click', () => {
+    } else if (e.key === "ArrowRight") {
       currentIndex = (currentIndex + 1) % currentImages.length;
       showImage();
-    });
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) lightbox.style.display = 'none';
-    });
+    } else if (e.key === "Escape") {
+      lightbox.style.display = "none";
+      lightbox.setAttribute("aria-hidden", "true");
+    }
+  }
+});
 
-    // --- Keyboard support for lightbox ---
-    document.addEventListener('keydown', e => {
-      if (lightbox.style.display === 'flex') { // only if lightbox is open
-        e.preventDefault(); // <-- stop page scroll
-        if (e.key === 'ArrowLeft') {
-          currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-          showImage();
-        }
-        if (e.key === 'ArrowRight') {
-          currentIndex = (currentIndex + 1) % currentImages.length;
-          showImage();
-        }
-        if (e.key === 'Escape') {
-          lightbox.style.display = 'none';
-        }
-      }
-    });
-    
-  </script>
+/* ============================================================
+   SLIDESHOW
+============================================================ */
+function startSlideshow(slideshowId, interval = 3000) {
+  const container = document.getElementById(slideshowId);
+  const images = container.querySelectorAll('img');
+  let index = 0;
 
+  setInterval(() => {
+    images[index].style.display = 'none';             // hide current
+    index = (index + 1) % images.length;              // next image
+    images[index].style.display = 'block';            // show next
+  }, interval);
+}
+
+// Start both slideshows independently
+startSlideshow('slideshow-left', 1500);   
+startSlideshow('slideshow-right', 1500);  
+startSlideshow('project2-slideshow', 1500);
+
+</script>
 </body>
 </html>
