@@ -146,11 +146,14 @@
     </div>
   </div>
 
-    <!-- Project 5 -->
-    <div id="project1" class="project project-layout-collage">
-      <h3 class="project-title">FOSSILIZING THE EPHEMERAL, WACO MAMMOTH NATIONAL MONUMENT</h3>
-      <p class="project-desc">I worked as the visualization artist for the interactive show Fossilising The Ephemeral, at the active palaeontology site Waco Mammoth National Monument in Texas in July 2025. The visuals were made using TouchDesigner.</p>
+<!-- Project 5 -->
+<div id="project5" class="project project-layout-collage">
 
+  <h3 class="project-title">FOSSILIZING THE EPHEMERAL, WACO MAMMOTH NATIONAL MONUMENT | JULY 2025</h3>
+  <p class="project-desc">TECHNICAL ARTIST</p>
+  <p class="project-desc"></p>
+
+  <!-- 2 YouTube videos in a row -->
     <div class="video-grid">
 
      <div class="video-wrapper">
@@ -161,16 +164,34 @@
      </div>
 
     </div>
-     
-      <div class="project-collage">
-        <div class="collage" data-columns="4">
-          <img src="interactiveimages/waco1.png" alt="Project 5 Image 1" data-desc="Mocap data processed in Blender using Python.">
-          <img src="interactiveimages/waco2.png" alt="Project 5 Image 2" data-desc="Procedural hexagonal tiling on the curve 3D model using Houdini.">
-          <img src="interactiveimages/waco3.png" alt="Project 5 Image 3" data-desc="SLS 3D print of the Mocap data">
-          <img src="interactiveimages/waco4.png" alt="Project 5 Image 4" data-desc="Team at Waco Mammoth National Monument, Texas.">
-        </div>
-      </div>
-    </div>
+
+<div class="slideshow-row">
+
+  <div class="slideshow-column">
+    <img src="interactiveimages/waco2.png" alt="Houdini Ribbon Texture">
+    <p class="column-caption">Procedural texturing in Houdini</p>
+  </div>
+
+  <div class="slideshow-column">
+    <img src="interactiveimages/waco3.png" alt="Waco Site visit Photograph">
+    <p class="column-caption">Waco site visit</p>
+  </div>
+
+  <!-- FIXED: Slideshow stays inside the row -->
+  <div id="waco-slideshow" class="slideshow-column">
+
+    <img src="interactiveimages/ribbon1.png">
+    <img src="interactiveimages/ribbon2.png" style="display:none;">
+    <img src="interactiveimages/ribbon3.png" style="display:none;">
+    <img src="interactiveimages/ribbon4.png" style="display:none;">
+    <img src="interactiveimages/ribbon5.png" style="display:none;">
+    <img src="interactiveimages/ribbon6.png" style="display:none;">
+
+    <p class="column-caption">Mocap data prepared for 3D print using Python scripts in Blender</p>
+  </div>
+
+</div>
+</div>
   
   
 </main>
@@ -366,6 +387,7 @@ document.addEventListener("keydown", e => {
 </script>
 </body>
 </html>
+
 
 
 
