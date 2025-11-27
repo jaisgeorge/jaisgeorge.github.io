@@ -159,7 +159,8 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
   margin-bottom: 20px;
 }
 
-.project-layout .collage { display: flex; gap: 20px; justify-content: center; }
+.project-layout .project-collage,
+.collage { display: flex; gap: 20px; justify-content: center; }
 
 .collage-column {
   display: flex;
@@ -392,9 +393,3 @@ footer p { font-size: 0.9rem; }
 @media (max-width: 768px) {
   .project-row, .project-column { flex-direction: column; width: 90vw; max-width: 90vw; }
 }
-
-
-
-
-
-
