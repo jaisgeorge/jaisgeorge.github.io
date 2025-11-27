@@ -87,6 +87,28 @@ header a, footer a { color: #fff; }
   display: none;
 }
 
+.page-header {
+  position: absolute;                   /* Overlay */
+  top: 20px;                            /* Distance from top of main/content */
+  left: 40px;                           /* Matches header-left padding */
+  font-size: clamp(3rem, 6vw, 5rem);    /* Big, responsive size */
+  font-style: italic;                   /* Italian style */
+  font-weight: 200;                     /* Extra light */
+  color: #fff;
+  margin: 0;                            /* No extra spacing */
+  z-index: 10;                          /* Above content */
+  pointer-events: none;                 /* Clicks pass through to content */
+}
+
+@media (max-width: 1024px) {
+  .page-header {
+    top: 10px;
+    font-size: clamp(2rem, 5vw, 3rem);
+    left: 20px;
+  }
+}
+
+
 /* =========================
    MOBILE COLLAPSE / MENU
 ========================= */
