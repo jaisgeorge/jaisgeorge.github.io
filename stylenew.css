@@ -143,46 +143,6 @@ header.mobile-collapsed .close-icon {
 ========================= */
 h2 { margin-top: 0; text-align: center; font-size: 1rem; }
 
-
-/*
-=========================
-   THUMBNAILS
-=========================
-.thumb-nav-container {
-  position: fixed;
-  top: 50%;
-  left: 0;
-  width: 80px;
-  display: flex;
-  justify-content: center;
-  transform: translateY(-50%);
-  z-index: 100;
-}
-
-.thumb-nav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  width: 100%;
-}
-
-.thumb-nav img {
-  width: 100%;
-  max-width: 60px;
-  height: auto;
-  border: 2px solid transparent;
-  border-radius: 0;
-  cursor: pointer;
-  transition: transform 0.2s, border 0.2s;
-}
-
-.thumb-nav img:hover { transform: scale(1.05); }
-.thumb-nav img.active-thumb { border: 2px solid #fff; transform: scale(1.08); }
-
-*/
-
-
 /* =========================
    PROJECTS / COLLAGES
 ========================= */
