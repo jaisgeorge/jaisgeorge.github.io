@@ -390,5 +390,15 @@ footer p { font-size: 0.9rem; }
 
 /* Mobile stack */
 @media (max-width: 768px) {
-  .project-row, .project-column { flex-direction: column; width: 90vw; max-width: 90vw; }
+  .project-row {
+    flex-wrap: wrap;  /* allow wrapping */
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .project-column {
+    flex: 1 1 calc((100% - 20px)/3); /* max 3 columns per row */
+    max-width: calc((100% - 20px)/3);
+  }
+}
 }
