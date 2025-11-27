@@ -79,11 +79,12 @@ header a, footer a { color: #fff; }
 
 .menu-icon, .close-icon {
   width: 28px;
+ 25px
   height: 28px;
   cursor: pointer;
   position: relative;
   z-index: 1500;
-  display: none; /* default hidden on desktop */
+  display: none;
 }
 
 /* =========================
@@ -128,9 +129,6 @@ header.mobile-collapsed .close-icon {
   color: #fff;
 }
 
-/* -------------------------
-   MOBILE HEADER / MEDIA
-------------------------- */
 @media (max-width: 768px) {
   .header-left { justify-content: flex-start; }
   header h1 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
@@ -171,51 +169,9 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
 .collage-column img { width: 100%; height: auto; object-fit: cover; border-radius: 0; }
 
 /* =========================
-   COLLAGE TEXT SIDE-BY-SIDE PROJECT LAYOUT
-========================= */
-.project-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 40px;
-  width: 90vw;
-  margin: 80px auto;
-}
-
-.project-images {
-  flex: 2;
-}
-
-.project-text {
-  flex: 1;
-  text-align: left;
-}
-
-.project-text .project-title {
-  margin-bottom: 10px;
-  font-size: 1.4rem;
-}
-
-.project-text .project-desc {
-  line-height: 1.5;
-  font-size: 1rem;
-}
-
-/* Mobile stacking */
-@media (max-width: 900px) {
-  .project-row {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .project-text {
-    text-align: center;
-  }
-}
-
-
-/* =========================
    VIDEO CONTAINERS
 ========================= */
+/* IMPORTANT: removed duplicate project-row block above this */
 .video-container {
   margin: 30px auto;
   aspect-ratio: 16/9;
@@ -241,8 +197,7 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
   margin: 30px auto;
 }
 
-.video-grid .video-wrapper
-{
+.video-grid .video-wrapper {
   position: relative;
   overflow: hidden;
   box-shadow: none;
@@ -251,24 +206,19 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
   aspect-ratio: 696/391;
 }
 
-
 .video-grid .video-wrapper iframe {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
   border: none;
   outline: none;
 }
 
 .video-grid .video-wrapper:hover { transform: translateY(-4px); }
 
-
 @media (max-width: 1200px) {
   .video-grid .video-wrapper { flex: 1 1 45%; }
- 
 }
 
 @media (max-width: 768px) {
@@ -332,7 +282,14 @@ footer p { font-size: 0.9rem; }
 
 .resume-item:hover { background-color: rgba(255,255,255,0.05); }
 
-.resume-item .year, .resume-item .company { text-align: left; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.resume-item .year, .resume-item .company {
+  text-align: left;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .resume-item .title { text-align: right; font-style: italic; }
 
 .resume-item .description {
@@ -384,23 +341,8 @@ footer p { font-size: 0.9rem; }
 .project-column img { width: 100%; margin-bottom: 10px; border-radius: 6px; object-fit: cover; }
 .column-caption { margin-top: 8px; font-size: 0.9rem; text-align: center; color: #ddd; }
 
-/* Mobile stack - allow max 3 columns */
+/* Keep only the later mobile version */
 @media (max-width: 768px) {
-  .project-row {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .project-column {
-    flex: 1 1 calc((100% - 20px*2)/3); /* 3 columns max with 10px gap on each side */
-    max-width: calc((100% - 20px*2)/3);
-  }
-}
-
-/* Max 3 columns on phones, centered layout */
-@media (max-width: 768px) {
-
   .project-row {
     width: min(95vw, 600px);
     margin-left: auto;
@@ -414,4 +356,3 @@ footer p { font-size: 0.9rem; }
     max-width: calc(33.33% - 10px) !important;
   }
 }
-
