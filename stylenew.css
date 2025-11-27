@@ -87,18 +87,22 @@ header a, footer a { color: #fff; }
   display: none;
 }
 
+/* =========================
+   PAGE HEADER OVERLAY
+========================= */
 .page-header {
-  position: absolute;                   /* Overlay */
-  top: 20px;                            /* Distance from top of main/content */
-  left: 40px;                           /* Matches header-left padding */
-  font-size: clamp(3rem, 6vw, 5rem);    /* Big, responsive size */
-  font-style: italic;                   /* Italian style */
-  font-weight: 200;                     /* Extra light */
+  position: absolute;                     /* overlay content */
+  top: 80px;                              /* adjust to match sticky header height */
+  left: 40px;                             /* same as .header-left padding */
+  font-size: clamp(3rem, 6vw, 5rem);     /* large, responsive size */
+  font-style: italic;                     /* Italian style */
+  font-weight: 200;                       /* extra light */
   color: #fff;
-  margin: 0;                            /* No extra spacing */
-  z-index: 10;                          /* Above content */
-  pointer-events: none;                 /* Clicks pass through to content */
+  margin: 0;                              /* remove default h2 margin */
+  z-index: 10;                            /* above main content */
+  pointer-events: none;                   /* clicks pass through if needed */
 }
+
 
 @media (max-width: 1024px) {
   .page-header {
