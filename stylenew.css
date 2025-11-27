@@ -374,8 +374,8 @@ footer p { font-size: 0.9rem; }
 }
 
 .project-column {
-  flex: 1 1 380px;
-  max-width: 380px;
+  flex: 1 1 380px !important;
+  max-width: 380px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
