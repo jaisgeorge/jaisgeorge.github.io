@@ -348,7 +348,7 @@ footer p { font-size: 0.9rem; }
 .column-caption { margin-top: 8px; font-size: 0.9rem; text-align: center; color: #ddd; }
 
 /* Keep only the later mobile version */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .project-row {
     width: min(95vw, 600px);
     margin-left: auto;
