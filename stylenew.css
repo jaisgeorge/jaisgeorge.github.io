@@ -397,3 +397,21 @@ footer p { font-size: 0.9rem; }
     max-width: calc((100% - 20px*2)/3);
   }
 }
+
+/* Max 3 columns on phones, centered layout */
+@media (max-width: 768px) {
+
+  .project-row {
+    width: min(95vw, 600px);
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .project-column {
+    flex: 1 1 calc(33.33% - 10px) !important;
+    max-width: calc(33.33% - 10px) !important;
+  }
+}
+
