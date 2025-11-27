@@ -388,16 +388,16 @@ footer p { font-size: 0.9rem; }
 .project-column img { width: 100%; margin-bottom: 10px; border-radius: 6px; object-fit: cover; }
 .column-caption { margin-top: 8px; font-size: 0.9rem; text-align: center; color: #ddd; }
 
-/* Mobile stack */
+/* Mobile stack - allow max 3 columns */
 @media (max-width: 768px) {
   .project-row {
-    flex-wrap: wrap;  /* allow wrapping */
+    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
   }
 
   .project-column {
-    flex: 1 1 calc((100% - 20px)/3); /* max 3 columns per row */
-    max-width: calc((100% - 20px)/3);
+    flex: 1 1 calc((100% - 20px*2)/3); /* 3 columns max with 10px gap on each side */
+    max-width: calc((100% - 20px*2)/3);
   }
 }
