@@ -408,7 +408,7 @@ footer p { font-size: 0.9rem; }
 /* =========================
    SLIDESHOW / COLUMNS
 ========================= */
-.slideshow-row {
+.project-row {
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -418,7 +418,7 @@ footer p { font-size: 0.9rem; }
   max-width: 1200px;
 }
 
-.slideshow-column {
+.project-column {
   flex: 1 1 380px;
   max-width: 380px;
   display: flex;
@@ -426,12 +426,12 @@ footer p { font-size: 0.9rem; }
   align-items: center;
 }
 
-.slideshow-column img { width: 100%; margin-bottom: 10px; border-radius: 6px; object-fit: cover; }
+.project-column img { width: 100%; margin-bottom: 10px; border-radius: 6px; object-fit: cover; }
 .column-caption { margin-top: 8px; font-size: 0.9rem; text-align: center; color: #ddd; }
 
 /* Mobile stack */
 @media (max-width: 768px) {
-  .slideshow-row, .slideshow-column { flex-direction: column; width: 90vw; max-width: 90vw; }
+  .project-row, .project-column { flex-direction: column; width: 90vw; max-width: 90vw; }
 }
 
 
