@@ -92,7 +92,7 @@ header a, footer a { color: #fff; }
 ========================= */
 .page-header {
   position: absolute;                     /* overlay content */
-  top: 200px;                              /* adjust to match sticky header height */
+  top: 100px;                              /* adjust to match sticky header height */
   left: 40px;                             /* same as .header-left padding */
   font-size: clamp(3rem, 6vw, 5rem);     /* large, responsive size */
   font-style: italic;                     /* Italian style */
