@@ -79,12 +79,45 @@ header a, footer a { color: #fff; }
 
 .menu-icon, .close-icon {
   width: 28px;
+ 25px
   height: 28px;
   cursor: pointer;
   position: relative;
   z-index: 1500;
-  display: none; /* default hidden on desktop */
+  display: none;
 }
+
+/* =========================
+   PAGE HEADER OVERLAY / RESPONSIVE
+========================= */
+.page-header {
+  position: absolute;                     /* overlay content by default */
+  top: 100px;                             /* adjust to match sticky header height */
+  left: 40px;                             /* same as .header-left padding */
+  font-size: clamp(3rem, 6vw, 5rem);     /* large, responsive size */
+  font-style: italic;                     /* Italian style */
+  font-weight: 200;                       /* extra light */
+  color: #fff;
+  margin: 0;                              /* remove default h2 margin */
+  z-index: 10;                            /* above main content */
+  pointer-events: none;                   /* clicks pass through */
+}
+
+/* When screen is 1024px or narrower, make header normal flow */
+@media (max-width: 1024px) {
+  .page-header {
+    position: relative;                   /* normal flow, pushes content down */
+    top: 0;                               /* remove absolute top offset */
+    left: 0;                              /* remove absolute left offset */
+    font-size: clamp(2rem, 5vw, 3rem);   /* slightly smaller on mobile */
+    padding-left: 40px;                   /* same left alignment as desktop */
+    pointer-events: auto;                 /* optional */
+    
+    text-align: left; /* <-- ADD THIS */ 
+  }
+}
+
+
 
 /* =========================
    MOBILE COLLAPSE / MENU
@@ -128,10 +161,7 @@ header.mobile-collapsed .close-icon {
   color: #fff;
 }
 
-/* -------------------------
-   MOBILE HEADER / MEDIA
-------------------------- */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .header-left { justify-content: flex-start; }
   header h1 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
   .menu-icon { display: block !important; }
@@ -142,46 +172,6 @@ header.mobile-collapsed .close-icon {
    PAGE TITLES
 ========================= */
 h2 { margin-top: 0; text-align: center; font-size: 1rem; }
-
-
-/*
-=========================
-   THUMBNAILS
-=========================
-.thumb-nav-container {
-  position: fixed;
-  top: 50%;
-  left: 0;
-  width: 80px;
-  display: flex;
-  justify-content: center;
-  transform: translateY(-50%);
-  z-index: 100;
-}
-
-.thumb-nav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  width: 100%;
-}
-
-.thumb-nav img {
-  width: 100%;
-  max-width: 60px;
-  height: auto;
-  border: 2px solid transparent;
-  border-radius: 0;
-  cursor: pointer;
-  transition: transform 0.2s, border 0.2s;
-}
-
-.thumb-nav img:hover { transform: scale(1.05); }
-.thumb-nav img.active-thumb { border: 2px solid #fff; transform: scale(1.08); }
-
-*/
-
 
 /* =========================
    PROJECTS / COLLAGES
@@ -199,7 +189,12 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
   margin-bottom: 20px;
 }
 
-.project-layout-collage .project-collage,
+.project-desc {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  opacity: 0.8; 
+}
+
 .collage { display: flex; gap: 20px; justify-content: center; }
 
 .collage-column {
@@ -211,56 +206,10 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
 
 .collage-column img { width: 100%; height: auto; object-fit: cover; border-radius: 0; }
 
-@media (max-width: 768px) {
-  .project-layout-collage .project-collage { flex-direction: column; }
-}
-
-/* =========================
-   COLLAGE TEXT SIDE-BY-SIDE PROJECT LAYOUT
-========================= */
-.project-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 40px;
-  width: 90vw;
-  margin: 80px auto;
-}
-
-.project-images {
-  flex: 2;
-}
-
-.project-text {
-  flex: 1;
-  text-align: left;
-}
-
-.project-text .project-title {
-  margin-bottom: 10px;
-  font-size: 1.4rem;
-}
-
-.project-text .project-desc {
-  line-height: 1.5;
-  font-size: 1rem;
-}
-
-/* Mobile stacking */
-@media (max-width: 900px) {
-  .project-row {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .project-text {
-    text-align: center;
-  }
-}
-
-
 /* =========================
    VIDEO CONTAINERS
 ========================= */
+/* IMPORTANT: removed duplicate project-row block above this */
 .video-container {
   margin: 30px auto;
   aspect-ratio: 16/9;
@@ -286,8 +235,7 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
   margin: 30px auto;
 }
 
-.video-grid .video-wrapper
-{
+.video-grid .video-wrapper {
   position: relative;
   overflow: hidden;
   box-shadow: none;
@@ -296,24 +244,19 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
   aspect-ratio: 696/391;
 }
 
-
 .video-grid .video-wrapper iframe {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
   border: none;
   outline: none;
 }
 
 .video-grid .video-wrapper:hover { transform: translateY(-4px); }
 
-
 @media (max-width: 1200px) {
   .video-grid .video-wrapper { flex: 1 1 45%; }
- 
 }
 
 @media (max-width: 768px) {
@@ -377,7 +320,14 @@ footer p { font-size: 0.9rem; }
 
 .resume-item:hover { background-color: rgba(255,255,255,0.05); }
 
-.resume-item .year, .resume-item .company { text-align: left; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.resume-item .year, .resume-item .company {
+  text-align: left;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .resume-item .title { text-align: right; font-style: italic; }
 
 .resume-item .description {
@@ -406,37 +356,41 @@ footer p { font-size: 0.9rem; }
 }
 
 /* =========================
-   SLIDESHOW / COLUMNS
+ROW - COLUMN PROJECT STYLING
 ========================= */
-.slideshow-row {
+.project-row {
   display: flex;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
   margin: 30px auto;
   width: 90vw;
-  max-width: 1200px;
+  max-width: 90vw;
 }
 
-.slideshow-column {
-  flex: 1 1 380px;
-  max-width: 380px;
+.project-column {
+  flex: 1 1 380px !important;
+  max-width: 380px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.slideshow-column img { width: 100%; margin-bottom: 10px; border-radius: 6px; object-fit: cover; }
+.project-column img { width: 100%; margin-bottom: 10px; border-radius: 6px; object-fit: cover; }
 .column-caption { margin-top: 8px; font-size: 0.9rem; text-align: center; color: #ddd; }
 
-/* Mobile stack */
-@media (max-width: 768px) {
-  .slideshow-row, .slideshow-column { flex-direction: column; width: 90vw; max-width: 90vw; }
+/* Keep only the later mobile version */
+@media (max-width: 1024px) {
+  .project-row {
+    width: min(95vw, 600px);
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .project-column {
+    flex: 1 1 calc(33.33% - 10px) !important;
+    max-width: calc(33.33% - 10px) !important;
+  }
 }
-
-
-
-
-
-
-
