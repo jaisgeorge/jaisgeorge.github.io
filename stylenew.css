@@ -113,6 +113,8 @@ header a, footer a { color: #fff; }
     padding-left: 40px;                   /* same left alignment as desktop */
     pointer-events: auto;                 /* optional */
     margin-bottom: 20px;                  /* spacing before main content */
+
+    text-align: left; /* <-- ADD THIS */ 
   }
 }
 
