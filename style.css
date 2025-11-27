@@ -177,7 +177,7 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
    PROJECTS / COLLAGES
 ========================= */
 .project {
-  margin: 60px auto;
+  margin: 30px auto;
   width: 90vw;
   text-align: center;
 }
@@ -394,3 +394,4 @@ ROW - COLUMN PROJECT STYLING
     max-width: calc(33.33% - 10px) !important;
   }
 }
+
