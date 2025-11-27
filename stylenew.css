@@ -112,8 +112,7 @@ header a, footer a { color: #fff; }
     font-size: clamp(2rem, 5vw, 3rem);   /* slightly smaller on mobile */
     padding-left: 40px;                   /* same left alignment as desktop */
     pointer-events: auto;                 /* optional */
-    margin-bottom: 20px;                  /* spacing before main content */
-
+    
     text-align: left; /* <-- ADD THIS */ 
   }
 }
