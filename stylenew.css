@@ -91,7 +91,7 @@ header a, footer a { color: #fff; }
    PAGE HEADER OVERLAY
 ========================= */
 .page-header {
-  position: relative;                     /* overlay content */
+  position: absolute;                     /* overlay content */
   top: 100px;                              /* adjust to match sticky header height */
   left: 40px;                             /* same as .header-left padding */
   font-size: clamp(3rem, 6vw, 5rem);     /* large, responsive size */
