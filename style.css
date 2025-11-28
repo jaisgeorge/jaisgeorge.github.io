@@ -97,7 +97,7 @@ header a, footer a { color: #fff; }
   font-size: clamp(3rem, 6vw, 5rem);     /* large, responsive size */
   font-style: italic;                     /* Italian style */
   font-weight: 200;                       /* extra light */
-  color: #fff;
+  color: #fff7a8;
   margin: 0;                              /* remove default h2 margin */
   z-index: 10;                            /* above main content */
   pointer-events: none;                   /* clicks pass through */
@@ -469,6 +469,7 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
     height: 180px;  /* smaller fixed height for mobile phones */
   }
 }
+
 
 
 
