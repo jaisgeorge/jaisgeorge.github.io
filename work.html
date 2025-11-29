@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jais George | Work</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* =========================
+       PAGE-SPECIFIC STYLING
+    ========================= */
+    body, h1, h2, h3, h4, h5, h6, a, p {
+      font-family: 'Inter', Helvetica, Arial, sans-serif;
+      font-weight: 200; /* ExtraLight */
+      color: #fff; /* keep readable on dark background */
+    }
+
+    h1 { margin: 20px; font-size: 2rem; }
+    h2 { font-size: 1.5rem; font-weight: 200; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .grid a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .grid-item {
+      border: 0;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+
+    .grid-item:hover { transform: scale(1.02); }
+
+    .grid-item img { width: 100%; height: auto; display: block; }
+
+    /* Desktop: force 4 items per row */
+    @media (min-width: 1024px) {
+      .grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px; 
+        padding: 0 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ============================
+      HEADER
+============================ -->
+<header>
+  <nav class="header-left">
+    <a href="work.html">Work</a>
+  </nav>
+
+  <h1><a href="index.html">J a i s &nbsp;&nbsp;G e o r g e</a></h1>
+
+  <nav class="header-right" id="mainNav">
+    <a href="resume.html">Resume</a>
+    <a href="spot.html">Spot</a>
+    <a href="chai.html">Chai?</a>
+    <a href="https://www.linkedin.com/in/jais-george/" target="_blank">
+      <img src="icons/linkediniconw54.png" alt="LinkedIn" style="width:24px; height:24px;">
+    </a>
+    <a href="https://www.imdb.com/name/nm17583632/?ref_=ext_shr_lnk" target="_blank">
+      <img src="icons/imdbiconw54.png" alt="IMDb" style="width:35px; height:35px;">
+    </a>
+  </nav>
+
+  <img src="icons/hamburgerw54.png" class="menu-icon" id="menuBtn" alt="Open Menu">
+  <img src="icons/crossw54.png" class="close-icon" id="menuCloseBtn" alt="Close Menu">
+</header>
+
+<!-- ============================
+      MOBILE MENU
+============================ -->
+<div id="mobileMenu" class="mobile-menu-overlay" aria-hidden="true">
+  <div class="mobile-menu-items" id="mobileMenuItems"></div>
+</div>
+
+<!-- ============================
+      MAIN CONTENT
+============================ -->
+<main>
+  <section class="projects">
+    <div class="grid">
+      <a href="3d.html" class="grid-item">
+        <img src="images/3dcoverthumb.png" alt="3D">
+      </a>
+      <a href="icvfx.html" class="grid-item">
+        <img src="images/icvfxcoverthumb1.png" alt="ICVFX">
+      </a>
+      <a href="storyvisdev.html" class="grid-item">
+        <img src="images/story-visdevcoverthumb.jpg" alt="Story">
+      </a>
+      <a href="ai.html" class="grid-item">
+        <img src="images/aicoverthumb.png" alt="AI">
+      </a>
+      <a href="interactive.html" class="grid-item">
+        <img src="images/interactivecoverthumb.png" alt="Interactive">
+      </a>
+      <a href="shortfilms.html" class="grid-item">
+        <img src="images/shortfilmscoverthumb.png" alt="Short Films">
+      </a>
+      <a href="cinema.html" class="grid-item">
+        <img src="images/cinemacoverthumb.png" alt="Cinema">
+      </a>
+      <a href="misc.html" class="grid-item">
+        <img src="images/misccoverthumb.png" alt="Misc">
+      </a>
+    </div>
+  </section>
+</main>
+
+<!-- ============================
+      FOOTER
+============================ -->
+<footer>
+  <p>UNREAL ENGINE | BLENDER 3D | COMFYUI | HOUDINI | MAYA | TOUCHDESIGNER | VEX | PYTHON | C++ | ICVFX | AI | 3D PREVIZ | MOCAP | VIDEO PRODUCTION | FILM DIRECTION | ART DIRECTION</p>
+  <p>&copy; 2025 Jais George</p>
+</footer>
+
+<!-- ============================
+      SCRIPTS
+============================ -->
+<script>
+  // ============================
+  // HEADER COLLAPSE / MOBILE MENU
+  // ============================
+  const header = document.querySelector("header");
+  const menuButton = document.querySelector(".menu-icon");
+  const closeButton = document.querySelector(".close-icon");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileMenuItems = document.getElementById("mobileMenuItems");
+  const rightLinks = document.querySelectorAll(".header-right a");
+
+  // Populate mobile menu
+  rightLinks.forEach(link => {
+    mobileMenuItems.appendChild(link.cloneNode(true));
+  });
+
+  function openMenu() {
+    mobileMenu.classList.add("open");
+    header.classList.add("mobile-collapsed");
+  }
+  function closeMenu() {
+    mobileMenu.classList.remove("open");
+    header.classList.remove("mobile-collapsed");
+  }
+
+  menuButton.addEventListener("click", openMenu);
+  closeButton.addEventListener("click", closeMenu);
+  mobileMenu.addEventListener("click", e => {
+    if (e.target === mobileMenu) closeMenu();
+  });
+
+  function checkHeaderCollapse() {
+    if (window.innerWidth <= 768) header.classList.add("mobile-collapsed");
+    else header.classList.remove("mobile-collapsed");
+  }
+
+  window.addEventListener("resize", checkHeaderCollapse);
+  window.addEventListener("load", checkHeaderCollapse);
+
+  // Header scroll state
+  const updateHeaderState = () => {
+    if (window.scrollY > 10) document.body.classList.add("scrolled");
+    else document.body.classList.remove("scrolled");
+  };
+  window.addEventListener("scroll", updateHeaderState);
+  updateHeaderState();
+</script>
+
+</body>
+</html>
