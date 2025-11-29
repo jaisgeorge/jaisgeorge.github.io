@@ -367,6 +367,7 @@ footer p { font-size: 0.9rem; }
   width: 90vw;
   max-width: 90vw;
   margin: 30px auto;
+  justify-content: center; 
 }
 
 .project-column {
@@ -469,6 +470,7 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
     height: 180px;  /* smaller fixed height for mobile phones */
   }
 }
+
 
 
 
