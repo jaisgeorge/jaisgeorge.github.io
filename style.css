@@ -356,45 +356,45 @@ footer p { font-size: 0.9rem; }
 }
 
 /* =========================
-ROW - COLUMN PROJECT STYLING
+   PROJECT GRID — DEFAULT (DESKTOP & TABLETS)
+   5 columns everywhere except phones
 ========================= */
+
 .project-row {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
-  flex-wrap: wrap;
-  margin: 30px auto;
   width: 90vw;
   max-width: 90vw;
+  margin: 30px auto;
 }
 
 .project-column {
-  flex: 1 1 380px !important;
-  max-width: 380px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.project-column img { width: 100%; margin-bottom: 10px; border-radius: 6px; object-fit: cover; } 
-.column-caption { margin-top: 8px; font-size: 0.9rem; text-align: center; color: #ddd; }
+.project-column img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
 
 
-/* Keep only the later mobile version */
-@media (max-width: 1024px) {
+/* =========================
+   RESPONSIVE — PHONES (<600px)
+   Force exactly 3 columns
+========================= */
+
+@media (max-width: 600px) {
   .project-row {
-    width: min(95vw, 600px);
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
   }
-
-  .project-column {
-    flex: 1 1 calc(33.33% - 10px) !important;
-    max-width: calc(33.33% - 10px) !important;
-  }
 }
+
 
 
 /* =========================
@@ -469,6 +469,7 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
     height: 180px;  /* smaller fixed height for mobile phones */
   }
 }
+
 
 
 
