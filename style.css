@@ -472,5 +472,64 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
 }
 
 
+/* =========================
+   BIO PAGE STYLING
+========================= */
+.bio-row {
+  display: flex;
+  justify-content: center;   /* horizontal centering */
+  align-items: center;       /* vertical centering */
+  gap: 40px;                 /* spacing between photo and text */
+  margin: 60px auto;
+  width: 90vw;
+  max-width: 1200px;
+  flex-wrap: wrap;           /* allows stacking on small screens */
+}
+
+.bio-photo {
+  flex: 0 0 300px;           /* fixed width for photo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bio-photo img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.bio-text {
+  flex: 1 1 400px;           /* text takes remaining space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bio-text p {
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: left;
+  max-width: 600px;
+  color: #fff;
+}
+
+/* =========================
+   RESPONSIVE - STACK ON MOBILE
+========================= */
+@media (max-width: 600px) {
+  .bio-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .bio-text {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+
 
 
