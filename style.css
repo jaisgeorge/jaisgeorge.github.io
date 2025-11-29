@@ -530,6 +530,77 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
   }
 }
 
+/* =========================
+   HOMEPAGE LAYOUT
+========================= */
+.homepage {
+  width: 100vw;
+  height: 100vh;          /* full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;    /* vertical centering */
+}
+
+.home-row {
+  display: flex;
+  width: 90vw;
+  max-width: 1200px;
+  gap: 20px;
+  height: 80vh;
+}
+
+.home-left {
+  flex: 1;                /* left column takes half the width */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical centering */
+  align-items: flex-start; /* left-align text */
+  gap: 20px;
+}
+
+.home-name {
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+}
+
+.home-titles p {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 200;
+  margin: 0;
+  line-height: 1.4;
+  color: #fff7a8;
+}
+
+.home-location {
+  font-size: 1rem;
+  margin-top: 1rem;  /* spacing above */
+  font-weight: 200;
+  color: #fff;
+}
+
+.home-right {
+  flex: 1;  /* empty right column takes remaining space */
+}
+
+/* =========================
+   RESPONSIVE STACK
+========================= */
+@media (max-width: 768px) {
+  .home-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .home-left {
+    align-items: center;
+    text-align: center;
+  }
+}
+
 
 
 
