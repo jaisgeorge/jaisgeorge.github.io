@@ -473,6 +473,15 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
 
 
 
+/* EXACT SPACING FOR 2-ITEM ROWS */
+.project-row.two-items > .project-column:nth-child(1) {
+  grid-column: 2;
+}
+
+.project-row.two-items > .project-column:nth-child(2) {
+  grid-column: 4;
+}
+
 
 
 
