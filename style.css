@@ -554,7 +554,7 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
   display: flex;
   flex-direction: column;
   justify-content: center; /* vertical centering */
-  align-items: flex-start; /* left-align text */
+  align-items: left; /* left-align text */
   gap: 20px;
 }
 
@@ -600,6 +600,7 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
     text-align: center;
   }
 }
+
 
 
 
