@@ -302,6 +302,7 @@ footer p { font-size: 0.9rem; }
   width: 70vw;
   padding: 80px 0;
   text-align: left;
+  margin: 0 auto; 
 }
 
 .resume-item {
@@ -624,6 +625,7 @@ html, body {
     align-items: flex-start;
   }
 }
+
 
 
 
