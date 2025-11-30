@@ -206,62 +206,52 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
 .collage-column img { width: 100%; height: auto; object-fit: cover; border-radius: 0; }
 
 /* =========================
-   VIDEO CONTAINERS
+   VIDEO GRID (Unified Style)
 ========================= */
-/* IMPORTANT: removed duplicate project-row block above this */
-.video-container {
-  margin: 30px auto;
-  aspect-ratio: 16/9;
-  width: min(90vw, 1200px);
-}
-
-.video-container iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  display: block;
-  position: static;
-}
 
 .video-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  width: 90vw;
-  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  width: 100%;
+  padding: 2rem 5%;
+  margin: 0 auto;
 }
 
-.video-grid .video-wrapper {
+.video-wrapper {
   position: relative;
+  width: 100%;
+  max-width: 696px;
+  aspect-ratio: 696 / 311;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
-  flex: 1 1 calc((100% - 40px)/3);
-  aspect-ratio: 696/391;
 }
 
-.video-grid .video-wrapper iframe {
+.video-wrapper:hover {
+  transform: translateY(-4px);
+}
+
+/* Iframe full coverage */
+.video-wrapper iframe {
   position: absolute;
-  top: 0; left: 0;
   width: 100%;
   height: 100%;
-  border: none;
-  outline: none;
+  top: 0;
+  left: 0;
+  border: 0;
 }
 
-.video-grid .video-wrapper:hover { transform: translateY(-4px); }
-
-@media (max-width: 1200px) {
-  .video-grid .video-wrapper { flex: 1 1 45%; }
+/* Optional title styling used on video pages */
+.video-grid-title,
+main h2 {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }
 
-@media (max-width: 768px) {
-  .video-grid, .video-grid-icvfx { flex-direction: column; align-items: center; gap: 15px; }
-  .video-grid .video-wrapper { flex: 1 1 100%; width: 90vw; aspect-ratio: 696/391; }
-}
 
 /* =========================
    FOOTER
@@ -673,6 +663,7 @@ html, body {
     align-items: flex-start;
   }
 }
+
 
 
 
