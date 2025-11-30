@@ -299,7 +299,7 @@ footer p { font-size: 0.9rem; }
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 100vw;
+  width: 70vw;
   padding: 80px 0;
   text-align: left;
 }
@@ -624,6 +624,7 @@ html, body {
     align-items: flex-start;
   }
 }
+
 
 
 
