@@ -559,7 +559,7 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
 }
 
 .home-name {
-  font-size: clamp(4rem, 10vw, 8rem);
+  font-size: clamp(4rem, 10vw, 6rem);
   font-weight: 700;
   line-height: 1;
   text-transform: uppercase;
@@ -591,6 +591,7 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
 .home-left h1 {
   text-align: left;
 }
+
 
 
 
