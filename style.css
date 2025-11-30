@@ -88,19 +88,16 @@ header a, footer a { color: #fff; }
 }
 
 /* =========================
-   PAGE HEADER OVERLAY / RESPONSIVE
+   PAGE HEADER — NORMAL FLOW
 ========================= */
 .page-header {
-  position: absolute;                     /* overlay content by default */
-  top: 100px;                             /* adjust to match sticky header height */
-  left: 40px;                             /* same as .header-left padding */
-  font-size: clamp(3rem, 6vw, 5rem);     /* large, responsive size */
-  font-style: italic;                     /* Italian style */
-  font-weight: 200;                       /* extra light */
+  position: relative;                  /* stays in normal flow */
+  font-size: clamp(3rem, 6vw, 5rem);   /* responsive size */
+  font-style: italic;
+  font-weight: 200;
   color: #fff7a8;
-  margin: 0;                              /* remove default h2 margin */
-  z-index: 10;                            /* above main content */
-  pointer-events: none;                   /* clicks pass through */
+  margin: 40px 0 20px 40px;            /* spacing + left alignment */
+  pointer-events: auto;
 }
 
 /* When screen is 1024px or narrower, make header normal flow */
@@ -627,6 +624,7 @@ html, body {
     align-items: flex-start;
   }
 }
+
 
 
 
