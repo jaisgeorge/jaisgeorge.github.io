@@ -299,11 +299,15 @@ footer p { font-size: 0.9rem; }
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 100vw;          /* full viewport width */
-  padding: 80px 5vw;     /* padding as percentage of viewport width */
+
+  width: fit-content;   /* ❗ shrink-wraps to content */
+  max-width: 100%;      /* prevents overflow on small screens */
+  margin: 0 auto;       /* center horizontally */
+
+  padding: 80px 2vw;    /* keep some consistent padding */
   text-align: left;
-  margin: 0 auto;
 }
+
 
 .resume-item {
   display: grid;
@@ -667,6 +671,7 @@ html, body {
     align-items: flex-start;
   }
 }
+
 
 
 
