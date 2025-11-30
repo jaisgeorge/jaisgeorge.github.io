@@ -586,5 +586,11 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
   flex: 1;  /* empty right column takes remaining space */
 }
 
+.home-left,
+.home-left p,
+.home-left h1 {
+  text-align: left;
+}
+
 
 
