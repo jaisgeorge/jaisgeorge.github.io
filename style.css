@@ -114,7 +114,9 @@ header a, footer a { color: #fff; }
   }
 }
 
-
+header a.active {
+  color: #fff7a8;
+}
 
 /* =========================
    MOBILE COLLAPSE / MENU
@@ -671,6 +673,7 @@ html, body {
     align-items: flex-start;
   }
 }
+
 
 
 
