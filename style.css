@@ -299,34 +299,40 @@ footer p { font-size: 0.9rem; }
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 100vw;
-  padding: 80px 0;
+  width: 100vw;          /* full viewport width */
+  padding: 80px 5vw;     /* padding as percentage of viewport width */
   text-align: left;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .resume-item {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* fit content for first and third columns, middle column takes remaining space */
+  grid-template-columns: max-content 1fr max-content;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem 5vw;
+  gap: 2vw;               /* gap between columns as percentage of viewport width */
+  padding: 1rem 0;         /* vertical padding only */
   border-bottom: 1px solid rgba(255,255,255,0.2);
   min-height: 4rem;
   transition: background-color 0.3s ease;
 }
 
-.resume-item:hover { background-color: rgba(255,255,255,0.05); }
+.resume-item:hover {
+  background-color: rgba(255,255,255,0.05);
+}
 
-.resume-item .year, .resume-item .company {
+.resume-item .year,
+.resume-item .company {
   text-align: left;
   font-weight: 400;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.resume-item .title { text-align: right; font-style: italic; }
+.resume-item .title {
+  text-align: right;
+  font-style: italic;
+  white-space: nowrap;
+}
 
 .resume-item .description {
   grid-column: 1 / span 3;
@@ -338,19 +344,55 @@ footer p { font-size: 0.9rem; }
   transition: all 0.4s ease;
 }
 
-.resume-item:hover .description { max-height: 200px; opacity: 1; }
+.resume-item:hover .description {
+  max-height: 200px;
+  opacity: 1;
+}
 
-.resume h2 { font-size: 2rem; margin-bottom: 1.5rem; text-align: center; letter-spacing: 0.5px; }
+.resume h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
 
+/* ===== Responsive ===== */
 @media (max-width: 900px) {
-  .resume-item { padding: 0.8rem 3vw; gap: 0.6rem; }
-  .resume-item .year, .resume-item .company, .resume-item .title { font-size: clamp(0.9rem, 2vw, 1rem); }
+  .resume {
+    padding: 60px 3vw;
+  }
+
+  .resume-item {
+    gap: 1.5vw;
+  }
+
+  .resume-item .year,
+  .resume-item .company,
+  .resume-item .title {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+  }
 }
 
 @media (max-width: 768px) {
-  .resume-item { padding: 0.8rem 2vw; gap: 0.4rem; }
-  .resume-item .year, .resume-item .company, .resume-item .title { font-size: clamp(0.8rem, 1.8vw, 1rem); }
-  .resume-item .description { max-height: none; opacity: 1; margin-top: 0.4rem; }
+  .resume {
+    padding: 50px 2vw;
+  }
+
+  .resume-item {
+    gap: 1vw;
+  }
+
+  .resume-item .year,
+  .resume-item .company,
+  .resume-item .title {
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
+  }
+
+  .resume-item .description {
+    max-height: none;
+    opacity: 1;
+    margin-top: 0.4rem;
+  }
 }
 
 /* =========================
@@ -625,6 +667,7 @@ html, body {
     align-items: flex-start;
   }
 }
+
 
 
 
