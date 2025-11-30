@@ -98,6 +98,7 @@ header a, footer a { color: #fff; }
   color: #fff7a8;
   margin: 40px 0 20px 40px;            /* spacing + left alignment */
   pointer-events: auto;
+  text-align: left; 
 }
 
 /* When screen is 1024px or narrower, make header normal flow */
@@ -109,8 +110,7 @@ header a, footer a { color: #fff; }
     font-size: clamp(2rem, 5vw, 3rem);   /* slightly smaller on mobile */
     padding-left: 40px;                   /* same left alignment as desktop */
     pointer-events: auto;                 /* optional */
-    
-    text-align: left; /* <-- ADD THIS */ 
+
   }
 }
 
@@ -624,6 +624,7 @@ html, body {
     align-items: flex-start;
   }
 }
+
 
 
 
