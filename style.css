@@ -531,35 +531,48 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
 }
 
 /* =========================
-   HOMEPAGE LAYOUT
+   HOMEPAGE LAYOUT (SCOPE: .homepage ONLY)
 ========================= */
-.homepage {
-  width: 100vw;
-  height: 100vh;          /* full viewport height */
-  display: flex;
-  justify-content: center;
-  align-items: center;    /* vertical centering */
+
+/* Ensure html/body basics are safe for all pages */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
 }
 
-.home-row {
+/* Homepage main container */
+.homepage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;          /* mobile-safe full viewport */
+  justify-content: center;      /* vertical center */
+  align-items: center;          /* horizontal center */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Row containing left + right columns */
+.homepage .home-row {
   display: flex;
   width: 90vw;
   max-width: 1200px;
   gap: 20px;
-  height: 80vh;
 }
 
-.home-left {
+/* LEFT COLUMN */
+.homepage .home-left {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center; 
-  align-items: flex-start; /* ← valid left alignment */
+  justify-content: center;      /* vertical centering */
+  align-items: flex-start;      /* left-align text */
   gap: 20px;
 }
 
-.home-name {
-  font-size: clamp(4rem, 10vw, 6rem);
+/* NAME */
+.homepage .home-name {
+  font-size: clamp(4rem, 10vw, 8rem);
   font-weight: 700;
   line-height: 1;
   text-transform: uppercase;
@@ -567,7 +580,8 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
   margin: 0;
 }
 
-.home-titles p {
+/* TITLES */
+.homepage .home-titles p {
   font-size: clamp(1rem, 2.5vw, 1.5rem);
   font-weight: 200;
   margin: 0;
@@ -575,22 +589,46 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
   color: #fff7a8;
 }
 
-.home-location {
+/* LOCATION */
+.homepage .home-location {
   font-size: 1rem;
-  margin-top: 1rem;  /* spacing above */
+  margin-top: 1rem;
   font-weight: 200;
   color: #fff;
 }
 
-.home-right {
-  flex: 1;  /* empty right column takes remaining space */
+/* RIGHT COLUMN (empty) */
+.homepage .home-right {
+  flex: 1;
 }
 
-.home-left,
-.home-left p,
-.home-left h1 {
+/* Ensure text alignment */
+.homepage .home-left,
+.homepage .home-left p,
+.homepage .home-left h1 {
   text-align: left;
 }
+
+/* =========================
+   RESPONSIVE / MOBILE
+========================= */
+@media (max-width: 768px) {
+  .homepage .home-row {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .homepage .home-right {
+    display: none; /* hide empty column */
+  }
+
+  .homepage .home-left {
+    align-items: flex-start;
+  }
+}
+
+
 
 
 
