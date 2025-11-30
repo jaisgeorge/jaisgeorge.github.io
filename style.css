@@ -96,7 +96,7 @@ header a, footer a { color: #fff; }
   font-style: italic;
   font-weight: 200;
   color: #fff7a8;
-  margin: 40px 0 20px 40px;            /* spacing + left alignment */
+  margin: 10px 0 10px 40px;            /* spacing + left alignment */
   pointer-events: auto;
   text-align: left; 
 }
@@ -108,7 +108,7 @@ header a, footer a { color: #fff; }
     top: 0;                               /* remove absolute top offset */
     left: 0;                              /* remove absolute left offset */
     font-size: clamp(2rem, 5vw, 3rem);   /* slightly smaller on mobile */
-    padding-left: 40px;                   /* same left alignment as desktop */
+    padding-left: 20px;                  
     pointer-events: auto;                 /* optional */
 
   }
@@ -624,6 +624,7 @@ html, body {
     align-items: flex-start;
   }
 }
+
 
 
 
