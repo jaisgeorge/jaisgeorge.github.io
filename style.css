@@ -750,7 +750,7 @@ html, body {
 
 .photo-grid-poster {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
   justify-items: center;
   width: 100%;
@@ -759,9 +759,6 @@ html, body {
 
 /* Wrapper enforces fixed height */
 .photo-wrapper-poster {
-  width: 100%;
-  max-width: 696px;
-  height: 696px; /* fixed height for all images */
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -773,12 +770,10 @@ html, body {
 }
 
 /* Images fill wrapper and crop as necessary */
-.photo-wrapper-poster img {
-  height: 100%;
-  width: auto;
+.photo-wrapper-fixedheight img {
+  height: 696px;  /* uniform height */
+  width: auto;    /* width adjusts proportionally */
   display: block;
-  object-fit: none;   /* crops image to fill height and width */
-  object-position: center;
 }
 
 @media (max-width: 600px) {
@@ -786,6 +781,7 @@ html, body {
     height: 320px; /* smaller fixed height on phones */
   }
 }
+
 
 
 
