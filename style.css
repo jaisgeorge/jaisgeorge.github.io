@@ -776,7 +776,7 @@ html, body {
 
 /* Images fill wrapper and crop as necessary */
 .photo-wrapper-poster img {
-  height: 50vw;  /* uniform height */
+  height: 33.33vh;  /* uniform height */
   width: auto;    /* width adjusts proportionally */
   display: block;
   max-width: 100%; /* prevents overflow on smaller screens */
@@ -814,6 +814,7 @@ html, body {
   }
 
 }
+
 
 
 
