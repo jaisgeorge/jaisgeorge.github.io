@@ -774,11 +774,11 @@ html, body {
 
 /* Images fill wrapper and crop as necessary */
 .photo-wrapper-poster img {
-  width: 100%;
   height: 100%;
-  object-fit: cover;   /* crops image to fill height and width */
-  object-position: center;
+  width: auto;
   display: block;
+  object-fit: none;   /* crops image to fill height and width */
+  object-position: center;
 }
 
 @media (max-width: 600px) {
@@ -786,6 +786,7 @@ html, body {
     height: 320px; /* smaller fixed height on phones */
   }
 }
+
 
 
 
