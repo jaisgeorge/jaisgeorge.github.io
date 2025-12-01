@@ -781,6 +781,11 @@ html, body {
   display: block;
 }
 
+@media (max-width: 600px) {
+  .photo-wrapper-poster {
+    height: 320px; /* smaller fixed height on phones */
+  }
+}
 
 
 
