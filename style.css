@@ -724,6 +724,24 @@ html, body {
 
 
 
+.photo-wrapper-ogratio {
+  width: 100%;
+  max-width: 696px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.photo-wrapper-ogratio:hover {
+  transform: translateY(-4px);
+}
+
+.photo-wrapper-ogratio img {
+  width: 100%;       /* fills width */
+  height: auto;      /* keeps natural height (ratio) */
+  display: block;
+}
 
 
 
