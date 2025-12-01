@@ -770,7 +770,7 @@ html, body {
 }
 
 /* Images fill wrapper and crop as necessary */
-.photo-wrapper-fixedheight img {
+.photo-wrapper-poster img {
   height: 696px;  /* uniform height */
   width: auto;    /* width adjusts proportionally */
   display: block;
@@ -781,6 +781,7 @@ html, body {
     height: 320px; /* smaller fixed height on phones */
   }
 }
+
 
 
 
