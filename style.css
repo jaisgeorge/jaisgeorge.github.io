@@ -805,9 +805,15 @@ html, body {
 
 
 
+@media (max-width: 768px) {
+  /* reduce border-radius for all wrappers */
+  .photo-wrapper,
+  .photo-wrapper-ogratio,
+  .photo-wrapper-poster {
+    border-radius: 3px; /* smaller corners on small screens */
+  }
 
-
-
+}
 
 
 
