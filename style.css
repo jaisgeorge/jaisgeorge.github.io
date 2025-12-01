@@ -668,6 +668,59 @@ html, body {
 
 
 
+/* =========================
+   PHOTO GRID
+========================= */
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  width: 100%;
+  padding: 2rem 5%;
+}
+
+/* PHOTO TILE WRAPPER */
+.photo-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 696px;
+  
+  /* uniform thumbnail shape */
+  aspect-ratio: 696 / 311;
+
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.photo-wrapper:hover {
+  transform: translateY(-4px);
+}
+
+/* IMAGE FILLS THE BOX */
+.photo-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  width: 100%;
+  height: 100%;
+  
+  object-fit: cover;   /* ensures uniform shape while cropping as needed */
+  object-position: center; /* keeps subject centered */
+  display: block;
+}
+
+/* Optional: force 2 columns on small phones */
+@media (max-width: 600px) {
+  .photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 
 
 
