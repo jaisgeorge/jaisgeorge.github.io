@@ -747,72 +747,56 @@ html, body {
 
 
 /* =========================
-   POSTER PHOTO GRID – Fixed Height Cropped Thumbnails
+   POSTER PHOTO STRIP – Same Height, Variable Widths
 ========================= */
 
 .photo-grid-poster {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;       /* allow wrapping when the row fills */
+  gap: 1rem;
   justify-content: center;
-  width: 100%;
   padding: 2rem 5%;
 }
 
-/* Wrapper enforces fixed height */
+/* Each item sizes itself naturally */
 .photo-wrapper-poster {
-  display: inline-flex;
-  flex-direction: column;   /* stack image + caption vertically */
-  align-items: center;      /* center caption horizontally under image */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   transition: transform 0.3s ease;
 }
 
-.photo-wrapper-poster:hover {
-  transform: translateY(-4px);
-}
-
-/* Images fill wrapper and crop as necessary */
+/* Keep height fixed, width auto */
 .photo-wrapper-poster img {
-  height: 33vh;  /* uniform height */
-  width: auto;    /* width adjusts proportionally */
+  height: 33vh;
+  width: auto;
   display: block;
-  max-width: 100%; /* prevents overflow on smaller screens */
 }
 
-/* Caption below image, centered, wraps if too long */
+/* Caption stays centered */
 .photo-caption {
-  text-align: center;
   margin-top: 0.5rem;
-  word-wrap: break-word;
-  max-width: 100%;  /* limits width to image width */
-  overflow-wrap: anywhere; /* ensures long words wrap */
+  text-align: center;
+  max-width: 100%;
   font-size: 1rem;
   line-height: 1.3;
 }
 
+/* Mobile adjustments */
 @media (max-width: 768px) {
   .photo-wrapper-poster img {
-    height: auto;   /* scale height down to fit container */
-    max-height: 50vh; /* optional: cap height to 50% of viewport */
-    width: 90%;     /* shrink width proportionally */
-    gap: 0.5rem;        /* smaller gap on phones/tablets */
-    padding: 1rem 2%;   /* optional: reduce padding */
+    height: 22vh;     /* shorter thumbnails for small screens */
+    width: auto;
   }
-}
 
-
-
-@media (max-width: 768px) {
-  /* reduce border-radius for all wrappers */
   .photo-wrapper,
   .photo-wrapper-ogratio,
   .photo-wrapper-poster {
-    border-radius: 3px; /* smaller corners on small screens */
+    border-radius: 3px;
   }
-
 }
 
 
