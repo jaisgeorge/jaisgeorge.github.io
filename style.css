@@ -1,30 +1,769 @@
 /* =========================
-   POSTER PHOTO STRIP – Same Height, Variable Widths
+   IMPORTS & GLOBAL STYLES
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;700&display=swap');
+
+* {
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  font-weight: 200; /* ExtraLight globally */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #000;
+  text-align: center;
+  color: #fff;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar { display: none; }
+
+a { color: inherit; text-decoration: none; transition: color 0.2s; }
+a:hover { color: #888; }
+
+/* =========================
+   HEADER & NAVIGATION
+========================= */
+header, footer { color: #fff; text-align: center; padding: 20px; }
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+header h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  z-index: 1;
+  font-size: 2rem;
+  white-space: nowrap;
+}
+
+header h1 a {
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  text-decoration: none;
+  color: #fff;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  gap: 15px;
+  flex: 0 1 auto;
+  align-items: center;
+}
+
+.header-left { justify-content: flex-start; }
+
+.header-right { justify-content: flex-end; max-width: 35%; }
+
+header a, footer a { color: #fff; }
+
+.menu-icon, .close-icon {
+  width: 28px;
+ 25px
+  height: 28px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1500;
+  display: none;
+}
+
+/* =========================
+   PAGE HEADER — NORMAL FLOW
+========================= */
+.page-header {
+  position: relative;                  /* stays in normal flow */
+  font-size: clamp(3rem, 6vw, 5rem);   /* responsive size */
+  font-style: italic;
+  font-weight: 200;
+  color: #fff7a8;
+  margin: 5px 0 5px 40px;            /* spacing + left alignment */
+  pointer-events: auto;
+  text-align: left; 
+}
+
+/* When screen is 1024px or narrower, make header normal flow */
+@media (max-width: 1024px) {
+  .page-header {
+    position: relative;                   /* normal flow, pushes content down */
+    top: 0;                               /* remove absolute top offset */
+    left: 0;                              /* remove absolute left offset */
+    font-size: clamp(2rem, 5vw, 3rem);   /* slightly smaller on mobile */
+    padding-left: 0px;                  
+    pointer-events: auto;                 /* optional */
+
+  }
+}
+
+header a.active {
+  color: #fff7a8;
+}
+
+/* =========================
+   MOBILE COLLAPSE / MENU
+========================= */
+header.mobile-collapsed .header-right {
+  display: none !important;
+}
+
+header.mobile-collapsed .menu-icon {
+  display: block !important;
+}
+
+header.mobile-collapsed .close-icon {
+  display: none !important;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.mobile-menu-overlay.open {
+  display: flex;
+}
+
+.mobile-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  text-align: center;
+}
+
+.mobile-menu-items a {
+  font-size: 1.7rem;
+  font-weight: 200;
+  color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .header-left { justify-content: flex-start; }
+  header h1 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  .menu-icon { display: block !important; }
+  .close-icon { display: none !important; }
+}
+
+/* =========================
+   PAGE TITLES
+========================= */
+h2 { margin-top: 0; text-align: center; font-size: 1rem; }
+
+/* =========================
+   PROJECTS / COLLAGES
+========================= */
+.project {
+  margin: 30px auto;
+  width: 90vw;
+  text-align: center;
+}
+
+.project .project-title,
+.project .project-desc {
+  font-weight: 200;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.project-desc {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  opacity: 0.8; 
+}
+
+.collage { display: flex; gap: 20px; justify-content: center; }
+
+.collage-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.collage-column img { width: 100%; height: auto; object-fit: cover; border-radius: 0; }
+
+/* =========================
+   VIDEO GRID (Unified Style)
+========================= */
+
+.video-grid {
+  display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  width: 100%;
+  padding: 2rem 5%;
+  margin: 0 auto;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 696px;
+  aspect-ratio: 696 / 311;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.video-wrapper:hover {
+  transform: translateY(-4px);
+}
+
+/* Iframe full coverage */
+.video-wrapper iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 0;
+}
+
+/* Optional title styling used on video pages */
+.video-grid-title,
+main h2 {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+footer p { font-size: 0.9rem; }
+
+/* =========================
+   LIGHTBOX
+========================= */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 5000;
+  overflow: hidden;
+}
+
+.lightbox-content { display: inline-flex; justify-content: center; align-items: center; max-width: 100%; max-height: 100%; }
+
+.lightbox-img { max-width: 100vw; max-height: 100vh; object-fit: contain; }
+
+.lightbox-close, .lightbox-prev, .lightbox-next { position: fixed; cursor: pointer; z-index: 5010; color: #fff; }
+.lightbox-close { top: 20px; right: 20px; font-size: 2rem; }
+.lightbox-prev, .lightbox-next { top: 50%; transform: translateY(-50%); font-size: 3rem; padding: 10px; }
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+.lightbox-desc { margin-top: 10px; font-size: 1rem; max-width: 90%; text-align: center; }
+
+/* =========================
+   RESUME
+========================= */
+.resume {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  width: fit-content;   /* ❗ shrink-wraps to content */
+  max-width: 100%;      /* prevents overflow on small screens */
+  margin: 0 auto;       /* center horizontally */
+
+  padding: 80px 2vw;    /* keep some consistent padding */
+  text-align: left;
+}
+
+
+.resume-item {
+  display: grid;
+  /* fit content for first and third columns, middle column takes remaining space */
+  grid-template-columns: max-content 1fr max-content;
+  align-items: center;
+  gap: 2vw;               /* gap between columns as percentage of viewport width */
+  padding: 1rem 0;         /* vertical padding only */
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  min-height: 4rem;
+  transition: background-color 0.3s ease;
+}
+
+.resume-item:hover {
+  background-color: rgba(255,255,255,0.05);
+}
+
+.resume-item .year,
+.resume-item .company {
+  text-align: left;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.resume-item .title {
+  text-align: right;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.resume-item .description {
+  grid-column: 1 / span 3;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.resume-item:hover .description {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.resume h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .resume {
+    padding: 60px 3vw;
+  }
+
+  .resume-item {
+    gap: 1.5vw;
+  }
+
+  .resume-item .year,
+  .resume-item .company,
+  .resume-item .title {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .resume {
+    padding: 50px 2vw;
+  }
+
+  .resume-item {
+    gap: 1vw;
+  }
+
+  .resume-item .year,
+  .resume-item .company,
+  .resume-item .title {
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
+  }
+
+  .resume-item .description {
+    max-height: none;
+    opacity: 1;
+    margin-top: 0.4rem;
+  }
+}
+
+/* =========================
+   PROJECT GRID — DEFAULT (DESKTOP & TABLETS)
+   5 columns everywhere except phones
+========================= */
+
+.project-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  width: 90vw;
+  max-width: 90vw;
+  margin: 30px auto;
+  justify-content: center; 
+}
+
+.project-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-column img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+
+/* =========================
+   RESPONSIVE — PHONES (<600px)
+   Force exactly 3 columns
+========================= */
+
+@media (max-width: 600px) {
+  .project-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+}
+
+
+
+/* =========================
+ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
+========================= */
+.project-row-uniform {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 30px auto;
+  width: 90vw;
+  max-width: 90vw;
+  align-items: stretch; /* ensures all columns in a row have same height */
+}
+
+.project-column-uniform {
+  flex: 1 1 380px !important;
+  max-width: 380px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Image with fixed height, maintains aspect ratio and crops if needed */
+.project-column-uniform img {
+  width: 100%;
+  height: 300px;        /* fixed uniform height */
+  margin-bottom: 10px;
+  border-radius: 6px;
+  object-fit: cover;    /* keeps aspect ratio, crops overflow */
+}
+
+/* Caption below each image */
+.column-caption-uniform {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #ddd;
+}
+
+/* =========================
+   Responsive: Mobile / Tablet
+========================= */
+@media (max-width: 1024px) {
+  .project-row-uniform {
+    width: min(95vw, 600px);
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    gap: 10px;
+    align-items: stretch; /* maintain same column height on smaller screens */
+  }
+
+  .project-column-uniform {
+    flex: 1 1 calc(33.33% - 10px) !important;
+    max-width: calc(33.33% - 10px) !important;
+  }
+
+  .project-column-uniform img {
+    height: 200px;  /* slightly smaller fixed height for smaller screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .project-column-uniform {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+  }
+
+  .project-column-uniform img {
+    height: 180px;  /* smaller fixed height for mobile phones */
+  }
+}
+
+
+/* =========================
+   BIO PAGE STYLING
+========================= */
+.bio-row {
+  display: flex;
+  justify-content: center;   /* horizontal centering */
+  align-items: center;       /* vertical centering */
+  gap: 40px;                 /* spacing between photo and text */
+  margin: 60px auto;
+  width: 90vw;
+  max-width: 1200px;
+  flex-wrap: wrap;           /* allows stacking on small screens */
+}
+
+.bio-photo {
+  flex: 0 0 300px;           /* fixed width for photo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bio-photo img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.bio-text {
+  flex: 1 1 400px;           /* text takes remaining space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bio-text p {
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: left;
+  max-width: 600px;
+  color: #fff;
+}
+
+/* =========================
+   RESPONSIVE - STACK ON MOBILE
+========================= */
+@media (max-width: 600px) {
+  .bio-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .bio-text {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* =========================
+   HOMEPAGE LAYOUT (SCOPE: .homepage ONLY)
+========================= */
+
+/* Ensure html/body basics are safe for all pages */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+/* Homepage main container */
+.homepage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;          /* mobile-safe full viewport */
+  justify-content: center;      /* vertical center */
+  align-items: center;          /* horizontal center */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Row containing left + right columns */
+.homepage .home-row {
+  display: flex;
+  width: 90vw;
+  max-width: 1200px;
+  gap: 20px;
+}
+
+/* LEFT COLUMN */
+.homepage .home-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;      /* vertical centering */
+  align-items: flex-start;      /* left-align text */
+  gap: 20px;
+}
+
+/* NAME */
+.homepage .home-name {
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+}
+
+/* TITLES */
+.homepage .home-titles p {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 200;
+  margin: 0;
+  line-height: 1.4;
+  color: #fff7a8;
+}
+
+/* LOCATION */
+.homepage .home-location {
+  font-size: 1rem;
+  margin-top: 1rem;
+  font-weight: 200;
+  color: #fff;
+}
+
+/* RIGHT COLUMN (empty) */
+.homepage .home-right {
+  flex: 1;
+}
+
+/* Ensure text alignment */
+.homepage .home-left,
+.homepage .home-left p,
+.homepage .home-left h1 {
+  text-align: left;
+}
+
+/* =========================
+   RESPONSIVE / MOBILE
+========================= */
+@media (max-width: 768px) {
+  .homepage .home-row {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .homepage .home-right {
+    display: none; /* hide empty column */
+  }
+
+  .homepage .home-left {
+    align-items: flex-start;
+  }
+}
+
+
+
+
+
+/* =========================
+   PHOTO GRID
+========================= */
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  width: 100%;
+  padding: 2rem 5%;
+}
+
+/* PHOTO TILE WRAPPER */
+.photo-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 696px;
+  
+  /* uniform thumbnail shape */
+  aspect-ratio: 696 / 311;
+
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.photo-wrapper:hover {
+  transform: translateY(-4px);
+}
+
+/* IMAGE FILLS THE BOX */
+.photo-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  width: 100%;
+  height: 100%;
+  
+  object-fit: cover;   /* ensures uniform shape while cropping as needed */
+  object-position: center; /* keeps subject centered */
+  display: block;
+}
+
+/* Optional: force 2 columns on small phones */
+@media (max-width: 600px) {
+  .photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;        /* smaller gap on phones/tablets */
+    padding: 1rem 2%;   /* optional: reduce padding */
+  }
+}
+
+
+
+
+.photo-wrapper-ogratio {
+  width: 100%;
+  max-width: 696px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.photo-wrapper-ogratio:hover {
+  transform: translateY(-4px);
+}
+
+.photo-wrapper-ogratio img {
+  width: 100%;       /* fills width */
+  height: auto;      /* keeps natural height (ratio) */
+  display: block;
+}
+
+
+/* =========================
+   POSTER PHOTO GRID – Fixed Height Cropped Thumbnails
 ========================= */
 
 .photo-grid-poster {
   display: grid;
-  grid-template-columns: repeat(5, auto);  /* max 5 items per row */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
   justify-content: center;
-  align-items: start;
-  gap: 1rem;
+  width: 100%;
   padding: 2rem 5%;
-  width: 90vw;           /* matches rest of your containers */
-  margin: 0 auto;        /* centers properly */
 }
 
-/* Each image keeps SAME HEIGHT, width scales naturally */
-.photo-wrapper-poster img {
-  height: 250px;         /* adjust this height to tune row fullness */
-  width: auto;           /* keeps natural aspect ratio */
-  display: block;
-}
-
-/* Wrapper stays tight around the image */
+/* Wrapper enforces fixed height */
 .photo-wrapper-poster {
   display: inline-flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column;   /* stack image + caption vertically */
+  align-items: center;      /* center caption horizontally under image */
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -35,32 +774,52 @@
   transform: translateY(-4px);
 }
 
-/* Caption stays centered */
+/* Images fill wrapper and crop as necessary */
+.photo-wrapper-poster img {
+  height: 33vh;  /* uniform height */
+  width: auto;    /* width adjusts proportionally */
+  display: block;
+  max-width: 100%; /* prevents overflow on smaller screens */
+}
+
+/* Caption below image, centered, wraps if too long */
 .photo-caption {
-  margin-top: 0.5rem;
   text-align: center;
-  max-width: 100%;
+  margin-top: 0.5rem;
+  word-wrap: break-word;
+  max-width: 100%;  /* limits width to image width */
+  overflow-wrap: anywhere; /* ensures long words wrap */
   font-size: 1rem;
   line-height: 1.3;
 }
 
-/* =========================
-   MOBILE — force exactly 3 per row
-========================= */
-@media (max-width: 600px) {
-  .photo-grid-poster {
-    grid-template-columns: repeat(3, auto);
-    gap: 0.5rem;
-    padding: 1rem 2%;
-  }
-
+@media (max-width: 768px) {
   .photo-wrapper-poster img {
-    height: 140px;  /* smaller universal height */
+    height: auto;   /* scale height down to fit container */
+    max-height: 50vh; /* optional: cap height to 50% of viewport */
+    width: 90%;     /* shrink width proportionally */
+    gap: 0.5rem;        /* smaller gap on phones/tablets */
+    padding: 1rem 2%;   /* optional: reduce padding */
   }
+}
 
+
+
+@media (max-width: 768px) {
+  /* reduce border-radius for all wrappers */
   .photo-wrapper,
   .photo-wrapper-ogratio,
   .photo-wrapper-poster {
-    border-radius: 3px;
+    border-radius: 3px; /* smaller corners on small screens */
   }
+
 }
+
+
+
+
+
+
+
+
+
