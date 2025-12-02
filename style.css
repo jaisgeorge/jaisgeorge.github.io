@@ -751,16 +751,26 @@ html, body {
 ========================= */
 
 .photo-grid-poster {
-  display: flex;
-  flex-wrap: wrap;       /* allow wrapping when the row fills */
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(5, auto);  /* max 5 items per row */
   justify-content: center;
+  align-items: start;
+  gap: 1rem;
   padding: 2rem 5%;
+  width: 90vw;           /* matches rest of your containers */
+  margin: 0 auto;        /* centers properly */
 }
 
-/* Each item sizes itself naturally */
+/* Each image keeps SAME HEIGHT, width scales naturally */
+.photo-wrapper-poster img {
+  height: 250px;         /* adjust this height to tune row fullness */
+  width: auto;           /* keeps natural aspect ratio */
+  display: block;
+}
+
+/* Wrapper stays tight around the image */
 .photo-wrapper-poster {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   border-radius: 12px;
@@ -769,11 +779,8 @@ html, body {
   transition: transform 0.3s ease;
 }
 
-/* Keep height fixed, width auto */
-.photo-wrapper-poster img {
-  height: 33vh;
-  width: auto;
-  display: block;
+.photo-wrapper-poster:hover {
+  transform: translateY(-4px);
 }
 
 /* Caption stays centered */
@@ -785,11 +792,18 @@ html, body {
   line-height: 1.3;
 }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
+/* =========================
+   MOBILE — force exactly 3 per row
+========================= */
+@media (max-width: 600px) {
+  .photo-grid-poster {
+    grid-template-columns: repeat(3, auto);
+    gap: 0.5rem;
+    padding: 1rem 2%;
+  }
+
   .photo-wrapper-poster img {
-    height: 22vh;     /* shorter thumbnails for small screens */
-    width: auto;
+    height: 140px;  /* smaller universal height */
   }
 
   .photo-wrapper,
@@ -798,6 +812,7 @@ html, body {
     border-radius: 3px;
   }
 }
+
 
 
 
