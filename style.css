@@ -257,6 +257,8 @@ main h2 {
 .video-subcaption {
   width: 100%;
   text-align: center;
+  margin-bottom: 0.3rem;
+  margin-top: 0.3rem; 
 }
 
 .video-item {
@@ -846,17 +848,4 @@ html, body {
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
