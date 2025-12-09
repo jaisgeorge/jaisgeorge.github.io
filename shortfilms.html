@@ -346,24 +346,64 @@ document.addEventListener("keydown", e => {
 });
 
 
-document.querySelectorAll('.video-wrapper').forEach(wrapper => {
-  const playButton = wrapper.querySelector('.play-button');
-  playButton.addEventListener('click', e => {
-    e.stopPropagation(); // prevent bubbling
-    const videoId = wrapper.dataset.videoId;
-    const iframe = document.createElement('iframe');
-    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-    iframe.allowFullscreen = true;
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
-    wrapper.innerHTML = '';
-    wrapper.appendChild(iframe);
-  });
-});
+/* ============================================================
+   YOUTUBE THUMBNAIL → IFRAME → THUMBNAIL ON PAUSE
+============================================================ */
 
+let ytPlayers = {};
+
+function onYouTubeIframeAPIReady() {
+  document.querySelectorAll('.video-wrapper[data-video-id]').forEach(wrapper => {
+    const videoId = wrapper.dataset.videoId;
+    const thumb = wrapper.querySelector('.video-thumbnail');
+    const playBtn = wrapper.querySelector('.play-button');
+
+    function showThumbnail() {
+      wrapper.innerHTML = '';
+      const img = document.createElement('img');
+      img.className = 'video-thumbnail';
+      img.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+
+      const play = document.createElement('div');
+      play.className = 'play-button';
+
+      wrapper.appendChild(img);
+      wrapper.appendChild(play);
+
+      play.addEventListener('click', playVideo);
+    }
+
+    function playVideo() {
+      wrapper.innerHTML = '';
+
+      const iframe = document.createElement('div');
+      iframe.id = `ytplayer-${videoId}-${Math.random().toString(36).slice(2)}`;
+      wrapper.appendChild(iframe);
+
+      ytPlayers[iframe.id] = new YT.Player(iframe.id, {
+        videoId: videoId,
+        playerVars: { autoplay: 1 },
+        events: {
+          onStateChange: event => {
+            // 2 = PAUSED
+            if (event.data === 2) {
+              showThumbnail();
+            }
+          }
+        }
+      });
+    }
+
+    // Initial state: show thumbnail
+    playBtn.addEventListener('click', playVideo);
+  });
+}
 
   
 </script>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
+  
 </body>
 </html>
