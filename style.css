@@ -258,7 +258,14 @@ main h2 {
   text-align: center;
 }
 
+.video-item {
+  width: 100%;
+}
 
+.video-item > .video-wrapper {
+  width: 100%; 
+  max-width: 696px; /* same as your video-wrapper */
+}
 
 /* =========================
    FOOTER
@@ -838,6 +845,7 @@ html, body {
   }
 
 }
+
 
 
 
