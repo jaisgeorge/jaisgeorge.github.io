@@ -345,12 +345,12 @@ document.addEventListener("keydown", e => {
   }
 });
 
-
 /* ============================================================
-   YOUTUBE THUMBNAIL → IFRAME → THUMBNAIL ON PAUSE
+   YOUTUBE THUMBNAIL → IFRAME → THUMBNAIL ON PAUSE (RESUME)
 ============================================================ */
 
 let ytPlayers = {};
+let ytLastTimes = {}; // store last playback time for each video
 
 function onYouTubeIframeAPIReady() {
   document.querySelectorAll('.video-wrapper[data-video-id]').forEach(wrapper => {
@@ -358,8 +358,12 @@ function onYouTubeIframeAPIReady() {
     const thumb = wrapper.querySelector('.video-thumbnail');
     const playBtn = wrapper.querySelector('.play-button');
 
+    // If we haven’t saved a time yet, default to 0
+    ytLastTimes[videoId] = 0;
+
     function showThumbnail() {
       wrapper.innerHTML = '';
+
       const img = document.createElement('img');
       img.className = 'video-thumbnail';
       img.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
@@ -382,11 +386,23 @@ function onYouTubeIframeAPIReady() {
 
       ytPlayers[iframe.id] = new YT.Player(iframe.id, {
         videoId: videoId,
-        playerVars: { autoplay: 1 },
+        playerVars: { 
+          autoplay: 1,
+          start: Math.floor(ytLastTimes[videoId]) // resume from last paused time
+        },
         events: {
           onStateChange: event => {
-            // 2 = PAUSED
+
+            // When paused:
             if (event.data === 2) {
+              const current = event.target.getCurrentTime();
+              ytLastTimes[videoId] = current; // save time
+              showThumbnail();
+            }
+
+            // Optional: when video ends, reset to 0
+            if (event.data === 0) {
+              ytLastTimes[videoId] = 0;
               showThumbnail();
             }
           }
