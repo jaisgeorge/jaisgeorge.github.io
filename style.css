@@ -211,9 +211,10 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
 
 .video-grid {
   display: grid;
- grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
   justify-items: center;
+  align-items: center;   /* NEW */
   width: 100%;
   padding: 2rem 5%;
   margin: 0 auto;
@@ -845,6 +846,7 @@ html, body {
   }
 
 }
+
 
 
 
