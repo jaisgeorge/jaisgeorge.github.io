@@ -440,14 +440,13 @@ if (!window.youTubeAPIReady) {
 window.youTubeAPIReady.then(() => {
   document.querySelectorAll(".video-wrapper").forEach(wrapper => {
     const thumbnail = wrapper.querySelector(".video-thumbnail");
-const playBtnWrapper = wrapper.querySelector(".play-button-wrapper");
+    const playBtnWrapper = wrapper.querySelector(".play-button-wrapper"); // new clickable area
     let iframe = null;
     let player = null;
     let overlay = null;
     let isInitialized = false;
 
-    // CLICK = Create iframe (first time) or resume video
-    playBtn.addEventListener("click", () => {
+    playBtnWrapper.addEventListener("click", () => {
       if (!isInitialized) {
         const videoId = wrapper.dataset.videoId;
 
@@ -459,36 +458,31 @@ const playBtnWrapper = wrapper.querySelector(".play-button-wrapper");
         // create overlay to show thumbnail + play button
         overlay = document.createElement("div");
         overlay.className = "video-overlay";
+
+        // move thumbnail and playBtnWrapper into overlay
         overlay.appendChild(thumbnail);
-        overlay.appendChild(playBtn);
+        overlay.appendChild(playBtnWrapper);
         wrapper.appendChild(overlay);
 
         // initialize YouTube player
         player = new YT.Player(iframe, {
           videoId,
           playerVars: { rel: 0, autoplay: 1, playsinline: 1 },
-events: {
-  onStateChange: (e) => {
-    if (e.data === YT.PlayerState.PAUSED) {
-      // Clear any existing timer
-      if (wrapper.pauseTimer) clearTimeout(wrapper.pauseTimer);
-
-      // Start a new 5-second timer
-      wrapper.pauseTimer = setTimeout(() => {
-        // Only show overlay if video is still paused
-        if (player.getPlayerState() === YT.PlayerState.PAUSED) {
-          overlay.style.display = "flex";
-        }
-      }, 5000); // 5000ms = 5 seconds delay
-    } 
-    else if (e.data === YT.PlayerState.PLAYING) {
-      // Cancel any pending timer and hide overlay
-      if (wrapper.pauseTimer) clearTimeout(wrapper.pauseTimer);
-      overlay.style.display = "none";
-    }
-  }
-}
-
+          events: {
+            onStateChange: (e) => {
+              if (e.data === YT.PlayerState.PAUSED) {
+                if (wrapper.pauseTimer) clearTimeout(wrapper.pauseTimer);
+                wrapper.pauseTimer = setTimeout(() => {
+                  if (player.getPlayerState() === YT.PlayerState.PAUSED) {
+                    overlay.style.display = "flex";
+                  }
+                }, 5000);
+              } else if (e.data === YT.PlayerState.PLAYING) {
+                if (wrapper.pauseTimer) clearTimeout(wrapper.pauseTimer);
+                overlay.style.display = "none";
+              }
+            }
+          }
         });
 
         // clicking overlay resumes video
@@ -506,6 +500,7 @@ events: {
     });
   });
 });
+
 
 
 
