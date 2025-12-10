@@ -283,6 +283,7 @@ main h2 {
   height: 100%;
   object-fit: cover;
   display: block;
+   z-index: 1;
 }
 
 /* Play button overlay */
@@ -296,6 +297,7 @@ main h2 {
   clip-path: polygon(25% 20%, 25% 80%, 75% 50%);
   transform: translate(-50%, -50%);
   transition: background 0.3s;
+  z-index: 3;
 }
 
 .video-wrapper:hover .play-button {
@@ -881,5 +883,6 @@ html, body {
   }
 
 }
+
 
 
