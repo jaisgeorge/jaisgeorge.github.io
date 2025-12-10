@@ -407,59 +407,54 @@ window.youTubeAPIReady.then(() => {
     const playBtn = wrapper.querySelector(".play-button");
     let iframe = null;
     let player = null;
+    let overlay = null;
     let isInitialized = false;
 
-// CLICK = Create iframe (first time) or resume video (later)
-playBtn.addEventListener("click", async () => {
+    // CLICK = Create iframe (first time) or resume video
+    playBtn.addEventListener("click", () => {
+      if (!isInitialized) {
+        const videoId = wrapper.dataset.videoId;
 
-  if (!isInitialized) {
-    const videoId = wrapper.dataset.videoId;
+        // create iframe container
+        iframe = document.createElement("div");
+        iframe.className = "yt-frame";
+        wrapper.appendChild(iframe);
 
-    // create iframe container
-    iframe = document.createElement("div");
-    iframe.className = "yt-frame";
-    wrapper.appendChild(iframe);
+        // create overlay to show thumbnail + play button
+        overlay = document.createElement("div");
+        overlay.className = "video-overlay";
+        overlay.appendChild(thumbnail);
+        overlay.appendChild(playBtn);
+        wrapper.appendChild(overlay);
 
-    // create overlay to show on pause
-    const overlay = document.createElement("div");
-    overlay.className = "video-overlay";
-    overlay.appendChild(thumbnail);
-    overlay.appendChild(playBtn);
-    wrapper.appendChild(overlay);
-
-    player = new YT.Player(iframe, {
-      videoId,
-      playerVars: { rel: 0, autoplay: 1, playsinline: 1 },
-      events: {
-        onStateChange: (e) => {
-          if (e.data === YT.PlayerState.PAUSED) {
-            overlay.style.display = "flex"; // show overlay when paused
-          } else if (e.data === YT.PlayerState.PLAYING) {
-            overlay.style.display = "none"; // hide overlay when playing
+        // initialize YouTube player
+        player = new YT.Player(iframe, {
+          videoId,
+          playerVars: { rel: 0, autoplay: 1, playsinline: 1 },
+          events: {
+            onStateChange: (e) => {
+              if (e.data === YT.PlayerState.PAUSED) {
+                overlay.style.display = "flex"; // show overlay on pause
+              } else if (e.data === YT.PlayerState.PLAYING) {
+                overlay.style.display = "none"; // hide overlay when playing
+              }
+            }
           }
-        }
-      }
-    });
+        });
 
-    // click on overlay resumes video
-    overlay.addEventListener("click", () => {
+        // clicking overlay resumes video
+        overlay.addEventListener("click", () => {
+          player.playVideo();
+          overlay.style.display = "none";
+        });
+
+        isInitialized = true;
+      }
+
+      // Always play video on click
       player.playVideo();
       overlay.style.display = "none";
     });
-
-    isInitialized = true;
-  }
-
-  player.playVideo();
-});
-
-    // Hide iframe → show thumbnail+icon
-    function showThumbnail() {
-      if (!iframe) return;
-      iframe.style.display = "none";
-      thumbnail.style.display = "block";
-      playBtn.style.display = "block";
-    }
   });
 });
 
