@@ -432,30 +432,46 @@ function onYouTubeIframeAPIReady() {
           start: Math.floor(ytLastTimes[videoId])
         },
         events: {
-          onStateChange: function (event) {
-            const state = event.data;
+onStateChange: function (event) {
+  const state = event.data;
 
-            if (state === YT.PlayerState.BUFFERING) {
-              ytIsSeeking[videoId] = true;
-            }
+  // Mark when buffering happens → usually seeking
+  if (state === YT.PlayerState.BUFFERING) {
+    ytIsSeeking[videoId] = Date.now();
+  }
 
-            if (state === YT.PlayerState.PLAYING) {
-              ytIsSeeking[videoId] = false;
-            }
+  // When video starts playing, clear seek flag
+  if (state === YT.PlayerState.PLAYING) {
+    ytIsSeeking[videoId] = 0;
+    return;
+  }
 
-            if (state === YT.PlayerState.PAUSED) {
-              if (ytIsSeeking[videoId]) return; // ignore pause from seeking
+  // Handle REAL user pause (ignore seek pauses)
+  if (state === YT.PlayerState.PAUSED) {
 
-              // REAL PAUSE
-              ytLastTimes[videoId] = event.target.getCurrentTime();
-              showThumbnail();
-            }
+    // If paused within 250ms of buffering → this is SEEKING, ignore
+    if (Date.now() - ytIsSeeking[videoId] < 250) {
+      return;
+    }
 
-            if (state === YT.PlayerState.ENDED) {
-              ytLastTimes[videoId] = 0;
-              showThumbnail();
-            }
-          }
+    // Wait 150ms — if STILL paused, it's a real pause
+    setTimeout(() => {
+      if (event.target.getPlayerState() === YT.PlayerState.PAUSED) {
+
+        // REAL PAUSE confirmed
+        ytLastTimes[videoId] = event.target.getCurrentTime();
+        showThumbnail();
+      }
+    }, 150);
+  }
+
+  // Handle ended
+  if (state === YT.PlayerState.ENDED) {
+    ytLastTimes[videoId] = 0;
+    showThumbnail();
+  }
+}
+
         }
       });
     }
