@@ -388,16 +388,19 @@ document.addEventListener("keydown", e => {
     }
   }
 });
-/* ============================================================
-   YOUTUBE THUMBNAIL → IFRAME → THUMBNAIL ON PAUSE
-============================================================ */
 
-let ytPlayers = {};
+
+  let ytPlayers = {};
+let ytLastTimes = {};
+let ytIsSeeking = {};   // NEW: track if the user is seeking
 
 function onYouTubeIframeAPIReady() {
   document.querySelectorAll('.video-wrapper[data-video-id]').forEach(wrapper => {
     const videoId = wrapper.dataset.videoId;
-    const thumb = wrapper.querySelector('.video-thumbnail');
+
+    ytLastTimes[videoId] = ytLastTimes[videoId] || 0;
+    ytIsSeeking[videoId] = false;          // initialize flag
+
     const playBtn = wrapper.querySelector('.play-button');
 
     function showThumbnail() {
@@ -418,17 +421,38 @@ function onYouTubeIframeAPIReady() {
     function playVideo() {
       wrapper.innerHTML = '';
 
-      const iframe = document.createElement('div');
-      iframe.id = `ytplayer-${videoId}-${Math.random().toString(36).slice(2)}`;
-      wrapper.appendChild(iframe);
+      const iframeDiv = document.createElement('div');
+      iframeDiv.id = `ytplayer-${videoId}-${Math.random().toString(36).slice(2)}`;
+      wrapper.appendChild(iframeDiv);
 
-      ytPlayers[iframe.id] = new YT.Player(iframe.id, {
+      ytPlayers[iframeDiv.id] = new YT.Player(iframeDiv.id, {
         videoId: videoId,
-        playerVars: { autoplay: 1 },
+        playerVars: {
+          autoplay: 1,
+          start: Math.floor(ytLastTimes[videoId])
+        },
         events: {
-          onStateChange: event => {
-            // 2 = PAUSED
-            if (event.data === 2) {
+          onStateChange: function (event) {
+            const state = event.data;
+
+            if (state === YT.PlayerState.BUFFERING) {
+              ytIsSeeking[videoId] = true;
+            }
+
+            if (state === YT.PlayerState.PLAYING) {
+              ytIsSeeking[videoId] = false;
+            }
+
+            if (state === YT.PlayerState.PAUSED) {
+              if (ytIsSeeking[videoId]) return; // ignore pause from seeking
+
+              // REAL PAUSE
+              ytLastTimes[videoId] = event.target.getCurrentTime();
+              showThumbnail();
+            }
+
+            if (state === YT.PlayerState.ENDED) {
+              ytLastTimes[videoId] = 0;
               showThumbnail();
             }
           }
@@ -436,10 +460,10 @@ function onYouTubeIframeAPIReady() {
       });
     }
 
-    // Initial state: show thumbnail
     playBtn.addEventListener('click', playVideo);
   });
 }
+
 
 
 </script>
