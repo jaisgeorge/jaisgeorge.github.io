@@ -285,18 +285,27 @@ main h2 {
   display: block;
 }
 
-/* Play button overlay */
-.video-wrapper .play-button {
+.video-wrapper .play-button-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 64px;
+  width: 120px; /* bigger clickable perimeter */
+  height: 120px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-wrapper .play-button {
+  width: 64px; /* visual size */
   height: 64px;
   background: rgba(255,255,255,0.8);
   clip-path: polygon(25% 20%, 25% 80%, 75% 50%);
-  transform: translate(-50%, -50%);
   transition: background 0.3s;
 }
+
 
 .video-wrapper:hover .play-button {
   background: rgba(255,255,255,1);
@@ -893,6 +902,7 @@ html, body {
   }
 
 }
+
 
 
 
