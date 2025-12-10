@@ -431,15 +431,20 @@ window.youTubeAPIReady.then(() => {
         player = new YT.Player(iframe, {
           videoId,
           playerVars: { rel: 0, autoplay: 1, playsinline: 1 },
-          events: {
-            onStateChange: (e) => {
-              if (e.data === YT.PlayerState.PAUSED) {
-                overlay.style.display = "flex"; // show overlay on pause
-              } else if (e.data === YT.PlayerState.PLAYING) {
-                overlay.style.display = "none"; // hide overlay when playing
-              }
-            }
-          }
+events: {
+  onStateChange: (e) => {
+    if (e.data === YT.PlayerState.PAUSED) {
+      // Wait 50ms, then check if still paused
+      setTimeout(() => {
+        if (player.getPlayerState() === YT.PlayerState.PAUSED) {
+          overlay.style.display = "flex";
+        }
+      }, 50);
+    } else if (e.data === YT.PlayerState.PLAYING) {
+      overlay.style.display = "none";
+    }
+  }
+}
         });
 
         // clicking overlay resumes video
