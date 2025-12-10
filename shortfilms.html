@@ -395,89 +395,65 @@ let ytLastTimes = {};
 let ytIsSeeking = {};   // NEW: track if the user is seeking
 
 function onYouTubeIframeAPIReady() {
-  document.querySelectorAll('.video-wrapper[data-video-id]').forEach(wrapper => {
-    const videoId = wrapper.dataset.videoId;
+document.querySelectorAll(".video-wrapper").forEach(wrapper => {
+  const thumbnail = wrapper.querySelector(".video-thumbnail");
+  const playBtn = wrapper.querySelector(".play-btn");
+  let iframe = null;
+  let player = null;
+  let isInitialized = false;
 
-    ytLastTimes[videoId] = ytLastTimes[videoId] || 0;
-    ytIsSeeking[videoId] = false;          // initialize flag
+  // Load YouTube API
+  if (!window.youTubeAPIReady) {
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+    window.youTubeAPIReady = new Promise(resolve => {
+      window.onYouTubeIframeAPIReady = resolve;
+    });
+  }
 
-    const playBtn = wrapper.querySelector('.play-button');
+  // CLICK = either create or resume
+  playBtn.addEventListener("click", async () => {
+    if (!isInitialized) {
+      await window.youTubeAPIReady;
 
-    function showThumbnail() {
-      wrapper.innerHTML = '';
-      const img = document.createElement('img');
-      img.className = 'video-thumbnail';
-      img.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+      const videoId = wrapper.dataset.videoId;
 
-      const play = document.createElement('div');
-      play.className = 'play-button';
+      iframe = document.createElement("div");
+      iframe.className = "yt-frame";
+      wrapper.appendChild(iframe);
 
-      wrapper.appendChild(img);
-      wrapper.appendChild(play);
-
-      play.addEventListener('click', playVideo);
-    }
-
-    function playVideo() {
-      wrapper.innerHTML = '';
-
-      const iframeDiv = document.createElement('div');
-      iframeDiv.id = `ytplayer-${videoId}-${Math.random().toString(36).slice(2)}`;
-      wrapper.appendChild(iframeDiv);
-
-      ytPlayers[iframeDiv.id] = new YT.Player(iframeDiv.id, {
-        videoId: videoId,
-        playerVars: {
-          autoplay: 1,
-          start: Math.floor(ytLastTimes[videoId])
-        },
+      player = new YT.Player(iframe, {
+        videoId,
+        playerVars: { rel: 0, playsinline: 1 },
         events: {
-onStateChange: function (event) {
-  const state = event.data;
-
-  // Mark when buffering happens → usually seeking
-  if (state === YT.PlayerState.BUFFERING) {
-    ytIsSeeking[videoId] = Date.now();
-  }
-
-  // When video starts playing, clear seek flag
-  if (state === YT.PlayerState.PLAYING) {
-    ytIsSeeking[videoId] = 0;
-    return;
-  }
-
-  // Handle REAL user pause (ignore seek pauses)
-  if (state === YT.PlayerState.PAUSED) {
-
-    // If paused within 250ms of buffering → this is SEEKING, ignore
-    if (Date.now() - ytIsSeeking[videoId] < 250) {
-      return;
-    }
-
-    // Wait 150ms — if STILL paused, it's a real pause
-    setTimeout(() => {
-      if (event.target.getPlayerState() === YT.PlayerState.PAUSED) {
-
-        // REAL PAUSE confirmed
-        ytLastTimes[videoId] = event.target.getCurrentTime();
-        showThumbnail();
-      }
-    }, 150);
-  }
-
-  // Handle ended
-  if (state === YT.PlayerState.ENDED) {
-    ytLastTimes[videoId] = 0;
-    showThumbnail();
-  }
-}
-
+          onStateChange: (e) => {
+            if (e.data === YT.PlayerState.PAUSED) {
+              showThumbnail();
+            }
+          }
         }
       });
+
+      isInitialized = true;
     }
 
-    playBtn.addEventListener('click', playVideo);
+    // Show iframe and play
+    thumbnail.style.display = "none";
+    playBtn.style.display = "none";
+    iframe.style.display = "block";
+
+    player.playVideo();
   });
+
+  function showThumbnail() {
+    // Only hide iframe — don’t destroy it!
+    iframe.style.display = "none";
+    thumbnail.style.display = "block";
+    playBtn.style.display = "block";
+  }
+});
+
 }
 
 
