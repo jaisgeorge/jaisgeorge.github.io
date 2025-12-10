@@ -422,7 +422,7 @@ window.youTubeAPIReady.then(() => {
 
         player = new YT.Player(iframe, {
           videoId,
-          playerVars: { rel: 0, playsinline: 1 },
+          playerVars: { rel: 0, autoplay: 1, playsinline: 1 },
           events: {
             onStateChange: (e) => {
               // Only hide iframe when truly paused,
