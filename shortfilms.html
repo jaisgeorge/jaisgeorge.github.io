@@ -389,72 +389,71 @@ document.addEventListener("keydown", e => {
   }
 });
 
+// Load YouTube API only once
+if (!window.youTubeAPIReady) {
+  const tag = document.createElement("script");
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.body.appendChild(tag);
 
-  let ytPlayers = {};
-let ytLastTimes = {};
-let ytIsSeeking = {};   // NEW: track if the user is seeking
+  window.youTubeAPIReady = new Promise(resolve => {
+    window.onYouTubeIframeAPIReady = resolve;
+  });
+}
 
-function onYouTubeIframeAPIReady() {
-document.querySelectorAll(".video-wrapper").forEach(wrapper => {
-  const thumbnail = wrapper.querySelector(".video-thumbnail");
-  const playBtn = wrapper.querySelector(".play-btn");
-  let iframe = null;
-  let player = null;
-  let isInitialized = false;
+// After API loads, initialize all video wrappers
+window.youTubeAPIReady.then(() => {
+  document.querySelectorAll(".video-wrapper").forEach(wrapper => {
+    const thumbnail = wrapper.querySelector(".video-thumbnail");
+    const playBtn = wrapper.querySelector(".play-btn");
+    let iframe = null;
+    let player = null;
+    let isInitialized = false;
 
-  // Load YouTube API
-  if (!window.youTubeAPIReady) {
-    const tag = document.createElement("script");
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.body.appendChild(tag);
-    window.youTubeAPIReady = new Promise(resolve => {
-      window.onYouTubeIframeAPIReady = resolve;
-    });
-  }
+    // CLICK = Create iframe (first time) or resume video (later)
+    playBtn.addEventListener("click", async () => {
 
-  // CLICK = either create or resume
-  playBtn.addEventListener("click", async () => {
-    if (!isInitialized) {
-      await window.youTubeAPIReady;
+      // First time → create actual iframe player
+      if (!isInitialized) {
+        const videoId = wrapper.dataset.videoId;
 
-      const videoId = wrapper.dataset.videoId;
+        iframe = document.createElement("div");
+        iframe.className = "yt-frame";
+        wrapper.appendChild(iframe);
 
-      iframe = document.createElement("div");
-      iframe.className = "yt-frame";
-      wrapper.appendChild(iframe);
-
-      player = new YT.Player(iframe, {
-        videoId,
-        playerVars: { rel: 0, playsinline: 1 },
-        events: {
-          onStateChange: (e) => {
-            if (e.data === YT.PlayerState.PAUSED) {
-              showThumbnail();
+        player = new YT.Player(iframe, {
+          videoId,
+          playerVars: { rel: 0, playsinline: 1 },
+          events: {
+            onStateChange: (e) => {
+              // Only hide iframe when truly paused,
+              // not when user is seeking (YT fires a brief PAUSED event)
+              if (e.data === YT.PlayerState.PAUSED) {
+                showThumbnail();
+              }
             }
           }
-        }
-      });
+        });
 
-      isInitialized = true;
+        isInitialized = true;
+      }
+
+      // Show the iframe and play
+      thumbnail.style.display = "none";
+      playBtn.style.display = "none";
+      iframe.style.display = "block";
+
+      player.playVideo();
+    });
+
+    // Hide iframe → show thumbnail+icon
+    function showThumbnail() {
+      if (!iframe) return;
+      iframe.style.display = "none";
+      thumbnail.style.display = "block";
+      playBtn.style.display = "block";
     }
-
-    // Show iframe and play
-    thumbnail.style.display = "none";
-    playBtn.style.display = "none";
-    iframe.style.display = "block";
-
-    player.playVideo();
   });
-
-  function showThumbnail() {
-    // Only hide iframe — don’t destroy it!
-    iframe.style.display = "none";
-    thumbnail.style.display = "block";
-    playBtn.style.display = "block";
-  }
 });
-
-}
 
 
 
