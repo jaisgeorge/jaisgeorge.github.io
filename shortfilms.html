@@ -434,17 +434,25 @@ window.youTubeAPIReady.then(() => {
 events: {
   onStateChange: (e) => {
     if (e.data === YT.PlayerState.PAUSED) {
-      // Wait 50ms, then check if still paused
-      setTimeout(() => {
+      // Clear any existing timer
+      if (wrapper.pauseTimer) clearTimeout(wrapper.pauseTimer);
+
+      // Start a new 5-second timer
+      wrapper.pauseTimer = setTimeout(() => {
+        // Only show overlay if video is still paused
         if (player.getPlayerState() === YT.PlayerState.PAUSED) {
           overlay.style.display = "flex";
         }
-      }, 5000);
-    } else if (e.data === YT.PlayerState.PLAYING) {
+      }, 5000); // 5000ms = 5 seconds delay
+    } 
+    else if (e.data === YT.PlayerState.PLAYING) {
+      // Cancel any pending timer and hide overlay
+      if (wrapper.pauseTimer) clearTimeout(wrapper.pauseTimer);
       overlay.style.display = "none";
     }
   }
 }
+
         });
 
         // clicking overlay resumes video
