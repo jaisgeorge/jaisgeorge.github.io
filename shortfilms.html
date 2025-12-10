@@ -440,7 +440,7 @@ if (!window.youTubeAPIReady) {
 window.youTubeAPIReady.then(() => {
   document.querySelectorAll(".video-wrapper").forEach(wrapper => {
     const thumbnail = wrapper.querySelector(".video-thumbnail");
-    const playBtn = wrapper.querySelector(".play-button");
+const playBtnWrapper = wrapper.querySelector(".play-button-wrapper");
     let iframe = null;
     let player = null;
     let overlay = null;
