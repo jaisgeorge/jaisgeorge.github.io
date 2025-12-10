@@ -409,41 +409,49 @@ window.youTubeAPIReady.then(() => {
     let player = null;
     let isInitialized = false;
 
-    // CLICK = Create iframe (first time) or resume video (later)
-    playBtn.addEventListener("click", async () => {
+// CLICK = Create iframe (first time) or resume video (later)
+playBtn.addEventListener("click", async () => {
 
-      // First time → create actual iframe player
-      if (!isInitialized) {
-        const videoId = wrapper.dataset.videoId;
+  if (!isInitialized) {
+    const videoId = wrapper.dataset.videoId;
 
-        iframe = document.createElement("div");
-        iframe.className = "yt-frame";
-        wrapper.appendChild(iframe);
+    // create iframe container
+    iframe = document.createElement("div");
+    iframe.className = "yt-frame";
+    wrapper.appendChild(iframe);
 
-        player = new YT.Player(iframe, {
-          videoId,
-          playerVars: { rel: 0, autoplay: 1, playsinline: 1 },
-          events: {
-            onStateChange: (e) => {
-              // Only hide iframe when truly paused,
-              // not when user is seeking (YT fires a brief PAUSED event)
-              if (e.data === YT.PlayerState.PAUSED) {
-                showThumbnail();
-              }
-            }
+    // create overlay to show on pause
+    const overlay = document.createElement("div");
+    overlay.className = "video-overlay";
+    overlay.appendChild(thumbnail);
+    overlay.appendChild(playBtn);
+    wrapper.appendChild(overlay);
+
+    player = new YT.Player(iframe, {
+      videoId,
+      playerVars: { rel: 0, autoplay: 1, playsinline: 1 },
+      events: {
+        onStateChange: (e) => {
+          if (e.data === YT.PlayerState.PAUSED) {
+            overlay.style.display = "flex"; // show overlay when paused
+          } else if (e.data === YT.PlayerState.PLAYING) {
+            overlay.style.display = "none"; // hide overlay when playing
           }
-        });
-
-        isInitialized = true;
+        }
       }
-
-      // Show the iframe and play
-      thumbnail.style.display = "none";
-      playBtn.style.display = "none";
-      iframe.style.display = "block";
-
-      player.playVideo();
     });
+
+    // click on overlay resumes video
+    overlay.addEventListener("click", () => {
+      player.playVideo();
+      overlay.style.display = "none";
+    });
+
+    isInitialized = true;
+  }
+
+  player.playVideo();
+});
 
     // Hide iframe → show thumbnail+icon
     function showThumbnail() {
