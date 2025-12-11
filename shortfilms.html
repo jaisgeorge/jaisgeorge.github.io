@@ -233,11 +233,10 @@
   </div>
 
 
-  
-</main>
+    
+  </main>
 
 
- 
 <!-- ============================
       LIGHTBOX
 ============================ -->
@@ -376,15 +375,15 @@ function showImage() {
 }
 
 function openLightbox(img) {
-  const collage = img.closest(".collage");
-  currentImages = [...collage.querySelectorAll("img")];
+  let container = img.closest(".collage") || img.closest(".project-row");
+  currentImages = [...container.querySelectorAll("img")];
   currentIndex = currentImages.indexOf(img);
   showImage();
   lightbox.style.display = "flex";
   lightbox.setAttribute("aria-hidden", "false");
 }
 
-document.querySelectorAll(".collage img").forEach(img =>
+document.querySelectorAll(".collage img, .project-column img").forEach(img =>
   img.addEventListener("click", () => openLightbox(img))
 );
 
@@ -425,7 +424,6 @@ document.addEventListener("keydown", e => {
     }
   }
 });
-
 
 
 /* ============================================================
@@ -528,8 +526,7 @@ window.youTubeAPIReady.then(() => {
 
 
 
-
+  
 </script>
-
 </body>
 </html>
