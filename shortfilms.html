@@ -334,7 +334,10 @@ function showImage() {
 }
 
 function openLightbox(img) {
-  let container = img.closest(".collage") || img.closest(".project-row");
+  let container = img.closest(".collage") 
+               || img.closest(".project-row") 
+               || img.closest(".photo-grid") 
+               || img.closest(".photo-grid-poster");
   currentImages = [...container.querySelectorAll("img")];
   currentIndex = currentImages.indexOf(img);
   showImage();
@@ -342,7 +345,7 @@ function openLightbox(img) {
   lightbox.setAttribute("aria-hidden", "false");
 }
 
-document.querySelectorAll(".collage img, .project-column img").forEach(img =>
+document.querySelectorAll(".collage img, .project-column img, .photo-grid img, .photo-grid-poster img").forEach(img =>
   img.addEventListener("click", () => openLightbox(img))
 );
 
