@@ -263,6 +263,9 @@ main h2 {
 
 .video-item {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
 }
 
 
@@ -902,6 +905,7 @@ html, body {
   }
 
 }
+
 
 
 
