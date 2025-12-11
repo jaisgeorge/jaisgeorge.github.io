@@ -289,8 +289,8 @@ main h2 {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 120px; /* bigger clickable perimeter */
-  height: 120px;
+  width: 150px; /* bigger clickable perimeter */
+  height: 150px;
   transform: translate(-50%, -50%);
   cursor: pointer;
   display: flex;
@@ -299,8 +299,8 @@ main h2 {
 }
 
 .video-wrapper .play-button {
-  width: 64px; /* visual size */
-  height: 64px;
+  width: 100px; /* visual size */
+  height: 100px;
   background: rgba(255,255,255,0.8);
   clip-path: polygon(25% 20%, 25% 80%, 75% 50%);
   transition: background 0.3s;
@@ -902,6 +902,7 @@ html, body {
   }
 
 }
+
 
 
 
