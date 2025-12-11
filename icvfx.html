@@ -470,6 +470,87 @@ startSlideshow('slideshow1', 1500);
 startSlideshow('slideshow2', 1500);  
 startSlideshow('slideshow3', 1500);
 
+
+  
+// Load YouTube API only once
+if (!window.youTubeAPIReady) {
+  const tag = document.createElement("script");
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.body.appendChild(tag);
+
+  window.youTubeAPIReady = new Promise(resolve => {
+    window.onYouTubeIframeAPIReady = resolve;
+  });
+}
+
+// After API loads, initialize all video wrappers
+window.youTubeAPIReady.then(() => {
+  document.querySelectorAll(".video-wrapper").forEach(wrapper => {
+    const thumbnail = wrapper.querySelector(".video-thumbnail");
+    const playBtnWrapper = wrapper.querySelector(".play-button-wrapper"); // new clickable area
+    let iframe = null;
+    let player = null;
+    let overlay = null;
+    let isInitialized = false;
+
+    playBtnWrapper.addEventListener("click", () => {
+      if (!isInitialized) {
+        const videoId = wrapper.dataset.videoId;
+
+        // create iframe container
+        iframe = document.createElement("div");
+        iframe.className = "yt-frame";
+        wrapper.appendChild(iframe);
+
+        // create overlay to show thumbnail + play button
+        overlay = document.createElement("div");
+        overlay.className = "video-overlay";
+
+        // move thumbnail and playBtnWrapper into overlay
+        overlay.appendChild(thumbnail);
+        overlay.appendChild(playBtnWrapper);
+        wrapper.appendChild(overlay);
+
+        // initialize YouTube player
+        player = new YT.Player(iframe, {
+          videoId,
+          playerVars: { rel: 0, autoplay: 1, playsinline: 1 },
+          events: {
+            onStateChange: (e) => {
+              if (e.data === YT.PlayerState.PAUSED) {
+                if (wrapper.pauseTimer) clearTimeout(wrapper.pauseTimer);
+                wrapper.pauseTimer = setTimeout(() => {
+                  if (player.getPlayerState() === YT.PlayerState.PAUSED) {
+                    overlay.style.display = "flex";
+                  }
+                }, 5000);
+              } else if (e.data === YT.PlayerState.PLAYING) {
+                if (wrapper.pauseTimer) clearTimeout(wrapper.pauseTimer);
+                overlay.style.display = "none";
+              }
+            }
+          }
+        });
+
+        // clicking overlay resumes video
+        overlay.addEventListener("click", () => {
+          player.playVideo();
+          overlay.style.display = "none";
+        });
+
+        isInitialized = true;
+      }
+
+      // Always play video on click
+      player.playVideo();
+      overlay.style.display = "none";
+    });
+  });
+});
+
+
+
+  
 </script>
 </body>
 </html>
