@@ -3,32 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RESUME | Jais George</title>
+  <title>Resume | Jais George</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Sticky Frosted Header -->
-  <header>
-    <nav class="header-left">
-      <a href="index.html">Work</a>
-    </nav>
+<!-- ============================
+      HEADER
+============================ -->
+<header>
+  <nav class="header-left">
+    <a href="work.html">Work</a>
+  </nav>
 
-    <h1><a href="index.html">J a i s &nbsp;&nbsp;G e o r g e</a></h1>
+  <h1><a href="index.html">J a i s &nbsp;&nbsp;G e o r g e</a></h1>
 
-    <nav class="header-right">
-      <a href="resume.html" class="active">Resume</a>
-      <a href="spot.html">Spot</a>
-      <a href="https://www.imdb.com/name/nm17583632/?ref_=ext_shr_lnk" target="_blank">IMDb</a>
-      <a href="chai.html">Chai?</a>
-      <a href="https://www.linkedin.com" target="_blank">in</a>
-      <a href="mailto:jaisgeorge28@gmail.com">Email</a>
-    </nav>
-  </header>
+  <nav class="header-right" id="mainNav">
+    <a href="resume.html">Resume</a>
+    <a href="spot.html">Spot</a>
+    <a href="chai.html">Chai?</a>
+    <a href="https://www.linkedin.com/in/jais-george/" target="_blank">
+    <img src="icons/linkediniconw54.png" alt="LinkedIn" style="width:24px; height:24px;">
+    </a>
+    <a href="https://www.imdb.com/name/nm17583632/?ref_=ext_shr_lnk" target="_blank">
+    <img src="icons/imdbiconw54.png" alt="IMDb" style="width:35px; height:35px;">
+    </a>
+  </nav>
 
+  <img src="icons/hamburgerw54.png" class="menu-icon" id="menuBtn" alt="Open Menu">
+  <img src="icons/crossw54.png" class="close-icon" id="menuCloseBtn" alt="Close Menu">
+</header>
 
-  <main>
+<!-- ============================
+      MOBILE MENU (auto-populated)
+============================ -->
+<div id="mobileMenu" class="mobile-menu-overlay" aria-hidden="true">
+  <div class="mobile-menu-items" id="mobileMenuItems"></div>
+</div>
 
+<!-- ============================
+      MAIN CONTENT
+============================ -->
+
+<main>
 	  
   <section class="resume">
 
