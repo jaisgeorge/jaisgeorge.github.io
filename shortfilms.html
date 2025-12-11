@@ -426,6 +426,30 @@ document.addEventListener("keydown", e => {
   }
 });
 
+
+
+/* ============================================================
+   SLIDESHOW
+============================================================ */
+function startSlideshow(slideshowId, interval = 3000) {
+  const container = document.getElementById(slideshowId);
+  const images = container.querySelectorAll('img');
+  let index = 0;
+
+  setInterval(() => {
+    images[index].style.display = 'none';             // hide current
+    index = (index + 1) % images.length;              // next image
+    images[index].style.display = 'block';            // show next
+  }, interval);
+}
+
+// Start both slideshows independently
+startSlideshow('slideshow1', 1500);   
+startSlideshow('slideshow2', 1500);  
+startSlideshow('slideshow3', 1500);
+
+
+  
 // Load YouTube API only once
 if (!window.youTubeAPIReady) {
   const tag = document.createElement("script");
