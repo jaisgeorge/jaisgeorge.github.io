@@ -124,27 +124,29 @@
 
    
   
-</main>
+  </main>
 
-<!-- Lightbox -->
-<div id="lightbox" class="lightbox">
+
+<!-- ============================
+      LIGHTBOX
+============================ -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
   <span class="lightbox-close">&times;</span>
-  
-  <!-- Wrap image + arrows in container -->
   <div class="lightbox-content">
     <span class="lightbox-prev">&#10094;</span>
-    <img class="lightbox-img" src="" alt="Expanded Image">
+    <img class="lightbox-img" src="" alt="">
     <span class="lightbox-next">&#10095;</span>
   </div>
-  
   <p class="lightbox-desc"></p>
 </div>
 
-
-  <footer>
-    <p> UNREAL ENGINE | BLENDER 3D | COMFYUI | HOUDINI | MAYA | TOUCHDESIGNER | VEX | PYTHON | C++ | ICVFX | AI | 3D PREVIZ | MOCAP | VIDEO PRODUCTION | FILM DIRECTION | ART DIRECTION</p>
-    <p>&copy; 2025 Jais George</p>
-  </footer>
+<!-- ============================
+      FOOTER
+============================ -->
+<footer>
+  <p>UNREAL ENGINE | BLENDER 3D | COMFYUI | HOUDINI | MAYA | TOUCHDESIGNER | VEX | PYTHON | C++ | ICVFX | AI | 3D PREVIZ | MOCAP | VIDEO PRODUCTION | FILM DIRECTION | ART DIRECTION</p>
+  <p>&copy; 2025 Jais George</p>
+</footer>
 
 <!-- ============================
       SCRIPTS
@@ -187,7 +189,7 @@ mobileMenu.addEventListener("click", e => {
 function checkHeaderCollapse() {
   const windowWidth = window.innerWidth;
 
-  if (windowWidth <= 768) {
+  if (windowWidth <= 1024) {
     // Mobile view: hide header-right, show menu button
     header.classList.add("mobile-collapsed");
   } else {
@@ -263,15 +265,18 @@ function showImage() {
 }
 
 function openLightbox(img) {
-  const collage = img.closest(".collage");
-  currentImages = [...collage.querySelectorAll("img")];
+  let container = img.closest(".collage") 
+               || img.closest(".project-row") 
+               || img.closest(".photo-grid") 
+               || img.closest(".photo-grid-poster");
+  currentImages = [...container.querySelectorAll("img")];
   currentIndex = currentImages.indexOf(img);
   showImage();
   lightbox.style.display = "flex";
   lightbox.setAttribute("aria-hidden", "false");
 }
 
-document.querySelectorAll(".collage img").forEach(img =>
+document.querySelectorAll(".collage img, .project-column img, .photo-grid img, .photo-grid-poster img").forEach(img =>
   img.addEventListener("click", () => openLightbox(img))
 );
 
@@ -313,6 +318,91 @@ document.addEventListener("keydown", e => {
   }
 });
 
+
+
+
+
+
+  
+  
+// Load YouTube API only once
+if (!window.youTubeAPIReady) {
+  const tag = document.createElement("script");
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.body.appendChild(tag);
+
+  window.youTubeAPIReady = new Promise(resolve => {
+    window.onYouTubeIframeAPIReady = resolve;
+  });
+}
+
+// After API loads, initialize all video wrappers
+window.youTubeAPIReady.then(() => {
+  document.querySelectorAll(".video-wrapper").forEach(wrapper => {
+    const thumbnail = wrapper.querySelector(".video-thumbnail");
+    const playBtnWrapper = wrapper.querySelector(".play-button-wrapper"); // new clickable area
+    let iframe = null;
+    let player = null;
+    let overlay = null;
+    let isInitialized = false;
+
+    playBtnWrapper.addEventListener("click", () => {
+      if (!isInitialized) {
+        const videoId = wrapper.dataset.videoId;
+
+        // create iframe container
+        iframe = document.createElement("div");
+        iframe.className = "yt-frame";
+        wrapper.appendChild(iframe);
+
+        // create overlay to show thumbnail + play button
+        overlay = document.createElement("div");
+        overlay.className = "video-overlay";
+
+        // move thumbnail and playBtnWrapper into overlay
+        overlay.appendChild(thumbnail);
+        overlay.appendChild(playBtnWrapper);
+        wrapper.appendChild(overlay);
+
+        // initialize YouTube player
+        player = new YT.Player(iframe, {
+          videoId,
+          playerVars: { rel: 0, autoplay: 1, playsinline: 1 },
+          events: {
+            onStateChange: (e) => {
+              if (e.data === YT.PlayerState.PAUSED) {
+                if (wrapper.pauseTimer) clearTimeout(wrapper.pauseTimer);
+                wrapper.pauseTimer = setTimeout(() => {
+                  if (player.getPlayerState() === YT.PlayerState.PAUSED) {
+                    overlay.style.display = "flex";
+                  }
+                }, 5000);
+              } else if (e.data === YT.PlayerState.PLAYING) {
+                if (wrapper.pauseTimer) clearTimeout(wrapper.pauseTimer);
+                overlay.style.display = "none";
+              }
+            }
+          }
+        });
+
+        // clicking overlay resumes video
+        overlay.addEventListener("click", () => {
+          player.playVideo();
+          overlay.style.display = "none";
+        });
+
+        isInitialized = true;
+      }
+
+      // Always play video on click
+      player.playVideo();
+      overlay.style.display = "none";
+    });
+  });
+});
+
+
+
 /* ============================================================
    SLIDESHOW
 ============================================================ */
@@ -328,8 +418,14 @@ function startSlideshow(slideshowId, interval = 3000) {
   }, interval);
 }
 
-startSlideshow('waco-slideshow', 1500);
- 
+// Start both slideshows independently
+startSlideshow('slideshow1', 1500);   
+startSlideshow('slideshow2', 1500);  
+startSlideshow('slideshow3', 1500);
+
+
+
+  
 </script>
 </body>
 </html>
