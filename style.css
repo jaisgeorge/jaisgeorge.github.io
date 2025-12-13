@@ -916,11 +916,11 @@ html, body {
   padding: 0.85rem 1.75rem;
 
   color: #fff;                 /* white text */
-  border: 2px solid #fff;      /* visible white outline */
+  border: 1px solid #fff;      /* visible white outline */
   border-radius: 14px;         /* rounded rectangle */
 
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 250;
   letter-spacing: 0.05em;
 
   background: transparent;     /* keep it clean */
@@ -932,6 +932,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
