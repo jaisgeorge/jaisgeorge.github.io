@@ -617,6 +617,8 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
 .bio-photo {
   flex: 0 0 300px;           /* fixed width for photo */
   display: flex;
+  flex-direction: column;   /* stack images vertically */
+  gap: 16px;                /* space between the two images */ 
   justify-content: center;
   align-items: center;
 }
@@ -932,6 +934,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
