@@ -640,9 +640,11 @@ ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
 .bio-text p {
   font-size: 1rem;
   line-height: 1.5;
-  text-align: left;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto; 
   max-width: 600px;
-  color: #fff;
+  color: #fff; 
 }
 
 /* =========================
@@ -934,6 +936,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
