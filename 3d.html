@@ -12,26 +12,8 @@
       HEADER
 ============================ -->
 <header>
-  <nav class="header-left">
-    <a href="work.html">WORK</a>
-  </nav>
-
-  <h1><a href="index.html">J A I S &nbsp;&nbsp;G E O R G E</a></h1>
-
-  <nav class="header-right" id="mainNav">
-    <a href="resume.html">RESUME</a>
-    <a href="spot.html">SPOT</a>
-    <a href="chai.html">ABOUT</a>
-    <a href="https://www.linkedin.com/in/jais-george/" target="_blank">
-    <img src="icons/linkediniconw54.png" alt="LinkedIn" style="width:24px; height:24px;">
-    </a>
-    <a href="https://www.imdb.com/name/nm17583632/?ref_=ext_shr_lnk" target="_blank">
-    <img src="icons/imdbiconw54.png" alt="IMDb" style="width:35px; height:35px;">
-    </a>
-  </nav>
-
-  <img src="icons/hamburgerw54.png" class="menu-icon" id="menuBtn" alt="Open Menu">
-  <img src="icons/crossw54.png" class="close-icon" id="menuCloseBtn" alt="Close Menu">
+<!-- Header placeholder -->
+<div id="header-container"></div>
 </header>
 
 <!-- ============================
@@ -331,52 +313,65 @@
 // ============================
 // HEADER COLLAPSE / MOBILE MENU
 // ============================
-const header = document.querySelector("header");
-const headerRight = document.querySelector(".header-right");
-const menuButton = document.querySelector(".menu-icon");
-const closeButton = document.querySelector(".close-icon");
-const mobileMenu = document.getElementById("mobileMenu");
-const mobileMenuItems = document.getElementById("mobileMenuItems");
-const rightLinks = document.querySelectorAll(".header-right a");
 
-// Populate mobile menu
-rightLinks.forEach(link => {
-  mobileMenuItems.appendChild(link.cloneNode(true));
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('header-container').innerHTML = data;
+      // Initialize header scripts after header is loaded
+      initHeader();
+    })
+    .catch(err => console.error('Error loading header:', err));
 });
 
-// Toggle mobile menu open/close
-function openMenu() {
-  mobileMenu.classList.add("open");
-  header.classList.add("mobile-collapsed");
-}
-function closeMenu() {
-  mobileMenu.classList.remove("open");
-  header.classList.remove("mobile-collapsed");
-}
+  
+function initHeader() {
+  const header = document.querySelector("header");
+  const headerRight = document.querySelector(".header-right");
+  const menuButton = document.querySelector(".menu-icon");
+  const closeButton = document.querySelector(".close-icon");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileMenuItems = document.getElementById("mobileMenuItems");
+  const rightLinks = document.querySelectorAll(".header-right a");
 
-// Menu button events
-menuButton.addEventListener("click", openMenu);
-closeButton.addEventListener("click", closeMenu);
-mobileMenu.addEventListener("click", e => {
-  if (e.target === mobileMenu) closeMenu();
-});
+  // Populate mobile menu
+  rightLinks.forEach(link => {
+    mobileMenuItems.appendChild(link.cloneNode(true));
+  });
 
-// Collapse logic based on screen width
-function checkHeaderCollapse() {
-  const windowWidth = window.innerWidth;
-
-  if (windowWidth <= 1024) {
-    // Mobile view: hide header-right, show menu button
+  // Toggle mobile menu open/close
+  function openMenu() {
+    mobileMenu.classList.add("open");
     header.classList.add("mobile-collapsed");
-  } else {
-    // Desktop view: show header-right
+  }
+  function closeMenu() {
+    mobileMenu.classList.remove("open");
     header.classList.remove("mobile-collapsed");
   }
-}
 
-// Run on load & resize
-window.addEventListener("resize", checkHeaderCollapse);
-window.addEventListener("load", checkHeaderCollapse);
+  // Menu button events
+  menuButton.addEventListener("click", openMenu);
+  closeButton.addEventListener("click", closeMenu);
+  mobileMenu.addEventListener("click", e => {
+    if (e.target === mobileMenu) closeMenu();
+  });
+
+  // Collapse logic based on screen width
+  function checkHeaderCollapse() {
+    const windowWidth = window.innerWidth;
+    if (windowWidth <= 1024) {
+      header.classList.add("mobile-collapsed");
+    } else {
+      header.classList.remove("mobile-collapsed");
+    }
+  }
+
+  // Run on load & resize
+  window.addEventListener("resize", checkHeaderCollapse);
+  checkHeaderCollapse();
+}
   
 /* ============================================================
    HEADER SCROLL STATE
@@ -605,6 +600,7 @@ startSlideshow('slideshow3', 1500);
 </script>
 </body>
 </html>
+
 
 
 
