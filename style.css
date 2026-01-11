@@ -1,10 +1,11 @@
 /* =========================
    IMPORTS & GLOBAL STYLES
 ========================= */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;700&display=swap');
+/* Import Montserrat instead of Inter */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;700&display=swap');
 
 * {
-  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif; /* Changed to Montserrat */
   font-weight: 200; /* ExtraLight globally */
   box-sizing: border-box;
   margin: 0;
@@ -936,6 +937,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
