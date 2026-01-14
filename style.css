@@ -678,9 +678,9 @@ html, body {
 .homepage {
 
   min-height: 100svh;          /* mobile-safe full viewport */
-  justify-content: center;      /* vertical center */
   padding: 0;
   box-sizing: border-box;
+  display: block;
 }
 
 .home-hero {
@@ -942,6 +942,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
