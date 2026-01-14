@@ -676,13 +676,18 @@ html, body {
 
 /* Homepage main container */
 .homepage {
-  display: flex;
-  flex-direction: column;
+
   min-height: 100svh;          /* mobile-safe full viewport */
   justify-content: center;      /* vertical center */
-  align-items: center;          /* horizontal center */
   padding: 0;
   box-sizing: border-box;
+}
+
+.home-hero {
+  min-height: 100svh;      /* full viewport height */
+  display: flex;
+  align-items: center;     /* vertical centering */
+  justify-content: center; /* centers the row horizontally */
 }
 
 /* Row containing left + right columns */
@@ -937,6 +942,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
