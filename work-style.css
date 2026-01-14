@@ -1,0 +1,38 @@
+/* Work section only (safe to include on any page) */
+.work-section .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.work-section .grid a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.work-section .grid-item {
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.work-section .grid-item:hover { transform: scale(1.02); }
+
+.work-section .grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Desktop: force 4 items per row */
+@media (min-width: 1024px) {
+  .work-section .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 0 40px;
+  }
+}
