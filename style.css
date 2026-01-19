@@ -80,7 +80,6 @@ header a, footer a { color: #fff; }
 
 .menu-icon, .close-icon {
   width: 28px;
- 25px
   height: 28px;
   cursor: pointer;
   position: relative;
@@ -205,6 +204,39 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
 }
 
 .collage-column img { width: 100%; height: auto; object-fit: cover; border-radius: 0; }
+
+
+
+/* =========================
+   PROJECT — SINGLE IMAGE
+========================= */
+
+.project-singleimg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem 0;     /* vertical breathing room */
+}
+
+.project-singleimg img {
+  width: 100%;
+  max-width: 900px;     /* aligns with your video width */
+  height: auto;
+  display: block;
+
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+  transition: transform 0.3s ease;
+}
+
+.project-singleimg img:hover {
+  transform: translateY(-4px);
+}
+
+
+
+
 
 /* =========================
    VIDEO GRID (Unified Style)
@@ -942,6 +974,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
