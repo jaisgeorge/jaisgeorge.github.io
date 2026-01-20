@@ -172,6 +172,20 @@ header.mobile-collapsed .close-icon {
 ========================= */
 h2 { margin-top: 0; text-align: center; font-size: 1rem; }
 
+
+/* =========================
+   PROJECT DIVIDER
+========================= */
+.project-divider {
+  width: 33.333vw;
+  height: 1px;
+  background: rgba(255,255,255,0.3);
+  margin: 60px auto;
+}
+
+
+
+
 /* =========================
    PROJECTS / COLLAGES
 ========================= */
@@ -980,6 +994,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
