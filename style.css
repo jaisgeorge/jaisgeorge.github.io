@@ -558,6 +558,13 @@ footer p { font-size: 0.9rem; }
 }
 
 
+/* FINAL IMAGES — auto-expand to fill width */
+.project-row.final-images {
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+
+
 
 /* =========================
 ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
@@ -974,6 +981,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
