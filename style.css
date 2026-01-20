@@ -559,9 +559,12 @@ footer p { font-size: 0.9rem; }
 
 
 /* FINAL IMAGES — auto-expand to fill width */
-.project-row.final-images {
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+.project-row.final-images{
+  /* each tile can grow, but never bigger than a 3-up tile */
+  grid-template-columns: repeat(auto-fit, minmax(0, calc((100% - (2 * 20px)) / 3)));
+  justify-content: center; /* centers when fewer than 3 */
 }
+
 
 
 .project-row.final-images .project-column {
@@ -985,6 +988,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
