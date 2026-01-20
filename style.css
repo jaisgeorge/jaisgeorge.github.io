@@ -195,12 +195,18 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
   text-align: center;
 }
 
-.project .project-title,
+.project-title {
+  font-weight: 200;
+  color: #fff7a8;
+  margin-bottom: 20px; 
+}
+
 .project .project-desc {
   font-weight: 200;
   color: #fff;
   margin-bottom: 20px;
 }
+
 
 .project-desc {
   font-size: 0.9rem;
@@ -994,6 +1000,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
