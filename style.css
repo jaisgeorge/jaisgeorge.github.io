@@ -565,14 +565,6 @@ footer p { font-size: 0.9rem; }
   justify-content: center; /* centers when fewer than 3 */
 }
 
-
-
-.project-row.final-images .project-column {
-  width: 100%;
-  max-width: calc((100% - (2 * 20px)) / 3);
-}
-
-
 /* =========================
 ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
 ========================= */
@@ -988,6 +980,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
