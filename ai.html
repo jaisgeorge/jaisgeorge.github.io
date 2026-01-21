@@ -30,35 +30,24 @@
   
 <!-- Project 1 -->
 <div id="project1" class="project">
-  
-<h3 class="project-title">BIRMINGHAM CITY FOOTBALL CLUB STADIUM PITCH VIDEO by Haymaker VFX</h3>
-<p class="project-desc">3D AND GEN-AI ARTIST</p>
+  <h3 class="project-title">BIRMINGHAM CITY FOOTBALL CLUB STADIUM PITCH VIDEO by Haymaker VFX</h3>
+  <p class="project-desc">3D AND GEN-AI ARTIST</p>
+  <p class="project-desc"></p>
 
-  <div class="video-grid">
+   <div class="video-grid">
 
-    <div class="video-item">
-      <p class="video-caption photo-caption"></p>
+     <div class="video-item">
+ 
+    <div class="video-wrapper" data-video-id="40_AygpJ1fU">
+      <img class="video-thumbnail" src="https://img.youtube.com/vi/40_AygpJ1fU/maxresdefault.jpg" alt="PaperMates Spec Commercial Texas A&M">
+<div class="play-button-wrapper">
+  <div class="play-button"></div>
+</div>
 
-      <div class="video-wrapper"
-           data-video-type="vimeo"
-           data-video-id="1149239073"
-           data-video-hash="564b678eeb">
-
-        <img class="video-thumbnail"
-             src="https://vumbnail.com/1149239073.jpg"
-             alt="3D Demo Reel">
-
-        <div class="play-button-wrapper">
-          <div class="play-button"></div>
-        </div>
-      </div>
-
-      <p class="video-subcaption project-desc"></p>
     </div>
-
-  </div>  
-  
-  
+   </div>
+   </div>
+   
 <!-- ============================
 ============================ -->  
   
@@ -413,13 +402,8 @@ startSlideshow('slideshow1', 1500);
 startSlideshow('slideshow2', 1500);  
 startSlideshow('slideshow3', 1500);
 startSlideshow('slideshow4', 1500);
-
-
   
-/* ============================================================
-   VIDEO PLAYER (YouTube + Vimeo)
-============================================================ */
-
+// Load YouTube API only once
 if (!window.youTubeAPIReady) {
   const tag = document.createElement("script");
   tag.src = "https://www.youtube.com/iframe_api";
@@ -430,95 +414,71 @@ if (!window.youTubeAPIReady) {
   });
 }
 
-// Initialize video wrappers
-document.querySelectorAll(".video-wrapper").forEach(wrapper => {
-  const type = wrapper.dataset.videoType || "youtube";
-  const videoId = wrapper.dataset.videoId;
-  const hash = wrapper.dataset.videoHash;
+// After API loads, initialize all video wrappers
+window.youTubeAPIReady.then(() => {
+  document.querySelectorAll(".video-wrapper").forEach(wrapper => {
+    const thumbnail = wrapper.querySelector(".video-thumbnail");
+    const playBtnWrapper = wrapper.querySelector(".play-button-wrapper"); // new clickable area
+    let iframe = null;
+    let player = null;
+    let overlay = null;
+    let isInitialized = false;
 
-  const thumbnail = wrapper.querySelector(".video-thumbnail");
-  const playBtnWrapper = wrapper.querySelector(".play-button-wrapper");
+    playBtnWrapper.addEventListener("click", () => {
+      if (!isInitialized) {
+        const videoId = wrapper.dataset.videoId;
 
-  let iframe = null;
-  let overlay = null;
-  let player = null;
-  let isInitialized = false;
+        // create iframe container
+        iframe = document.createElement("div");
+        iframe.className = "yt-frame";
+        wrapper.appendChild(iframe);
 
-  playBtnWrapper.addEventListener("click", async () => {
-    if (!isInitialized) {
-      // Create iframe container
-      iframe = document.createElement("div");
-      iframe.className = "video-frame";
-      wrapper.appendChild(iframe);
+        // create overlay to show thumbnail + play button
+        overlay = document.createElement("div");
+        overlay.className = "video-overlay";
 
-      // Create overlay
-      overlay = document.createElement("div");
-      overlay.className = "video-overlay";
-      overlay.appendChild(thumbnail);
-      overlay.appendChild(playBtnWrapper);
-      wrapper.appendChild(overlay);
+        // move thumbnail and playBtnWrapper into overlay
+        overlay.appendChild(thumbnail);
+        overlay.appendChild(playBtnWrapper);
+        wrapper.appendChild(overlay);
 
-      if (type === "youtube") {
-        // Wait for YouTube API
-        await window.youTubeAPIReady;
-
+        // initialize YouTube player
         player = new YT.Player(iframe, {
           videoId,
-          playerVars: {
-            rel: 0,
-            autoplay: 1,
-            playsinline: 1
-          },
+          playerVars: { rel: 0, autoplay: 1, playsinline: 1 },
           events: {
-            onStateChange: e => {
-              if (e.data === YT.PlayerState.PLAYING) {
-                overlay.style.display = "none";
-              }
+            onStateChange: (e) => {
               if (e.data === YT.PlayerState.PAUSED) {
-                setTimeout(() => {
+                if (wrapper.pauseTimer) clearTimeout(wrapper.pauseTimer);
+                wrapper.pauseTimer = setTimeout(() => {
                   if (player.getPlayerState() === YT.PlayerState.PAUSED) {
                     overlay.style.display = "flex";
                   }
-                }, 4000);
+                }, 5000);
+              } else if (e.data === YT.PlayerState.PLAYING) {
+                if (wrapper.pauseTimer) clearTimeout(wrapper.pauseTimer);
+                overlay.style.display = "none";
               }
             }
           }
         });
 
+        // clicking overlay resumes video
         overlay.addEventListener("click", () => {
           player.playVideo();
           overlay.style.display = "none";
         });
 
-      } else if (type === "vimeo") {
-        const iframeEl = document.createElement("iframe");
-        iframeEl.src =
-          `https://player.vimeo.com/video/${videoId}?h=${hash}&autoplay=1`;
-        iframeEl.frameBorder = "0";
-        iframeEl.allow =
-          "autoplay; fullscreen; picture-in-picture";
-        iframeEl.allowFullscreen = true;
-
-        iframe.appendChild(iframeEl);
-
-        // Vimeo can't detect pause without SDK — simple behavior
-        overlay.addEventListener("click", () => {
-          iframeEl.src += ""; // force focus
-          overlay.style.display = "none";
-        });
+        isInitialized = true;
       }
 
-      isInitialized = true;
-    }
-
-    // Play behavior
-    overlay.style.display = "none";
-
-    if (type === "youtube" && player) {
+      // Always play video on click
       player.playVideo();
-    }
+      overlay.style.display = "none";
+    });
   });
 });
+
 
 
   
