@@ -587,22 +587,27 @@ footer p { font-size: 0.9rem; }
 */
 
 .project-row.final-images{
-  display: flex;              /* easiest for variable widths */
-  justify-content: center;    /* centers the whole row */
+  display: flex;
+  justify-content: center;
   gap: 20px;
   margin: 30px auto;
-  width: 90vw;                /* keep your existing project width behavior */
+
+  width: 90vw;        /* your “vw - margins” container */
   max-width: 90vw;
-  align-items: center;
+
+  flex-wrap: nowrap;  /* keep on one row */
+  overflow: hidden;   /* prevents scrollbar if rounding happens */
 }
 
+/* Same height, no cropping, auto-shrink on narrow screens */
 .project-row.final-images img{
-  height: 33vh;               /* fixed height */
-  width: auto;                /* preserve aspect ratio */
-  max-height: 33vh;
-  object-fit: contain;        /* no cropping */
+  height: clamp(140px, 33vh, 360px);  /* pick min/max you like */
+  width: auto;
+  object-fit: contain;
+  max-width: 100%;    /* safety */
   display: block;
 }
+
 
 /* =========================
 ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
@@ -1019,6 +1024,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
