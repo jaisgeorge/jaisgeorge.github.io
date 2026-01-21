@@ -578,12 +578,21 @@ footer p { font-size: 0.9rem; }
 }
 
 
-/* FINAL IMAGES — auto-expand to fill width */
+/*
 .project-row.final-images{
-  /* each tile can grow, but never bigger than a 3-up tile */
+
   grid-template-columns: repeat(auto-fit, minmax(0, calc((100% - (2 * 20px)) / 3)));
-  justify-content: center; /* centers when fewer than 3 */
+  justify-content: center;
 }
+*/
+
+.project-row.final-images img {
+  width: 100%;
+  height: 33vh;
+  max-height: 33vh;
+  object-fit: cover;
+}
+
 
 /* =========================
 ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
@@ -1000,6 +1009,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
