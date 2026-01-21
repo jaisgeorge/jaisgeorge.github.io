@@ -413,8 +413,13 @@ startSlideshow('slideshow1', 1500);
 startSlideshow('slideshow2', 1500);  
 startSlideshow('slideshow3', 1500);
 startSlideshow('slideshow4', 1500);
+
+
   
-// Load YouTube API only once
+/* ============================================================
+   VIDEO PLAYER (YouTube + Vimeo)
+============================================================ */
+
 if (!window.youTubeAPIReady) {
   const tag = document.createElement("script");
   tag.src = "https://www.youtube.com/iframe_api";
@@ -425,71 +430,95 @@ if (!window.youTubeAPIReady) {
   });
 }
 
-// After API loads, initialize all video wrappers
-window.youTubeAPIReady.then(() => {
-  document.querySelectorAll(".video-wrapper").forEach(wrapper => {
-    const thumbnail = wrapper.querySelector(".video-thumbnail");
-    const playBtnWrapper = wrapper.querySelector(".play-button-wrapper"); // new clickable area
-    let iframe = null;
-    let player = null;
-    let overlay = null;
-    let isInitialized = false;
+// Initialize video wrappers
+document.querySelectorAll(".video-wrapper").forEach(wrapper => {
+  const type = wrapper.dataset.videoType || "youtube";
+  const videoId = wrapper.dataset.videoId;
+  const hash = wrapper.dataset.videoHash;
 
-    playBtnWrapper.addEventListener("click", () => {
-      if (!isInitialized) {
-        const videoId = wrapper.dataset.videoId;
+  const thumbnail = wrapper.querySelector(".video-thumbnail");
+  const playBtnWrapper = wrapper.querySelector(".play-button-wrapper");
 
-        // create iframe container
-        iframe = document.createElement("div");
-        iframe.className = "yt-frame";
-        wrapper.appendChild(iframe);
+  let iframe = null;
+  let overlay = null;
+  let player = null;
+  let isInitialized = false;
 
-        // create overlay to show thumbnail + play button
-        overlay = document.createElement("div");
-        overlay.className = "video-overlay";
+  playBtnWrapper.addEventListener("click", async () => {
+    if (!isInitialized) {
+      // Create iframe container
+      iframe = document.createElement("div");
+      iframe.className = "video-frame";
+      wrapper.appendChild(iframe);
 
-        // move thumbnail and playBtnWrapper into overlay
-        overlay.appendChild(thumbnail);
-        overlay.appendChild(playBtnWrapper);
-        wrapper.appendChild(overlay);
+      // Create overlay
+      overlay = document.createElement("div");
+      overlay.className = "video-overlay";
+      overlay.appendChild(thumbnail);
+      overlay.appendChild(playBtnWrapper);
+      wrapper.appendChild(overlay);
 
-        // initialize YouTube player
+      if (type === "youtube") {
+        // Wait for YouTube API
+        await window.youTubeAPIReady;
+
         player = new YT.Player(iframe, {
           videoId,
-          playerVars: { rel: 0, autoplay: 1, playsinline: 1 },
+          playerVars: {
+            rel: 0,
+            autoplay: 1,
+            playsinline: 1
+          },
           events: {
-            onStateChange: (e) => {
+            onStateChange: e => {
+              if (e.data === YT.PlayerState.PLAYING) {
+                overlay.style.display = "none";
+              }
               if (e.data === YT.PlayerState.PAUSED) {
-                if (wrapper.pauseTimer) clearTimeout(wrapper.pauseTimer);
-                wrapper.pauseTimer = setTimeout(() => {
+                setTimeout(() => {
                   if (player.getPlayerState() === YT.PlayerState.PAUSED) {
                     overlay.style.display = "flex";
                   }
-                }, 5000);
-              } else if (e.data === YT.PlayerState.PLAYING) {
-                if (wrapper.pauseTimer) clearTimeout(wrapper.pauseTimer);
-                overlay.style.display = "none";
+                }, 4000);
               }
             }
           }
         });
 
-        // clicking overlay resumes video
         overlay.addEventListener("click", () => {
           player.playVideo();
           overlay.style.display = "none";
         });
 
-        isInitialized = true;
+      } else if (type === "vimeo") {
+        const iframeEl = document.createElement("iframe");
+        iframeEl.src =
+          `https://player.vimeo.com/video/${videoId}?h=${hash}&autoplay=1`;
+        iframeEl.frameBorder = "0";
+        iframeEl.allow =
+          "autoplay; fullscreen; picture-in-picture";
+        iframeEl.allowFullscreen = true;
+
+        iframe.appendChild(iframeEl);
+
+        // Vimeo can't detect pause without SDK — simple behavior
+        overlay.addEventListener("click", () => {
+          iframeEl.src += ""; // force focus
+          overlay.style.display = "none";
+        });
       }
 
-      // Always play video on click
+      isInitialized = true;
+    }
+
+    // Play behavior
+    overlay.style.display = "none";
+
+    if (type === "youtube" && player) {
       player.playVideo();
-      overlay.style.display = "none";
-    });
+    }
   });
 });
-
 
 
   
