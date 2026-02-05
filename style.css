@@ -638,7 +638,7 @@ footer p { font-size: 0.9rem; }
   width: 90vw;        /* your “vw - margins” container */
   max-width: 90vw;
 
-  flex-wrap: nowrap;  /* keep on one row */
+  flex-wrap: wrap;  /* keep on one row */
   overflow: hidden;   /* prevents scrollbar if rounding happens */
 }
 
@@ -1067,6 +1067,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
