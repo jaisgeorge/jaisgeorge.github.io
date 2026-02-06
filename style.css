@@ -92,43 +92,30 @@ header a, footer a { color: #fff; }
    WORK DROPDOWN (DESKTOP)
 ========================= */
 
-.work-dropdown {
-  position: relative;
-}
-
-/* Hidden by default */
-.work-dropdown .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  margin-top: 10px;
-  background: rgba(0,0,0,0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+.work-dropdown-layer {
+  position: fixed;
+  top: 70px; /* roughly header height */
+  left: 40px; /* same as header padding */
   display: none;
   flex-direction: column;
-  min-width: 200px;
+  background: rgba(0,0,0,0.95);
+  backdrop-filter: blur(10px);
   padding: 10px 0;
-  z-index: 2000;
-  text-align: left;
+  min-width: 200px;
+  z-index: 9999;
 }
 
-.work-dropdown .dropdown-menu a {
+.work-dropdown-layer a {
   padding: 6px 20px;
-  font-size: 0.9rem;
   text-decoration: none;
   color: white;
   white-space: nowrap;
-  transition: background 0.15s ease;
 }
 
-.work-dropdown .dropdown-menu a:hover {
-  background: rgba(255,255,255,0.08);
-}
-
-/* Desktop only */
+/* desktop only */
 @media (min-width: 1024px) {
-  .work-dropdown:hover .dropdown-menu {
+  #workLink:hover + .work-dropdown-layer,
+  .work-dropdown-layer:hover {
     display: flex;
   }
 }
@@ -1114,6 +1101,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
