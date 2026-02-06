@@ -228,7 +228,56 @@ function initHeader() {
   // Run on load & resize
   window.addEventListener("resize", checkHeaderCollapse);
   checkHeaderCollapse();
+
+
+  // ============================
+  // WORK DROPDOWN (desktop hover)
+  // ============================
+  const workLink = document.querySelector('.header-left a');
+  const workDropdown = document.getElementById('workDropdown');
+
+  function setupDropdown() {
+    const desktopQuery = window.matchMedia('(min-width: 1024px)');
+
+    if (desktopQuery.matches) {
+      // Show on hover
+      workLink.addEventListener('mouseenter', () => {
+        workDropdown.style.display = 'flex';
+      });
+
+      // Hide when mouse leaves link
+      workLink.addEventListener('mouseleave', () => {
+        setTimeout(() => {
+          if (!workDropdown.matches(':hover')) {
+            workDropdown.style.display = 'none';
+          }
+        }, 50);
+      });
+
+      // Keep open if hovering dropdown
+      workDropdown.addEventListener('mouseenter', () => {
+        workDropdown.style.display = 'flex';
+      });
+
+      // Hide when leaving dropdown
+      workDropdown.addEventListener('mouseleave', () => {
+        workDropdown.style.display = 'none';
+      });
+    } else {
+      // Hide dropdown on mobile
+      workDropdown.style.display = 'none';
+    }
+  }
+
+  // Setup on load
+  setupDropdown();
+
+  // Also update on resize
+  window.addEventListener('resize', setupDropdown);
+
+
 }
+  
 /* ============================================================
    HEADER SCROLL STATE
 ============================================================ */
