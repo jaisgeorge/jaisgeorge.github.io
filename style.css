@@ -89,6 +89,21 @@ header a, footer a { color: #fff; }
 
 
 /* =========================
+   HEADER LEFT HOVER AREA FIX
+========================= */
+.header-left {
+  position: relative; /* needed for any absolute children later */
+}
+
+/* Make the <a> take up more vertical space for easier hover */
+.header-left a {
+  display: inline-block;       /* allows padding to expand hover area */
+  padding: 10px 15px;          /* add extra space around the text */
+}
+
+
+
+/* =========================
    WORK DROPDOWN - floating layer
 ========================= */
 .work-dropdown-layer {
@@ -1109,6 +1124,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
