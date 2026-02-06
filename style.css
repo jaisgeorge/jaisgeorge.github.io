@@ -87,6 +87,53 @@ header a, footer a { color: #fff; }
   display: none;
 }
 
+
+/* =========================
+   WORK DROPDOWN (DESKTOP)
+========================= */
+
+.work-dropdown {
+  position: relative;
+}
+
+/* Hidden by default */
+.work-dropdown .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 10px;
+  background: rgba(0,0,0,0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: none;
+  flex-direction: column;
+  min-width: 200px;
+  padding: 10px 0;
+  z-index: 2000;
+  text-align: left;
+}
+
+.work-dropdown .dropdown-menu a {
+  padding: 6px 20px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: white;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+.work-dropdown .dropdown-menu a:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Desktop only */
+@media (min-width: 1024px) {
+  .work-dropdown:hover .dropdown-menu {
+    display: flex;
+  }
+}
+
+
 /* =========================
    PAGE HEADER — NORMAL FLOW
 ========================= */
@@ -1067,6 +1114,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
