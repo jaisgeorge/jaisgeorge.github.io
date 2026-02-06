@@ -108,32 +108,35 @@ header a, footer a { color: #fff; }
 ========================= */
 .work-dropdown-layer {
   position: fixed;           /* floats above everything */
-  top: 70px;                 /* adjust based on header height */
+  top: 60px;                 /* closer to header, adjust as needed */
   left: 40px;                /* aligns with header-left nav */
   display: none;             /* hidden by default */
   flex-direction: column;
   background: rgba(0,0,0,0.95);
   backdrop-filter: blur(10px);
-  padding: 10px 0;
-  min-width: 200px;
+  padding: 5px 0;            /* less vertical padding */
+  min-width: 180px;          /* smaller width */
   z-index: 9999;
   border-radius: 6px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  text-align: left;          /* left-align items */
+  font-size: 0.9rem;         /* smaller font size */
 }
 
+/* Dropdown links */
 .work-dropdown-layer a {
-  padding: 6px 20px;
+  padding: 5px 15px;         /* less padding for compact look */
   color: white;
   text-decoration: none;
   white-space: nowrap;
   font-weight: 400;
   transition: background 0.15s ease;
+  display: block;            /* ensures left alignment */
 }
 
 .work-dropdown-layer a:hover {
   background: rgba(255,255,255,0.08);
 }
-
 /* Optional: desktop only hover */
 @media (min-width: 1024px) {
   #workDropdown:hover,
@@ -1124,6 +1127,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
