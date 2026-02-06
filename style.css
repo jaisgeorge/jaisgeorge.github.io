@@ -89,36 +89,44 @@ header a, footer a { color: #fff; }
 
 
 /* =========================
-   WORK DROPDOWN (DESKTOP)
+   WORK DROPDOWN - floating layer
 ========================= */
-
 .work-dropdown-layer {
-  position: fixed;
-  top: 70px; /* roughly header height */
-  left: 40px; /* same as header padding */
-  display: none;
+  position: fixed;           /* floats above everything */
+  top: 70px;                 /* adjust based on header height */
+  left: 40px;                /* aligns with header-left nav */
+  display: none;             /* hidden by default */
   flex-direction: column;
   background: rgba(0,0,0,0.95);
   backdrop-filter: blur(10px);
   padding: 10px 0;
   min-width: 200px;
   z-index: 9999;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
 }
 
 .work-dropdown-layer a {
   padding: 6px 20px;
-  text-decoration: none;
   color: white;
+  text-decoration: none;
   white-space: nowrap;
+  font-weight: 400;
+  transition: background 0.15s ease;
 }
 
-/* desktop only */
+.work-dropdown-layer a:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Optional: desktop only hover */
 @media (min-width: 1024px) {
-  #workLink:hover + .work-dropdown-layer,
-  .work-dropdown-layer:hover {
+  #workDropdown:hover,
+  .header-left a:hover + #workDropdown {
     display: flex;
   }
 }
+
 
 
 /* =========================
@@ -1101,6 +1109,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
