@@ -120,7 +120,7 @@ header a, footer a { color: #fff; }
   border-radius: 6px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.3);
   text-align: left;          /* left-align items */
-  font-size: 0.9rem;         /* smaller font size */
+  font-size: 0.7rem;         /* smaller font size */
 }
 
 /* Dropdown links */
@@ -1127,6 +1127,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
