@@ -704,6 +704,29 @@ footer p { font-size: 0.9rem; }
 
 /* Same height, no cropping, auto-shrink on narrow screens */
 .project-row.final-images img{
+  height: clamp(140px, 20vh, 360px);  /* pick min/max you like */
+  width: auto;
+  object-fit: contain;
+  max-width: 100%;    /* safety */
+  display: block;
+}
+
+
+.project-row.spot{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px auto;
+
+  width: 90vw;        /* your “vw - margins” container */
+  max-width: 90vw;
+
+  flex-wrap: wrap;  /* keep on one row */
+  overflow: hidden;   /* prevents scrollbar if rounding happens */
+}
+
+/* Same height, no cropping, auto-shrink on narrow screens */
+.project-row.spot img{
   height: clamp(140px, 33vh, 360px);  /* pick min/max you like */
   width: auto;
   object-fit: contain;
@@ -1127,6 +1150,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
