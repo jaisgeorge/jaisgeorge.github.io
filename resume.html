@@ -251,9 +251,6 @@
 <!-- ============================
       SCRIPTS
 ============================ -->
-<!-- ============================
-      SCRIPTS
-============================ -->
 <script>
 // ============================
 // HEADER COLLAPSE / MOBILE MENU
@@ -271,6 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(err => console.error('Error loading header:', err));
 });
 
+  
 function initHeader() {
   const header = document.querySelector("header");
   const headerRight = document.querySelector(".header-right");
@@ -428,15 +426,18 @@ function showImage() {
 }
 
 function openLightbox(img) {
-  const collage = img.closest(".collage");
-  currentImages = [...collage.querySelectorAll("img")];
+  let container = img.closest(".collage") 
+               || img.closest(".project-row") 
+               || img.closest(".photo-grid") 
+               || img.closest(".photo-grid-poster");
+  currentImages = [...container.querySelectorAll("img")];
   currentIndex = currentImages.indexOf(img);
   showImage();
   lightbox.style.display = "flex";
   lightbox.setAttribute("aria-hidden", "false");
 }
 
-document.querySelectorAll(".collage img").forEach(img =>
+document.querySelectorAll(".collage img, .project-column img, .photo-grid img, .photo-grid-poster img").forEach(img =>
   img.addEventListener("click", () => openLightbox(img))
 );
 
@@ -480,27 +481,10 @@ document.addEventListener("keydown", e => {
 
 
 
-/* ============================================================
-   SLIDESHOW
-============================================================ */
-function startSlideshow(slideshowId, interval = 3000) {
-  const container = document.getElementById(slideshowId);
-  const images = container.querySelectorAll('img');
-  let index = 0;
-
-  setInterval(() => {
-    images[index].style.display = 'none';             // hide current
-    index = (index + 1) % images.length;              // next image
-    images[index].style.display = 'block';            // show next
-  }, interval);
-}
-
-// Start both slideshows independently
-startSlideshow('slideshow1', 1500);   
-startSlideshow('slideshow2', 1500);  
-startSlideshow('slideshow3', 1500);
 
 
+
+  
   
 // Load YouTube API only once
 if (!window.youTubeAPIReady) {
@@ -580,8 +564,30 @@ window.youTubeAPIReady.then(() => {
 
 
 
+/* ============================================================
+   SLIDESHOW
+============================================================ */
+function startSlideshow(slideshowId, interval = 3000) {
+  const container = document.getElementById(slideshowId);
+  const images = container.querySelectorAll('img');
+  let index = 0;
 
+  setInterval(() => {
+    images[index].style.display = 'none';             // hide current
+    index = (index + 1) % images.length;              // next image
+    images[index].style.display = 'block';            // show next
+  }, interval);
+}
+
+// Start both slideshows independently
+startSlideshow('slideshow1', 1500);   
+startSlideshow('slideshow2', 1500);  
+startSlideshow('slideshow3', 1500);
+
+
+
+  
 </script>
-
 </body>
 </html>
+
