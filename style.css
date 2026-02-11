@@ -734,6 +734,18 @@ footer p { font-size: 0.9rem; }
   display: block;
 }
 
+.project-row.spot .column-caption {
+  font-size: 1.1rem; /* Large by default (4K screens) */
+  color: #ddd;
+  text-align: center;
+  margin-top: 8px;
+}
+
+@media (max-width: 1920px) {
+  .project-row.spot .column-caption {
+    font-size: 0.85rem; /* Or tweak as you like! */
+  }
+}
 
 /* =========================
 ROW - COLUMN PROJECT STYLING (UNIFORM HEIGHT WITH FIXED IMAGE SIZE)
@@ -1150,6 +1162,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
