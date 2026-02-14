@@ -67,7 +67,7 @@ header h1 a {
 .header-left,
 .header-right {
   display: flex;
-  gap: 15px;
+  gap: 40px;
   flex: 0 1 auto;
   align-items: center;
 }
@@ -1162,6 +1162,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
