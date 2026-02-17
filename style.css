@@ -960,7 +960,7 @@ html, body {
 
 /* RIGHT COLUMN (empty) */
 .homepage .home-right {
-  flex: 0.5;
+  flex: 0.3;
 }
 
 /* Ensure text alignment */
@@ -1165,6 +1165,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
