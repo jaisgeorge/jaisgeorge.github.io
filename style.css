@@ -917,7 +917,7 @@ html, body {
 .homepage .home-row {
   display: flex;
   width: 90vw;
-  max-width: 1500px;
+  max-width: 1200px;
   gap: 20px;
 }
 
@@ -960,7 +960,7 @@ html, body {
 
 /* RIGHT COLUMN (empty) */
 .homepage .home-right {
-  flex: 1;
+  flex: 0.5;
 }
 
 /* Ensure text alignment */
@@ -1165,6 +1165,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
