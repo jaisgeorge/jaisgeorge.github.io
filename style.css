@@ -917,7 +917,7 @@ html, body {
 .homepage .home-row {
   display: flex;
   width: 90vw;
-  max-width: 1200px;
+  max-width: 1500px;
   gap: 20px;
 }
 
@@ -1165,6 +1165,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
