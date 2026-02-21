@@ -946,7 +946,7 @@ html, body {
   font-size: clamp(1rem, 2.5vw, 1.5rem);
   font-weight: 200;
   margin: 0;
-  line-height: 1.4;
+  line-height: 0.5;
   color: #fff7a8;
 }
 
@@ -1165,6 +1165,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
