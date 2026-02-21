@@ -946,8 +946,14 @@ html, body {
   font-size: clamp(1rem, 2.5vw, 1.5rem);
   font-weight: 200;
   margin: 0;
-  line-height: 0.5;
+  line-height: 1.4;
   color: #fff7a8;
+}
+
+.homepage .home-subtitles {
+  font-size: 1rem;
+  font-weight: 200;
+  color: #fff;
 }
 
 /* LOCATION */
@@ -1165,6 +1171,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
