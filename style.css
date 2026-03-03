@@ -714,6 +714,16 @@ footer p { font-size: 0.9rem; }
   display: block;
 }
 
+.project-row.final-images video {
+  height: clamp(140px, 33vh, 360px);  /* match your img rule */
+  width: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  max-width: 100%;
+  display: block;
+  background: #222; /* optional: avoids black bars on transparent videos */
+}
 
 .project-row.spot{
   display: flex;
@@ -735,6 +745,15 @@ footer p { font-size: 0.9rem; }
   object-fit: contain;
   max-width: 100%;    /* safety */
   display: block;
+}
+
+.project-row.spot video {
+  height: clamp(140px, 20vh, 360px);  /* match your img rule */
+  width: auto;
+  object-fit: contain;
+  max-width: 100%;
+  display: block;
+  background: #222; /* optional: avoids black bars on transparent videos */
 }
 
 .project-row.spot .column-caption {
@@ -1171,6 +1190,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
