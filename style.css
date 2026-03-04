@@ -725,6 +725,16 @@ footer p { font-size: 0.9rem; }
   background: #222; /* optional: avoids black bars on transparent videos */
 }
 
+.project-row.final-images .video-thumbnail,
+.project-row.final-images .video-wrapper iframe {
+  height: clamp(140px, 33vh, 360px);
+  width: auto;
+  object-fit: contain;
+  max-width: 100%;
+  display: block;
+}
+
+
 .project-row.spot{
   display: flex;
   justify-content: center;
@@ -755,6 +765,16 @@ footer p { font-size: 0.9rem; }
   display: block;
   background: #222; /* optional: avoids black bars on transparent videos */
 }
+
+.project-row.spot .video-thumbnail,
+.project-row.spot .video-wrapper iframe {
+  height: clamp(140px, 20vh, 360px);
+  width: auto;
+  object-fit: contain;
+  max-width: 100%;
+  display: block;
+}
+
 
 .project-row.spot .column-caption {
   font-size: 1.1rem; /* Large by default (4K screens) */
@@ -1190,6 +1210,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
