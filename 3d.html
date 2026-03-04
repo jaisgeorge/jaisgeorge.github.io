@@ -655,10 +655,11 @@ if (!window.youTubeAPIReady) {
 }
 
 // After API loads, initialize all video wrappers
+// Replace your existing YouTube initialization code with this:
 window.youTubeAPIReady.then(() => {
   document.querySelectorAll(".video-wrapper").forEach(wrapper => {
     const thumbnail = wrapper.querySelector(".video-thumbnail");
-    const playBtnWrapper = wrapper.querySelector(".play-button-wrapper"); // new clickable area
+    const playBtnWrapper = wrapper.querySelector(".play-button-wrapper");
     let iframe = null;
     let player = null;
     let overlay = null;
@@ -667,22 +668,33 @@ window.youTubeAPIReady.then(() => {
     playBtnWrapper.addEventListener("click", () => {
       if (!isInitialized) {
         const videoId = wrapper.dataset.videoId;
-
-        // create iframe container
+        
+        // Create iframe container
         iframe = document.createElement("div");
         iframe.className = "yt-frame";
+        
+        // Check if wrapper is in a .project-row.spot context
+        const isInSpotRow = wrapper.closest('.project-row.spot') !== null;
+        
+        if (isInSpotRow) {
+          // For spot rows, make iframe fill the wrapper completely
+          iframe.style.position = 'absolute';
+          iframe.style.top = '0';
+          iframe.style.left = '0';
+          iframe.style.width = '100%';
+          iframe.style.height = '100%';
+        }
+        
         wrapper.appendChild(iframe);
-
-        // create overlay to show thumbnail + play button
+        
+        // Create overlay
         overlay = document.createElement("div");
         overlay.className = "video-overlay";
-
-        // move thumbnail and playBtnWrapper into overlay
         overlay.appendChild(thumbnail);
         overlay.appendChild(playBtnWrapper);
         wrapper.appendChild(overlay);
-
-        // initialize YouTube player
+        
+        // Initialize YouTube player
         player = new YT.Player(iframe, {
           videoId,
           playerVars: { rel: 0, autoplay: 1, playsinline: 1 },
@@ -702,16 +714,16 @@ window.youTubeAPIReady.then(() => {
             }
           }
         });
-
-        // clicking overlay resumes video
+        
+        // Clicking overlay resumes video
         overlay.addEventListener("click", () => {
           player.playVideo();
           overlay.style.display = "none";
         });
-
+        
         isInitialized = true;
       }
-
+      
       // Always play video on click
       player.playVideo();
       overlay.style.display = "none";
@@ -747,6 +759,7 @@ startSlideshow('slideshow3', 1500);
 </script>
 </body>
 </html>
+
 
 
 
