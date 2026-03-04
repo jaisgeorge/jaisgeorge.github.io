@@ -766,15 +766,27 @@ footer p { font-size: 0.9rem; }
   background: #222; /* optional: avoids black bars on transparent videos */
 }
 
-.project-row.spot .video-thumbnail,
-.project-row.spot .video-wrapper iframe {
+/* Make video-item behave like images in spot rows */
+.project-row.spot .video-item {
   height: clamp(140px, 20vh, 360px);
   width: auto;
-  object-fit: contain;
-  max-width: 100%;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+.project-row.spot .video-item .video-wrapper {
+  height: 100%;
+  width: auto;
+  max-width: none;
+  aspect-ratio: auto;
+}
+
+.project-row.spot .video-item .video-thumbnail {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
 
 .project-row.spot .column-caption {
   font-size: 1.1rem; /* Large by default (4K screens) */
@@ -1210,6 +1222,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
