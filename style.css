@@ -537,8 +537,8 @@ footer p { font-size: 0.9rem; }
 
 .resume-item {
   display: grid;
-  /* fit content for first and third columns, middle column takes remaining space */
-  grid-template-columns: max-content 1fr max-content;
+  /* fixed width for first column (14ch = width of 14 characters), middle column takes remaining space */
+  grid-template-columns: 14ch 1fr max-content;
   align-items: center;
   gap: 2vw;               /* gap between columns as percentage of viewport width */
   padding: 1rem 0;         /* vertical padding only */
@@ -1260,6 +1260,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
