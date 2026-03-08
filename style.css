@@ -626,7 +626,7 @@ footer p { font-size: 0.9rem; }
   }
 
   .resume-item {
-    gap: 1vw;
+    gap: 2vw;
   }
 
   .resume-item .year,
@@ -1260,6 +1260,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
