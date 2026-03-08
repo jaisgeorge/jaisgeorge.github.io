@@ -540,7 +540,7 @@ footer p { font-size: 0.9rem; }
   /* fixed width for first column (14ch = width of 14 characters), middle column takes remaining space */
   grid-template-columns: 14ch 1fr max-content;
   align-items: center;
-  gap: 2vw;               /* gap between columns as percentage of viewport width */
+  gap: 4vw;               /* gap between columns as percentage of viewport width */
   padding: 1rem 0;         /* vertical padding only */
   border-bottom: 1px solid rgba(255,255,255,0.2);
   min-height: 4rem;
@@ -626,7 +626,7 @@ footer p { font-size: 0.9rem; }
   }
 
   .resume-item {
-    gap: 2vw;
+    gap: 1vw;
   }
 
   .resume-item .year,
@@ -1260,6 +1260,7 @@ html, body {
   border-color: #ddd;
   background: rgba(255, 255, 255, 0.08); /* subtle transparent fill */
 }
+
 
 
 
