@@ -53,7 +53,7 @@
   </div>
 
   <div class="project-column">
-     <img src="spotlightimages/carnivalhindu.png" alt="Project 2 Image 1" data-desc="Feature on The Hindu Newspaper - 2022">
+    <img src="spotlightimages/papnji1.jpg" data-full="spotlightimages/carnivalhindu.png" alt="Project 2 Image 1" data-desc="Feature on The Hindu Newspaper - 2022">
     <p class="column-caption">News feature</p>
   </div>
 
@@ -459,7 +459,7 @@ let currentIndex = 0;
 
 function showImage() {
   const img = currentImages[currentIndex];
-  lightboxImg.src = img.src;
+  lightboxImg.src = img.dataset.full || img.src;
   lightboxDesc.textContent = img.dataset.desc || "";
 }
 
