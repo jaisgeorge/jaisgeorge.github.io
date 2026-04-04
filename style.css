@@ -506,6 +506,16 @@ footer p { font-size: 0.9rem; }
   object-fit: contain;
 }
 
+.lightbox-video {
+  max-height: 85vh;
+  max-width: 85%;
+  border-radius: 6px;
+  margin: auto;
+}
+
+.project-column video {
+  cursor: pointer;
+}
 
 
 .lightbox-close, .lightbox-prev, .lightbox-next { position: fixed; cursor: pointer; z-index: 5010; color: #fff; }
