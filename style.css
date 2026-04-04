@@ -265,6 +265,8 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
 }
 
 .project .project-desc {
+  width: 90vw;
+  max-width: 90vw;
   font-weight: 200;
   color: #fff;
   margin-bottom: 20px;
@@ -272,6 +274,8 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
 
 
 .project-desc {
+  width: 90vw;
+  max-width: 90vw;
   font-size: 0.9rem;
   line-height: 1.4;
   opacity: 0.8; 
