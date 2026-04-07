@@ -872,46 +872,73 @@ document.querySelectorAll(".collage").forEach(collage => {
 ============================================================ */
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.querySelector(".lightbox-img");
+const lightboxVideo = document.querySelector(".lightbox-video");
 const lightboxDesc = document.querySelector(".lightbox-desc");
-let currentImages = [];
+let currentMedia = [];
 let currentIndex = 0;
 
-function showImage() {
-  const img = currentImages[currentIndex];
-  lightboxImg.src = img.src;
-  lightboxDesc.textContent = img.dataset.desc || "";
+function showMedia() {
+  const media = currentMedia[currentIndex];
+  
+  // Hide both elements initially
+  lightboxImg.style.display = "none";
+  lightboxVideo.style.display = "none";
+  
+  if (media.tagName === "IMG") {
+    // Show image
+    lightboxImg.src = media.src;
+    lightboxImg.style.display = "block";
+  } else if (media.tagName === "VIDEO") {
+    // Show video
+    lightboxVideo.src = media.src;
+    lightboxVideo.muted = false; // Enable sound in lightbox
+    lightboxVideo.loop = media.loop;
+    lightboxVideo.style.display = "block";
+    lightboxVideo.play();
+  }
+  
+  lightboxDesc.textContent = media.dataset.desc || "";
 }
 
-function openLightbox(img) {
-  let container = img.closest(".collage") || img.closest(".project-row");
-  currentImages = [...container.querySelectorAll("img")];
-  currentIndex = currentImages.indexOf(img);
-  showImage();
+function openLightbox(media) {
+  // Find all media in the same container
+  let container = media.closest(".collage") || media.closest(".project-row");
+  currentMedia = [...container.querySelectorAll("img, video")];
+  currentIndex = currentMedia.indexOf(media);
+  
+  showMedia();
   lightbox.style.display = "flex";
   lightbox.setAttribute("aria-hidden", "false");
 }
 
-document.querySelectorAll(".collage img, .project-column img").forEach(img =>
-  img.addEventListener("click", () => openLightbox(img))
+// Add click listeners to both images and videos
+document.querySelectorAll(".collage img, .project-column img, .project-column video").forEach(media =>
+  media.addEventListener("click", () => openLightbox(media))
 );
 
 document.querySelector(".lightbox-close").addEventListener("click", () => {
+  if (lightboxVideo.style.display === "block") {
+    lightboxVideo.pause();
+  }
   lightbox.style.display = "none";
   lightbox.setAttribute("aria-hidden", "true");
 });
 
 document.querySelector(".lightbox-prev").addEventListener("click", () => {
-  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-  showImage();
+  currentIndex = (currentIndex - 1 + currentMedia.length) % currentMedia.length;
+  showMedia();
 });
 
 document.querySelector(".lightbox-next").addEventListener("click", () => {
-  currentIndex = (currentIndex + 1) % currentImages.length;
-  showImage();
+  currentIndex = (currentIndex + 1) % currentMedia.length;
+  showMedia();
 });
 
 lightbox.addEventListener("click", e => {
   if (e.target === lightbox) {
+    if (lightboxVideo.style.display === "block") {
+      lightboxVideo.pause();
+    }
     lightbox.style.display = "none";
     lightbox.setAttribute("aria-hidden", "true");
   }
@@ -921,12 +948,15 @@ lightbox.addEventListener("click", e => {
 document.addEventListener("keydown", e => {
   if (lightbox.style.display === "flex") {
     if (e.key === "ArrowLeft") {
-      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-      showImage();
+      currentIndex = (currentIndex - 1 + currentMedia.length) % currentMedia.length;
+      showMedia();
     } else if (e.key === "ArrowRight") {
-      currentIndex = (currentIndex + 1) % currentImages.length;
-      showImage();
+      currentIndex = (currentIndex + 1) % currentMedia.length;
+      showMedia();
     } else if (e.key === "Escape") {
+      if (lightboxVideo.style.display === "block") {
+        lightboxVideo.pause();
+      }
       lightbox.style.display = "none";
       lightbox.setAttribute("aria-hidden", "true");
     }
