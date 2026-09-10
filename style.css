@@ -237,6 +237,24 @@ h2 { margin-top: 0; text-align: center; font-size: 1rem; }
 
 
 /* =========================
+   YOUTUBE LINK
+========================= */
+.youtube-link {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  color: #4da6ff;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.youtube-link:hover {
+  color: #80c0ff;
+}
+
+
+
+/* =========================
    PROJECT DIVIDER
 ========================= */
 .project-divider {
